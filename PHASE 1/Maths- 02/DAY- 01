@@ -1,0 +1,152 @@
+                                            Maths For DSA
+
+(1) What is Number System ?
+ - It defines how numbers are represented and how many digits are used in the system.
+ - Any number of Base N means that it has digits from 0 to N-1
+ - Example Base 2 -> 0,1 Base 3 -> 0,1,2
+ - Some special highlighted Bases are :
+| Number System   | Base | Digits Used | Example |
+| --------------- | ---- | ----------- | ------- |
+| **Binary**      | 2    | 0, 1        | `1011`  |
+| **Octal**       | 8    | 0–7         | `17`    |
+| **Decimal**     | 10   | 0–9         | `19`    |
+| **Hexadecimal** | 16   | 0–9, A–F    | `1A`    |
+Note: HexaDecimal has given some special names in the form of Alphabets to 10, 11, 12, 13, 14 and 15. HexaDecimal -> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+- Bi - means 2 in binary
+- Dec - means 10 in decimal
+- Octal- means 8 in octal
+- hex - means 6 + dec means 10 in hexadecimal
+
+(2) What is Decimal Number System ?
+Decimal number system wo system hai jisme hum 0 se 9 tak total 10 digits ka use karke numbers banate hain. Iska base 10 hota hai, kyunki isme 10 unique digits hoti hain. 
+Yeh duniya ka sabse common number system hai.
+Ex-
+Digits used: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+Total digits: 10
+Base: 10
+Why base 10? → Kyunki 10 unique symbols use hote hain
+Where used? → Daily life, counting, money, maths — sabme
+
+
+(3) What is Binary Number System ?
+Binary number system wo system hai jisme sirf 2 digits — 0 aur 1 — ka use hota hai. Iska base 2 hota hai kyunki isme sirf do unique symbols hote hain. Computer internally data ko binary me hi samajhta aur process karta hai, 
+kyunki electronic circuits sirf do states (ON/OFF) ko easily represent kar sakte hain.
+Ex-
+✔ Digits used:
+0, 1
+✔ Total digits:
+2
+✔ Base:
+2
+✔ Why base 2?
+Kyuki isme sirf 2 unique digits available hoti hain.
+✔ Why computer understands binary?
+   - Computer ke circuits me two states hoti hain:
+                                        1 → ON (High voltage)
+                                        0 → OFF (Low voltage)
+   - Isliye computer ke liye binary sabse simple aur reliable system hai.
+   - Saara data — numbers, images, music, videos, programs — ultimately 0s aur 1s me convert hota hai.
+✔ Binary kya represent karta hai?
+   - Every bit = 0 ya 1
+   - 8 bits = 1 byte
+   - Har binary position 2 ki power hoti hai (1, 2, 4, 8, 16…)
+
+
+
+(4) Steps to convert Decimal To Binary Number ?
+Input:
+10
+Output:
+1010 ?
+Note:- jis v base me convert krna hai us se repeated divide krna hoga apne number kro.
+STEP-1:
+  - define the loop like, while(decNum > 0 ) because here we have to keep dividing nums unless our quotient become 0.
+STEP-2:
+  - now calculate reminder inside loop, for that do , decimalNum % same base in which you wanted to convert. here decimalNum % 2, so here you got reminder which is one factor we need for ans.
+STEP-3:
+  - now do the actual division of a decimalNum with same base in which you wanted to convert so that you can do half of num and get another num.
+STEP-4:
+  - now define ans variable intializing with ans=0 and in which add, multiplication of remainder * pow, for pow define power variable intializing with 1 here pow=1 is nothing but 10^0=1
+STEP-5:
+  - then update pow with 10 multiplication like, pow=pow*10 because here we want our remainder value in backward direction.
+
+
+(5) follow up question : reverse the number 5701 , output : 1075
+Steps :
+    - When you reverse a number, you repeatedly:
+                              - extract the last digit (num % 10),
+                              - add last digit to the result after multiplying by 10 into result,
+                              - and then remove the last digit from num.
+
+(6) follow up question : write program to find a=2 to the power b=3 ?
+Steps :
+   - run loop till b times 
+   - declare one ans variable intializing with 1, inside loop do multiplication ans = ans * a;
+
+
+(7) What is Fast Exponentiation /Binary Exponentiation ?
+Fast Exponentiation Algorithm is one of the most efficient ways to calculate large powers. like, a^b where normal way time complexity will be O(b), but using algorithm time complexity O(log b)
+It works based on this idea:
+🔥 Key Rules:
+- Agar power even ho →
+                      a^n = (a^(n/2)) * (a^(n/2))
+- Agar power odd ho →
+                     a^n = a * (a^(n-1))
+Example :
+2^50
+50 even → 2^50 = (2^25) * (2^25)
+
+2^25
+25 odd → 2^25 = 2 * (2^24)
+
+2^24
+24 even → 2^24 = (2^12) * (2^12)
+
+2^12
+12 even → 2^12 = (2^6) * (2^6)
+
+2^6
+6 even → 2^6 = (2^3) * (2^3)
+
+2^3
+3 odd → 2^3 = 2 * (2^2)
+
+2^2
+2 even → 2^2 = (2^1) * (2^1)
+
+2^1
+Base Case → 2
+STEPS TO IMPLEMENT :
+ int rest = 1;
+        while (pow > 0){
+            if(pow % 2 !=0){
+                rest = rest * num;
+                pow = pow-1;
+            }else {
+                num = num * num;
+                pow = pow/2;
+            }
+         
+        }
+        return rest;
+
+
+(8)  Steps to convert Binary To Decimal Number ?
+Input:
+1010
+Output:
+10
+Note:- in binary, binary num ka right side se left side ke trf 2^0 krte hai pure number ke liye ek ek pow badhate hue. uske bad hr 2 ki pow , 2 ke sath multiply hoti hai or uske bad sare multiplication
+ko ek sath add kr dete hai .
+STEP-1:
+- take input like (101010) which decimal 42
+STEP-2:
+- use loops for repeated work like while(binaryNum>0)
+STEP-3:
+- inside loop, find lastDigit like, (binaryNum % 10) 
+STEP-4:
+- in ans variable add multiplication of lastDigit * pow like, ans+=lastDigit * pow; 
+STEP-5:
+- remove lastDigit like binaryNum /=10;
+STEP-6:
+- update power like pow= pow * 2;
