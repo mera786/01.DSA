@@ -1,0 +1,56 @@
+8. Cycle Sort :
+Cycle Sort ek in-place comparison based sorting algorithm hai jo minimum number of swaps karta hai. Iska main goal writes (swap / assignment) ko kam se kam rakhna hota hai.
+Har element ko direct uski correct position par bheja jata hai, aur ye process cycles me hota hai — isliye naam Cycle Sort.
+
+Cycle sort Variant before learning atual cycle sort :
+------------------------------------------------------
+- agr element 0 to N ya 1 to N ki range me di ho then cycle sort kaise apply kr skte ho agr ye dono case meet nhi krta ho to nhi lag skta ye variant.
+Note:- Cycle sort based on value-to-index mapping works naturally for ascending order only.
+For descending order, we sort first and then reverse. in both 0 to N ya 1 to N range wale me.
+⚙️ Steps to Implement Cycle Sort 1 to N :
+⚙️ Steps to Implement Cycle Sort 0 to N :
+
+ Actual Cycle Sort :
+--------------------
+- agr array me 0 to N na dekr ke 0 to supppose 10 dede but wo sare numbers present na ho jaise ek array hai jisme 0 to 10 elements hai but , 6 nhi present hai 10 do bar hai, 5 nhi present
+ hai, 7 nhi present hai? to kya ab isme mai cycle sort wo variant wala lga skta hu? not at all, yha pe hme jugad lgana pdega jo actual cycle sort hai
+Basic Idea
+- Har element ke liye ye check kiya jata hai ki sorted array me uski exact position kya hogi
+- Agar element already sahi jagah par hai → kuch nahi karna
+- Agar nahi hai → usko uski correct position par bhejo
+- Wahan jo element mile, usko uski correct position par bhejo
+- Ye tab tak chalta hai jab tak cycle complete na ho jaye
+Example
+Input: [3, 5, 2, 1, 4]
+Output: [1, 2, 3, 4, 5]
+
+⚙️ Steps to Implement Cycle Sort
+1️⃣ Loop chalao i = 0 se n-2 tak
+2️⃣ Current element = arr[i]
+3️⃣ Us element ki correct position (pos) nikalo
+  - pos = count of elements smaller than current element
+      4️⃣ Agar pos == i 
+  - element already sahi jagah hai → continue
+      5️⃣ Warna:
+  - element ko pos par swap karo
+      6️⃣ Cycle continue karo: while (pos != i)  
+  - naya element lo
+  - uski correct position nikalo
+  - swap karo
+    7️⃣ Jab pos == i ho jaye → cycle complete
+
+
+
+📊 Sorting Algorithms – Time Complexity & Use Cases Table :
+
+| No.    | Sorting Algorithm                | Best Time    | Avg Time     | Worst Time   | Space    | Stable | Kab Use Kare (Use Case)                                                                            |
+| ------ | -------------------------------- | ------------ | ------------ | ------------ | -------- | ------ | -------------------------------------------------------------------------------------------------- |
+| **1**  | **Bubble Sort**                  | O(n)         | O(n²)        | O(n²)        | O(1)     | ✅ Yes  | 🔹 Jab array **almost sorted** ho<br>🔹 Educational / beginners ke liye<br>🔹 Small input          |
+| **2**  | **Insertion Sort**               | O(n)         | O(n²)        | O(n²)        | O(1)     | ✅ Yes  | 🔹 Small datasets<br>🔹 **Nearly sorted arrays**<br>🔹 Online sorting (data ek-ek karke aaye)      |
+| **3**  | **Selection Sort**               | O(n²)        | O(n²)        | O(n²)        | O(1)     | ❌ No   | 🔹 Jab **minimum swaps** chahiye<br>🔹 Memory bahut limited ho                                     |
+| **4**  | **Brick Sort (Odd-Even Sort)**   | O(n)         | O(n²)        | O(n²)        | O(1)     | ✅ Yes  | 🔹 Parallel processing concept samjhane ke liye<br>🔹 Bubble sort ka variant                       |
+| **5**  | **Counting Sort**                | O(n + k)     | O(n + k)     | O(n + k)     | O(k)     | ✅ Yes  | 🔹 Jab numbers **small range (0–k)** me ho<br>🔹 Integers only<br>🔹 Very fast non-comparison sort |
+| **6**  | **Radix Sort**                   | O(d(n + k))  | O(d(n + k))  | O(d(n + k))  | O(n + k) | ✅ Yes  | 🔹 Large integers / fixed length numbers<br>🔹 Jab comparison avoid karna ho                       |
+| **7**  | **Pigeonhole Sort**              | O(n + range) | O(n + range) | O(n + range) | O(range) | ❌ No   | 🔹 Jab **range chhota** ho<br>🔹 Duplicates allowed                                                |
+| **8A** | **Cycle Sort (1 to N / 0 to N)** | O(n)         | O(n)         | O(n)         | O(1)     | ❌ No   | 🔹 Jab numbers **exact 1..N ya 0..N** ho<br>🔹 Missing / duplicate find karna                      |
+| **8B** | **Actual Cycle Sort**            | O(n²)        | O(n²)        | O(n²)        | O(1)     | ❌ No   | 🔹 Jab **writes costly** ho (EEPROM / Flash memory)<br>🔹 Minimum swaps required                   |
