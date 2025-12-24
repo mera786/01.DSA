@@ -1,0 +1,22 @@
+Q1. Sort an array consisting of only 0s and 1s.
+Input:
+int [] arr = {1,0,0,1,0,1,1,0,0};
+Output: 0 0 0 0 0 1 1 1 1
+
+
+Q2. given an array of integers 'a', move all the even integers at the beginning of the array followed by all the odd integers, the relative order
+    of odd or even integers does not matter. return an array that satisfied the condition.?
+Input :
+int [] arr = {1,2,3,4,5,6,7};
+Output :
+6 2 4 3 5 1 7 
+
+
+Q3. given an array of integers 'a' sorted in non-decreasing order,return an array of the squares of each number sorted in non-decreasing order.
+Input :
+int [] arr = {-10,-3,-2,1,4,5};
+Output:
+1 4 9 16 25 100
+
+
+Q4.
