@@ -33,7 +33,7 @@ A B C
 D E F 
 G H I 
 
-Q6. draw this pattern ?
+Q6. draw this right angleed triangle pattern ?
 * 
 * * 
 * * * 
@@ -81,7 +81,7 @@ B C
 D E F
 G H I J
 
-Q14. draw this pattern ?
+Q14. draw this inverted triangle pattern ?
 1 1 1 1 
 2 2 2 
 3 3 
@@ -98,6 +98,21 @@ AAAA
  BBB
   CC
    D
+
+
+Q17. draw mirrored right angle triangle pattern ?
+   *
+  **
+ ***
+****
+
+
+Q18. draw centered pyramid pattern ?
+   *
+  ***
+ *****
+*******
+
 
 Q17. draw this pattern ?
 1 2 3 4 5
