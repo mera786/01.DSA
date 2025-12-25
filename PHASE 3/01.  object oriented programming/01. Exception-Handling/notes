@@ -1,0 +1,75 @@
+Q1. Exception  vs  Error ?
+Exception: 
+A problem that occurs during program execution and can be handled using try-catch (e.g., NullPointerException).
+Error: 
+A serious system-level problem that occurs at runtime and cannot be handled by the program (e.g., OutOfMemoryError).
+
+
+Q2. Heirarcy Of Exception ?
+
+Throwable
+      ├── Error
+      │    ├── VirtualMachineError
+      │          ├── OutOfMemoryError
+      │          └── StackOverflowError
+      │    
+      └── Exception
+           ├── Checked Exceptions
+           │    ├── IOException
+           │    │     ├── FileNotFoundException
+           │    │     └── EOFException
+           │    ├── SQLException
+           │    ├── ClassNotFoundException
+           │    └── InterruptedException
+           │
+           └── RuntimeException (Unchecked)
+                ├── ArithmeticException
+                ├── NullPointerException
+                ├── ArrayIndexOutOfBoundsException
+                ├── StringIndexOutOfBoundsException
+                ├── ClassCastException
+                ├── NumberFormatException
+                └── IllegalArgumentException
+
+Explaination of Heirarcy :
+--------------------------
+1. Throwable class :
+                - Error class: 
+                - Exception class:
+2. Exception class :
+            - checked exception / Compile-TimeException: it occurs when we convert .java → .class
+            - unchecked exception / RuntimeException: it occurs when we run .class file.
+
+Q3.  How many ways to handle Exception in java ?
+there are many ways to handle exceptions :
+1️⃣ try – catch :
+- Jo v piece of code lgta hai ki wo exception de skta hai usko try block ke ander likhte hai.
+- hr ek try ke sath atleast ek catch block likhna pdega . wo catch ho ya finaly but finaly exception ko suppress nhi krega but clean-up kr dega.
+- catch block exception ko safely handle kar leta hai. jisse Program terminate nahi hota. or aage ki line execute hoti hai.
+- Multiple catch blocks : Ek try ke saath multiple catch blocks likh sakte hain.
+       - Child / specific exception pehle
+       - Parent exception baad me
+- Multi-Catch Block (| operator) : Jab multiple exceptions ke liye same handling logic ho, tab ek hi catch me | operator ka use karte hain.
+        - Parent–child exception allowed nahi hoti.
+        - Multi-catch me exception variable implicitly final hota hai :  catch (A | B e) {  e = new Exception(); // ❌ not allowed }
+🔹 finally block :
+- finally block exception aaye ya na aaye, hamesha execute hota hai.
+              - Resource clean-up ke liye (file close, DB connection close, etc.)
+              -  finally exception ko handle ya suppress nahi karta, sirf clean-up ka kaam karta hai.
+              - even catch block me return keyword likha hoga still finally block chlega.
+🔹 Try-with-resources :
+- Try-with-resources Java 7 me introduce hua tha..
+- Ye finally block ka alternative mana jata hai resource closing ke case me.(General finally ka full replacement nahi hai — sirf resources close karne ke liye).
+- Resources try() ke parentheses ke andar declare kiye jaate hain. Jaise hi try block se bahar aate hain:
+           - chahe exception aaye ya na aaye, resource automatically close ho jata hai.
+- Jo bhi resource try-with-resources me use hota hai: AutoCloseable interface implement karta hai, JVM automatically close() method call karti hai.
+2️⃣ throws  and throws keyword :
+
+
+
+
+
+
+
+
+
