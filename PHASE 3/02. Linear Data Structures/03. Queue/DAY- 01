@@ -18,6 +18,16 @@ Note:-
    a. always insert from rear side and delete from front side 
    b. in collection enqueue known as offer and dequeue known as poll
 
+Internal working :
+- Queue ek interface hai, Internals depend karta hai implementation class par. 
+if implementation is Linked List then,
+Time Complexity :
+offer(e)  -> O(1)  [ but it depends on capacity ]
+poll ()   -> O(1)  [ using front ]
+peek ()   -> O(1)  [ using front ]
+
+
+
 ⭐ How many ways can a Queue be implemented?
 mainly in three standard ways:
 1️⃣ Using Array
