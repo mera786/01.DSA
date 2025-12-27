@@ -105,36 +105,63 @@ Output: [true, false, false, true]
                                                              -----------------------
 
 (1) Flattening a List of Lists and Converting to Strings? 
-Input: [[1, 2], [3, 4]] 
+Input: 
+    List<List<Integer>> list = Arrays.asList(
+            Arrays.asList(1, 2),
+            Arrays.asList(3, 4)
+    );
 Output: [1, 2, 3, 4] 
 
 (2) Flattening and Summing Nested Lists of Integers? 
-Input: [[1, 2], [3, 4]] 
+Input: 
+    List<List<Integer>> list = Arrays.asList(
+            Arrays.asList(1, 2),
+            Arrays.asList(3, 4)
+    );
 Output: 10 
 
 (3) Flattening a List of Student Subjects? 
-Input: [{name: "John", subjects: ["Math", "Science"]}, {name: "Jane", subjects: ["English"]}] 
+Input:
+    List<List<Student>> list = Arrays.asList(
+            Arrays.asList(new Student("John",Arrays.asList("Math", "Science"))),
+            Arrays.asList(new Student("Jane",Arrays.asList("English")))
+    );
 Output: [Math, Science, English] 
+ 
 
-(4) Flattening a List of User Roles? 
-Input: [{username: "user1", roles: ["admin", "editor"]}, {username: "user2", roles: ["viewer"]}] 
-Output: ["admin", "editor", "viewer"] 
-
-(5) Flattening a List of JSON Objects? 
-Input: [{id: 1, tags: ["java", "spring"]}, {id: 2, tags: ["python", "django"]}] 
+(4) Flattening a List of JSON Objects having id and tags? 
+Input: 
+    List<List<Student>> list = Arrays.asList(
+            Arrays.asList(new Student(1, Arrays.asList("java", "spring"))),
+            Arrays.asList(new Student(2, Arrays.asList("python", "django")))
+    );
 Output: ["java", "spring", "python", "django"]
 
-(6) Flattening a List of Mixed Data Types? 
-Input: [[1, "a"], [2, "b"], [3, "c"]] 
+(5) Flattening a List of Mixed Data Types? 
+Input: 
+    List<List<Object>> list = Arrays.asList(
+            Arrays.asList(1, "a"),
+            Arrays.asList(2, "b"),
+            Arrays.asList(3, "c")
+    );
 Output: [1, a, 2, b, 3, c] 
 
-(7) Flattening a List of Paths? 
-Input: [[“/home/user”], [“/etc”], [“/var/log”]] 
+(6) Flattening a List of Paths? 
+Input:
+    List<List<String>> list = Arrays.asList(
+            Arrays.asList("/home/user"),
+            Arrays.asList("/etc"),
+            Arrays.asList("/var/log")
+    );
 Output: [/home/user, /etc, /var/log] 
 
-(8) Flattening a List of Recipes with Ingredients? 
-Input:  [{name: "Cake", ingredients: ["flour", "sugar"]}, {name: "Pasta", ingredients: ["noodles", 
-"sauce"]}] 
+
+(7) Flattening a List of Recipes with Ingredients? 
+Input:  
+List<Recipe> recipes = Arrays.asList(
+        new Recipe("Cake", Arrays.asList("flour", "sugar")),
+        new Recipe("Pasta", Arrays.asList("noodles", "sauce"))
+);
 Output: [flour, sugar, noodles, sauce] 
 
 
