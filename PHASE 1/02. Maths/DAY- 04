@@ -1,0 +1,6 @@
+                                                                                 BIT MANIPULATION TRICK 
+
+Q1. check if k-th bit is set or not ?
+if num = 13 ;  binary = 1 1 0 1  and k = 2; so from LSB side se k-th bit count hoga or usko check krna hai set hai ya unset.
+Approach :
+- 
