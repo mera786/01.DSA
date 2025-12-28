@@ -170,17 +170,47 @@ Output: [flour, sugar, noodles, sauce]
                                                               -----------------
 
 (1) Flattening Nested Optional Values? 
-Input: [Optional.of(Arrays.asList(1, 2)), Optional.empty(), Optional.of(Arrays.asList(3, 4))] 
+Input: 
+    List<Optional<List<Integer>>> list = Arrays.asList(
+            Optional.of(Arrays.asList(1, 2)),
+            Optional.empty(),
+            Optional.of(Arrays.asList(3, 4))
+    );
 Output: [1, 2, 3, 4] 
 
+
 (2) Flattening a List of Maps with Multiple Entries? 
-Input: [{key1: ["val1", "val2"]}, {key2: ["val3"]}] 
+Input:
+    List<Map<String, List<String>>> list = Arrays.asList(
+
+            new HashMap<String, List<String>>() {{
+                put("key1", Arrays.asList("val1", "val2"));
+            }},
+
+            new HashMap<String, List<String>>() {{
+                put("key2", Arrays.asList("val3"));
+            }}
+    );
 Output: [val1, val2, val3] 
 
+
+
 (3) Flattening a List of Product Attributes? 
-Input: [{name: "Laptop", attributes: ["16GB RAM", "512GB SSD"]}, {name: "Phone", 
-attributes: ["128GB", "5G"]}] 
+Input: 
+    List<Product> products = Arrays.asList(
+
+            new Product(
+                    "Laptop",
+                    Arrays.asList("16GB RAM", "512GB SSD")
+            ),
+
+            new Product(
+                    "Phone",
+                    Arrays.asList("128GB", "5G")
+            )
+    );
 Output: ["16GB RAM", "512GB SSD", "128GB", "5G"] 
+
 
 (4) Flattening Nested Hierarchical Data? 
 Input: [[{"id": 1, "name": "A"}, {"id": 2, "name": "B"}], [{"id": 3, "name": "C"}]] 
