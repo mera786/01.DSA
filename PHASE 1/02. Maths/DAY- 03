@@ -1,4 +1,4 @@
-                                                                                BIT MANIPULATION
+                                                                                BIT MANIPULATION-BASIC 
 
 ******** NUMBER REPRESENTATION ********
  1. Decimal number representation: 
@@ -197,8 +197,10 @@ Output(0110) → 6
 
 4️⃣ NOT (~)
 Definition: 
-Flips all bits (0 → 1, 1 → 0). used for 1's complement
-
+Flips all bits (0 → 1, 1 → 0). used for 1's complement, and agr not of (~) agr ek negative num ata hai ~(-num) to hum iska 2's complement nikalte hai. agr not of (~) ek positive num ata
+hai ~ (+num) to hum apan operation stop kr dete hai. agr app ek negative num ka hee not (~) nikal rhe hai to first 2's complement me solve krenge then uska not ~ nikalenge then again 
+follow same rule : {"and agr not of (~) agr ek negative num ata hai ~(-num) to hum iska 2's complement nikalte hai. agr not of (~) ek positive num ata
+hai ~ (+num) to hum apan operation stop kr dete hai".}
 Example :
 ~5 → 
    ~ 0 1 0 1 
@@ -206,7 +208,53 @@ Example :
      1 0 1 0 
 Output(1010) → -6 (in 2’s complement for signed numbers)
 
-5️⃣ Left Shift (<<)
+Trick to Find Not(~) Of a number :
+~(num) = - (num+1)
+eg-
+~(7) = -(7+1) 
+     = -8
+~(-7) = - ( -7+1)
+      = - (-6)
+      = 6
+
+
+
+5️⃣ Right Shift (>>)
+Definition: 
+Shifts all bits to the right by n positions.
+  - For signed numbers, MSB (sign) is copied/presever agr original num ka singed 0 tha to 0 hee rhega ya 1 tha to 1 hee rhega.
+  - Example:
+5 >> 1
+        0 1 0 1
+     >> 1
+     -----------
+       0 0 1 0
+Output(0010) → 2
+Note: Right shift by K formula:
+num >> k = num / 2^k
+
+Example:
+11 >> 1:
+
+Original bits:  1     0     1     1
+Bit power:      2³    2²    2¹    2⁰
+
+After >>1:      0     1     0     1
+Bit power:      2³    2²    2¹    2⁰
+Decimal: 5
+✅ Explanation for clarity:
+           - MSB 1 moves right → falls off (or in signed, depends)
+           - LSB 1 dropped
+           - New MSB filled with 0 (unsigned right shift)
+
+
+6️⃣ Unsigned Right Shift (>>>) (Java specific)
+Definition:
+Shifts bits to the right, filling 0s on the left, ignoring sign ab sign neg tha ya pos after unsigned right shif alway Msb 0 rhega.
+Example:
+-5 >>> 1 fills left bits with 0 → large positive number
+
+7️⃣ Left Shift (<<)
 Definition:
 Shifts all bits to the left by n positions, filling with 0s on the right.
 Example:
@@ -217,21 +265,52 @@ Example:
      1 0 1 0 
 Output(1010) → 10
 
-6️⃣ Right Shift (>>)
-Definition: 
-Shifts all bits to the right by n positions.
-  - For signed numbers, MSB (sign) is copied.
-  - Example:
-5 >> 1
-        0 1 0 1
-     >> 1
-     -----------
-       0 0 1 0
-Output(0010) → 2
+Note: Left shift by K formula:
+num << k = num * 2^k
+11 << 1:
+
+Original bits:   1     0     1     1
+Bit power:       2³    2²    2¹    2⁰
+
+After <<1:       1     0     1     1     0
+Bit power:       2⁴    2³    2²    2¹    2⁰
+
+Decimal: 22
+✅ Explanation for clarity:
+    - All bits move 1 place left
+    - New LSB filled with 0
+    - MSB shifted into new position (may cause overflow if bit-size exceeded)
 
 
-7️⃣ Unsigned Right Shift (>>>) (Java specific)
-Definition:
-Shifts bits to the right, filling 0s on the left, ignoring sign.
-Example:
--5 >>> 1 fills left bits with 0 → large positive number
+Q1. follow-up : odd - even check ?
+Note:-
+for this,we need to know kisi v num ki LSB kya hai? if LSB=0 then it is even. if LSB=1 then it is odd.
+so one of the bit operators which is & will help .
+
+
+Q2. swap two numbers (without using third variables) ?
+int a = 13;
+int b = 11;
+here, we can use one of the operators of xor(^)
+Explanation :
+a = a^b;
+b= a^b; 
+ = a^b^b;
+ = a;
+
+a = a ^ b;
+  = a ^ b ^ a
+  = b;
+
+Explantion on Bit level :
+a = 13;     1 1 0 1
+b = 11;     1 0 1 1
+a = a^b;    0 1 1 0
+b = a^b;    1 1 0 1  (13)
+a = a^b;    1 0 1 1  (11)
+
+
+
+Q3. 
+
+
