@@ -2,5 +2,177 @@
 
 Q1. check if k-th bit is set or not ?
 if num = 13 ;  binary = 1 1 0 1  and k = 2; so from LSB side se k-th bit count hoga or usko check krna hai set hai ya unset.
-Approach :
-- 
+Steps to Implement :
+Step 1️⃣ : Input lo
+int num = 13;   // number
+int k = 2;     // bit position (0-based)
+Step 2️⃣ : Left shift se mask banao
+int mask = (1 << k);
+where 1 ka matlab ek single bit, k times left shift karne se kth position par bit set ho jaati hai
+Step 3️⃣ : Bitwise AND with number
+int res = mask & num;
+Step 4️⃣ : Condition check
+if(res > 0){
+    System.out.println("bit is set");
+}else{
+    System.out.println("bit was not set");
+}
+
+
+Q2. Set a bit ?
+Input:
+int num 16 = 1 0 0 0 0 
+int k = 2;
+Output:
+1 0 1 0 0 = 20
+Steps to Implement :
+Step 1️⃣ : Input lo
+Step 2️⃣ : Mask banao using left shift
+int mask = (1 << k);
+Step 3️⃣ : Bitwise OR (|) lagao
+int result = num | mask;
+Step 4️⃣ : Final Output
+print(ans)
+
+
+Q3. Unset(clear) a bit ?
+Input:
+int num 13 = 1 1 0 1
+int k = 2;
+Output:
+1 0 0 1 = 9
+Steps to Implement :
+Step 1️⃣ : Input lo
+Step 2️⃣ : Mask banao using left shift
+int mask = (1 << k);
+Step 3️⃣ : Mask ka NOT (~) lo
+int invertedMask = ~mask;
+~0100 = 1011
+Step 4️⃣ : Bitwise AND (&) lagao
+int result = num & invertedMask;
+Step 5️⃣ : Final Output
+print(ans)
+
+
+Q4. Toggle a bit (flip (0 -> 1, 1 -> 0) ?
+Input :
+int num 13 = 1 1 0 1
+int k = 2
+Output :
+1 0 0 1 = 9
+Steps to implement :
+Step 1️⃣ : Input lo
+Step 2️⃣ : Mask banao using left shift
+int mask = (1 << k);
+Step 3️⃣ : Bitwise XOR (^) lagao
+int result = num ^ mask;
+Step 4️⃣ : Final Output
+print(anas)
+
+
+Q5. Count Set bit (Brian Kernighan’s Algorithm) ?
+Brian Kernighan’s Key Idea : n & (n - 1) unset of the rightmost set bit, or ye tab tak krna hai jab tak num 0 na ho jaye or hr steps me count krte rhna hai.
+eg -
+int num 13 = 1 1 0 1   right most bit = 1
+so based on Formula : n & (n-1)
+n=> 13   = 1 1 0 1
+           &      
+n-1=> 12 = 1 1 0 0
+  newNum = 1 1 0 0
+
+Next steps
+n=> 12   = 1 1 0 0
+          &
+n-1=> 11 = 1 0 1 1
+  newNum = 1 0 0 0
+
+Next steps
+n=> 8    = 1 0 0 0
+          &
+n-1=> 7  = 0 1 1 1
+  newNum = 0 0 0 0    -> stop here.
+
+Steps to Implement :
+Step 1️⃣ : Input lo
+int num = 13;
+if neg num :
+if (num < 0) {
+    num = ~num + 1;   // 2’s complement
+}
+Step 2️⃣ : Counter initialize karo
+int count = 0;
+Step 3️⃣ : Loop chalao jab tak num ≠ 0
+while (num != 0) {
+Step 4️⃣ : Rightmost set bit unset karo
+    num = num & (num - 1);
+Step 5️⃣ : Count increment karo
+    count++;
+}
+Step 6️⃣ : Final output
+print(ans).
+
+Note:- java me Integer class ke pass bitCount() method hai wo v bit ko count krta hai Integer.bitCount(num).
+
+
+Q6. What is the Rightmost 'bit = LSB (Least Significant Bit)' set bit ?
+Input:
+int num 12 = 1 1 0 0    Rightmost set bit = right side se pehla 1, yha Rightmost set bit = 1 (bit index = 2)
+Steps to Implement :
+Step 1️⃣ : Input lo
+int num = 12;
+Step 2️⃣ : 2’s complement nikaalo
+int neg = -num;   or  num & (~num+1)
+Step 3️⃣ : Bitwise AND (&) lagao
+int result = num & neg;
+Step 4️⃣ : Output
+print(ans)
+
+
+Q7. check if a number is power of 2 ?
+Input :
+int num 16 = 1 0 0 0 0  so it is true because of 2⁴
+int num 15 = 0 1 1 1 1  it is false because 2 ki koi v power se 15 nhi bnega directly.
+Note:- koi v number 2 ki power me tbhi hogi jab uska 1 hee bit set ho. so we can use n & (n-1)==0
+Steps to Implement :
+Step 1️⃣ : Input lo
+int num = 16;
+Step 2️⃣ : Check number is positive
+if (num <= 0) { System.out.println("False");}
+Step 3️⃣ : Apply formula
+(num & (num - 1)) == 0 
+
+
+Q8. Char conversion ?
+let's take example:
+Capital-letter      ASCII            small-letter         ASCII            both ASCII value difference 
+A                    65                a                    97                  97-65 = 32
+B                    66                b                    98                  98-66 = 32
+C                    67                c                    99                  99-67 = 32
+
+Now let's take example for A to a converion :
+A (65)  => 1 0 0 0 0 0 1     and a (97) 
+so the difference is 32 and in 65 binary 32 we will get on 5th bit so on 5th bit ko set krna hai 
+Steps to implements :
+Step 1️⃣ : Input lo
+char ch = 'A';
+Step 2️⃣ : Check if it is capital
+if (ch >= 'A' && ch <= 'Z') {
+Step 3️⃣ : 5th bit set karo using OR
+    char small = (char)(ch | (1 << 5));
+Step 4️⃣ : Output print karo
+    System.out.println(small);  // 'a'
+} else {
+    System.out.println(ch);     // small letters already safe
+}
+
+
+
+
+
+
+
+
+
+
+
+
