@@ -213,10 +213,14 @@ Output: ["16GB RAM", "512GB SSD", "128GB", "5G"]
 
 
 (4) Flattening Nested Hierarchical Data? 
-Input: [[{"id": 1, "name": "A"}, {"id": 2, "name": "B"}], [{"id": 3, "name": "C"}]] 
+Input: 
+    List<List<Item>> data = Arrays.asList(
+            Arrays.asList(
+                    new Item(1, "A"),
+                    new Item(2, "B")
+            ),
+            Arrays.asList(
+                    new Item(3, "C")
+            ));
 Output: [A{id=1, name='A'}, A{id=2, name='B'}, A{id=3, name='C'}] 
 
-(5) Flattening and Grouping Tags from Articles? 
-Input:  [{title: "Article1", tags: ["Java", "Programming"]}, {title: "Article2", tags: ["Java", 
-"Spring"]}] 
-Output: ["Java", "Programming", "Spring"] 
