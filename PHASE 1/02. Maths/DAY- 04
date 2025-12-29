@@ -149,7 +149,8 @@ A                    65                a                    97                  
 B                    66                b                    98                  98-66 = 32
 C                    67                c                    99                  99-67 = 32
 
-Now let's take example for A to a converion :
+capital letters like A to lower letter a converion :
+-----------------------------------------------------
 A (65)  => 1 0 0 0 0 0 1     and a (97) 
 so the difference is 32 and in 65 binary 32 we will get on 5th bit so on 5th bit ko set krna hai 
 Steps to implements :
@@ -164,6 +165,51 @@ Step 4️⃣ : Output print karo
 } else {
     System.out.println(ch);     // small letters already safe
 }
+Note:- 1<<5 = 32 hoti hai or space(' ') ki ASCII 32 hoti hai to hum instead of 1<<5 ki jgh space(' ') likh skte hai. with | operator
+
+lower letters like a to capital letter A conversion :
+-----------------------------------------------------
+a (97)  => 0 1 1 0 0 0 1
+A (65)  => 0 1 0 0 0 0 1
+Difference = 32 (0010 0000)
+Lowercase letters me 5th bit SET hoti hai,
+Capital letters me 5th bit UNSET hoti hai,
+isliye lower → capital ke liye
+5th bit ko UNSET karna hota hai.
+Steps to implements :
+Step 1️⃣ : Input lo
+char ch = 'a';
+Step 2️⃣ : Check if it is lowercase
+if (ch >= 'a' && ch <= 'z') {
+Step 3️⃣ : 5th bit UNSET karo using AND
+    char capital = (char)(ch & ~(1 << 5));
+Step 4️⃣ : Output print karo
+    System.out.println(capital);  // 'A'
+} else {
+    System.out.println(ch);       // capital letters already safe
+}
+Note:-  ~(1<<5) ki jgh underscore('_') likh skte hai. 
+
+lower letters -> capital letter , capital letters -> lower letter conversion (toggle):
+--------------------------------------------------------------------------------------
+Steps to implements :
+Step 1️⃣ : Input lo
+char ch = 'A';   // ya 'a'
+Step 2️⃣ : Check karo letter hai ya nahi
+if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
+Step 3️⃣ : 5th bit toggle karo using XOR
+char toggled = (char)(ch ^ (1 << 5));
+Step 4️⃣ : Output print karo
+System.out.println(toggled);
+Step 5️⃣ : Else case (non-letter)
+} else {
+    System.out.println(ch);
+}
+Note:- 1<<5 = 32 hoti hai or space(' ') ki ASCII 32 hoti hai to hum instead of 1<<5 ki jgh space(' ') likh skte hai.with ^ operator
+
+
+
+
 
 
 
