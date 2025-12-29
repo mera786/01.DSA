@@ -6,58 +6,60 @@ Output:
 
 Q2. Collect a list of strings into a comma-separated String.?
 Input:
-"apple", "banana", "cherry"
+ List<String> list = Arrays.asList("apple", "banana", "cherry");
 Output:
 apple, banana, cherry 
 
 Q3. Collect a list of integers into a Set (removing duplicates).? 
 Input:
-1, 2, 2, 3, 3, 4, 5
+  List<Integer> list = Arrays.asList(1, 2, 2, 3, 3, 4, 5);
 Output:
 1, 2, 3, 4, 5
 
 Q4. Count the number of elements in a list of integers? 
 Input:
-1, 2, 3, 4, 5
+ List<Integer> list = Arrays.asList(1, 2, 2, 3, 3, 4, 5);
 Output:
-5
+7
 
 Q5.Collect the sum of a list of integers.?
 Input:
-1, 2, 3, 4, 5
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 Output:
 15
 
 Q6. Collect a list of strings into a List of uppercase strings.? 
 Input:
-"apple", "banana", "cherry"
+ List<String> list = Arrays.asList("apple", "banana", "cherry");
 Output:
 APPLE, BANANA, CHERRY
 
 Q7. Collect a list of booleans and count how many are true.? 
 Input:
-true, false, true, true
+List<Boolean> list = Arrays.asList(true, false, true, true);
 Output:
 3
 
 Q8. Find the maximum value in a list of integers.? 
 Input:
-1, 2, 3, 4, 5
+List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
 Output:
 5
 
 Q9. Collect the minimum value in a list of integers.?
 Input:
-5, 3, 9, 2, 8
+List<Integer> list1 = Arrays.asList(5, 3, 9, 2, 8);
 Output:
 2
 
 
 Q10. Join a list of characters into a single String.? 
 Input:
-'a', 'b', 'c'
+  List<Character> list = Arrays.asList('a', 'b', 'c');
 Output:
 abc
+
+
                                                                                                     MEDIUM
 
 Q11.Given a list of integers, create a map that counts the occurrences of each integer.? 
