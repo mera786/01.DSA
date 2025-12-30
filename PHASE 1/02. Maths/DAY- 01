@@ -15,7 +15,7 @@ Input 3:
 Output: 1
 
 
-(1.1) Find Digits using division ?
+(1.1) count Digits using division ?
 Input 1:
 4671
 Output: 4
@@ -171,13 +171,13 @@ Kyuki isme sirf 2 unique digits available hoti hain.
 
 
 
-Note:- keep in mind formual => any number system to Decimal , Decimal to any number system.
+Note:- keep in mind formual => any number system to Decimal kro, fir Decimal to any number system. ye easy hota hai.
 (8) Any base To Decimal ?
 let's do for binary to Decimal taking input in string :
 Steps:
  - Initialize result = 0 and position = 0
- - Traverse the string from right to left
- - Convert each character into digit using getDigit()
+ - Traverse the string from right to left : use for loop
+ - Convert each character into digit using -'0' : because numbers ka ASCII 0 to 9 ke liye 48 to 57 hota hai.
  - Multiply digit with base^position
  - Add it to result
  - Increment position
@@ -234,13 +234,3 @@ STEP-4:
   - now define ans variable intializing with ans=0 and in which add, multiplication of remainder * pow, for pow define power variable intializing with 1 here pow=1 is nothing but 10^0=1
 STEP-5:
   - then update pow with 10 multiplication like, pow=pow*10 because here we want our remainder value in backward direction.
-
-
-
-
-
-
-
-
-
-
