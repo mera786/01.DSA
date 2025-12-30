@@ -152,7 +152,7 @@ Wrtie code for finding GCD of 24 and 36 there are two numbers?
 STEPS FOR NORMAL APPROACH :
 ---------------------------
 STEP-1:
-- find Min(num1,num2) from both num.
+- find Min(num1,num2) from both num. 
 STEP-2:
 - start loop i=1 to i<=min
 STEP-3:
