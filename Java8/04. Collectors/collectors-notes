@@ -81,7 +81,7 @@ Output:
 
 Q13. Collect a list of integers into a comma-separated string.?
 Input:
-3, 5, 7, 9
+ List<Integer> list = Arrays.asList(3, 5, 7, 9);
 Output:
 3,5,7,9 
 
