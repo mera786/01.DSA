@@ -148,7 +148,7 @@ Step 1️⃣ : Input lo
 int num = 16;
 Step 2️⃣ : Check number is positive
 if (num <= 0) { System.out.println("False");}
-Step 3️⃣ : Apply formula
+Step 3️⃣ : Apply formula  'Power of Two Check'
 (num & (num - 1)) == 0 
 
 
@@ -161,8 +161,8 @@ C                    67                c                    99                  
 
 capital letters like A to lower letter a converion :
 -----------------------------------------------------
-A (65)  => 1 0 0 0 0 0 1     and a (97) 
-so the difference is 32 and in 65 binary 32 we will get on 5th bit so on 5th bit ko set krna hai 
+A (65)  => 1 0 0 0 0 0 1     and a (97)  => 0 1 1 0 0 0 1 
+so the difference is '32' and in 65 binary 32 we will get on 5th bit so on 5th bit ko set krna hai so it will becomes 97.
 Steps to implements :
 Step 1️⃣ : Input lo
 char ch = 'A';
