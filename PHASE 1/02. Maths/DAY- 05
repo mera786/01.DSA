@@ -1,4 +1,38 @@
 Q136. LeetCode : Single Number ?
 
 
-Q
+Q137. LeetCode: Single Number || ?
+🔹 Step-by-Step Implementation :
+Step 1: Take Input
+int arr [] = {2,2,3,2}
+Step 2: Initialize Result Variable 
+int res = 0;
+         - res will store the final unique number
+         - Initially all bits are 0
+Step 3: Traverse Bit Positions (0 → 31)
+for (int i = 0; i < 32; i++)
+         - Java int = 32 bits
+         - We check each bit position independently
+Step 4: Count Set Bits at Position i
+int bitCount = 0;
+
+for (int num : arr) {
+    if ((num & (1 << i)) != 0) {
+        bitCount++;
+    }
+}
+         - 1 << i → mask for i-th bit
+         - num & mask != 0 → i-th bit is set
+         - Count how many numbers have that bit set
+Step 5: Remove Triplet Effect
+if (bitCount % 3 != 0) {
+    res = res | (1 << i);
+}
+         - Numbers repeating 3 times cancel out
+         - Remaining bit belongs to the single number
+Step 6: Print Result
+System.out.println(res);
+
+
+
+Q13
