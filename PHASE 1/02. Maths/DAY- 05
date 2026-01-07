@@ -35,4 +35,100 @@ System.out.println(res);
 
 
 
-Q13
+Q260. LeetCode: Single Number ||| ?
+Input : {1,2,1,3,2,5}
+Approach :
+- first of all sabhi elements ka xor krenge , jisse jo same element hoga 0 ho jayega and 3 ^ 5 reh jayega. where
+ 3 : 0 1 1
+^
+ 5 : 1 0 0
+-----------
+     1 1 0 = 6
+- ab 6 ka binary se ek koi v bit chahiye group krne k liye numbers ko, so we'll pick first right most bit becoz we have study.
+  so  xor & -xor = 0 1 0
+ now with the help of first right most bit we need to do & of all number to know kis number me bit set hai or kisme nhi. agr set nhi hai to ek grp me orna dusre grp me.
+1 -> 0 0 1
+2 -> 0 1 0
+3 -> 0 1 1
+5 -> 1 0 1
+
+Step-by-Step Implementation :
+Step 1: Array define karo
+int[] arr = {1, 2, 1, 3, 2, 5};
+Step 2: Sab elements ka XOR nikalo
+int xor = 0;
+for (int num : arr) {
+    xor = xor ^ num;
+}
+  - Same numbers ka XOR = 0 hota hai.
+  - xor = a ^ b (sirf dono unique numbers bachenge). xor = 3 ^ 5 = 6
+Step 3: Rightmost Set Bit (RSB) nikaalo
+int rsb = xor & (-xor);
+   - rsb ek mask hai jo dono unique numbers ko alag-alag group me baantne ke kaam aata hai
+   - Ye bit batata hai ki a aur b kis bit par different hain
+   Example:
+        xor = 6  (110)
+        rsb = 2  (010)
+Step 4: Array ko 2 groups me divide karo
+int xorA = 0;
+int xorB = 0;
+
+for (int num : arr) {
+    if ((num & rsb) != 0) {
+        xorA = xorA ^ num;
+    } else {
+        xorB = xorB ^ num;
+    }
+}
+  - Jis number me rsb bit set hai → Group A
+  - Jis me set nahi hai → Group B
+  - Har group me duplicate numbers cancel ho jaate hain
+Step 5: Result store aur print karo
+int[] res = new int[]{xorA, xorB};
+
+for (int re : res) {
+    System.out.println(re);
+}
+
+
+
+Q2220. LeetCode:  Minimum Bit Flips to Convert Number ?
+Input: start = 10, goal = 7
+Output: 3
+Explanation :
+10 : 1 0 1 0
+7  : 0 1 1 1
+so 10 ke binary ko 0-index wale,2-index wale,3-index wale, bit ko flip krne pe 7 ho jayega. so iske liye xor ka use kr skte hai like 10 ^ 7 = 13 jo ki 1 1 0 1 hota hai ab
+isme check krna hai kitne bit set hai isse ye pta chlega ki kitne bit different rhe honge.
+Step-by-Step Implementation :
+Step 1: Start aur Goal numbers define karo
+int start = 3, goal = 4;
+  - Ye wo do numbers hain jinke bits compare karne hain.
+Step 2: Dono numbers ka XOR nikaalo
+int xor = start ^ goal;
+             - XOR me same bits → 0
+             - different bits → 1
+             - Jitne 1 honge, utne hi bit flips chahiye
+             Example:
+                     3  = 0011
+                     4  = 0100
+                     -----------
+                     xor= 0111
+Step 3: Flip count ke liye variable initialize karo
+int count = 0;
+Step 4: XOR me set bits count karo (Brian Kernighan’s Algorithm)
+while (xor > 0) {
+    xor = xor & (xor - 1);
+    count++;
+}
+  - xor & (xor - 1) har iteration me rightmost set bit remove karta hai
+  - Har loop = ek bit flip
+Step 5: Final count print karo
+System.out.println(count);
+
+
+
+
+
+
+
