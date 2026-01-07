@@ -37,7 +37,7 @@ for finding mid ,
 
 Follow up question :
  Q1. write binary search on ascending array find target and return it's index else -1  where 
-     int arr [] = {1,2,3,4,5,67);
+     int arr [] = {1,2,3,4,5,67};
      int tar = 3;
      output : 2 index
 
