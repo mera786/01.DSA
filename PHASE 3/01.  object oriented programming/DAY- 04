@@ -27,7 +27,7 @@ Case Analysisi - 1 :
 ----------------------
 Parent p = new Parent();
 Child c = (Child) p; // Runtime error ClassCastException
- reson :=> Reference cast ho sakta hai, object cast nahi hota.
+ reson :=> Reference cast ho sakta hai, object cast nahi hota. But runtime pe JVM object ko check karta hai — reference ko nahi.
 
 Case Analysisi - 2 :
 ----------------------
