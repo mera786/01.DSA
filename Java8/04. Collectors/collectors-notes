@@ -1,6 +1,6 @@
 Q1. Collect a list of integers into a List.? 
 Input:
-1, 2, 3, 4, 5
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 Output:
 1 2 3 4 5
 
