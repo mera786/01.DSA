@@ -154,7 +154,7 @@ List<String> words = Arrays.asList("java", "code", "stream");
 Output: 
 {java=4, code=4, stream=6}
 
-Q24. Concatenate all strings in a list.? 
+Q24. Concatenate all strings of a list.? 
 Input: 
 List<String> words = Arrays.asList("hello", "world"); 
 Output:  helloworld
