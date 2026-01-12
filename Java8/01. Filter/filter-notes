@@ -9,7 +9,7 @@ ________________________________________________________________________________
 List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
  • Output: [1, 3, 5]
 
-(2) Given a list of strings, filter out strings with length greater than or equals to 3 ?
+(2) Given a list of strings, filter out strings with length less than or equals to 3 ?
 • Input: 
 List<String> list = Arrays.asList("apple", "bat", "car", "dog");
 • Output: ["bat", "car", "dog"]
@@ -124,7 +124,7 @@ Output: 868
 
 
                                                           🔶 MEDIUM (1-12)
-                                                        -------------------------
+                                                        ------------------------- 
 
 (1) Print the multiplication of alternate number in an array ?
 Input: 
