@@ -131,22 +131,15 @@ Q18. draw this pattern ?
  *   *
   * *
    * 
-making odd number formula : (2 * i) - 1
+making odd number formula : (2 * i) - 1 and from this formula also made this one for lower half = 2 * (n - i - 1) - 1
+
 
 Q19. draw this pattern ?
-*              *
-**            **
-***          ***
-****        ****
-*****      *****
-******    ******
-*******  *******
-****************
-****************
-*******  *******
-******    ******
-*****      *****
-****        ****
-***          ***
-**            **
-*              *
+*      *
+**    **
+***  ***
+********
+********
+***  ***
+**    **
+*      *
