@@ -67,7 +67,7 @@ public class Test {
        Test test1 = new Test(test);
         System.out.println(test1.wheel); // 4
         test.wheel=6;
-        System.out.println(test.wheel); // 6
+        System.out.println(test.wheel); // 6 
         System.out.println(test1.wheel); // 4
 
         test.wheel= 18;
