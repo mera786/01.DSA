@@ -49,4 +49,4 @@ GETTERS && SETTERS :
 1. getters:- it helps to read private things, if that things are public so easly anybody can access like obj.age, syntax int getAge(), here name can be anything
 2. setters:- it helps to set private things, syntax void setAge(int age), here name can be anything
 
-Note:- useful situtation like, apke pass requirement hai jisme read-only ya write-only ya 2read-only and 3 write-only class bnao.
+Note:- useful situtation like, apke pass requirement hai jisme read-only ya write-only ya 2read-only and 3 write-only class bnao. 
