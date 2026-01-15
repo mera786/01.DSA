@@ -1,11 +1,21 @@
-------------------------------------------------------------------------- 2️⃣ What is Inheritance ? ---------------------------------------------------------------------------------------
-it is one of the priciple of oops, where a subclass inherits properties and methods from a superclass (not properties value only variable eg - if parent age me koi value rkhoge jaise ki
-parent ka object create kiya or usme p.age=17; to vo child ke object me nhi jayega only wo variable ke name le skta hai ), promoting code reusability and creating an IS-A relationship.
-Child = Subclass / Derived class
-Parent = Superclass / Base class
+------------------------------------------------------------------------- INHERITANCE ---------------------------------------------------------------------------------------
+1️⃣ What is Inheritance ?
+it is one of the priciple of oops,Inheritance is an OOP principle where a subclass inherits variables and methods from a superclass, 
+creating an IS-A relationship and enabling code reusability.
+🔹 Important clarity :
+  - Child class values ko inherit nahi karta, sirf variables & methods inherit karta hai.
+  - Parent object me p.age = 17 set karne se child ke object me value nahi aayegi.
+
+2️⃣ Terminology
+        - Child → Parent
+        - Subclass → Superclass
+        - Derived class → Base class
 note:- jab child bol rhe ho to parent bolo  and jab derived class bol rhe ho to base class bolo or jab subclass bol rhe ho to super class bolo.
-Example:
-Dog is-a Animal 🐶 → inherits legs, eat(), sleep() from Animal.
+
+3️⃣ IS-A Relationship Example:
+     - Inheritance IS-A relationship hoti hai.
+     - eg:-Dog is-a Animal.
+     - Child class parent ke type ka hota hai.
 
 🔷 Why?
 ✔ Code reusability
@@ -14,6 +24,7 @@ Dog is-a Animal 🐶 → inherits legs, eat(), sleep() from Animal.
 ✔ Supports polymorphism
 ✔ Extends functionality of existing class
 
+
 🔷 Types of Inheritance :
 | Type         | Description                            | Supported in Java?                                              | Example                                              |
 | ------------ | -------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
@@ -21,69 +32,23 @@ Dog is-a Animal 🐶 → inherits legs, eat(), sleep() from Animal.
 | Multilevel   | Parent → Child → Grandchild            | ✔ Supported                                                     | Animal → Dog → Puppy                                 |
 | Hierarchical | One parent, many children              | ✔ Supported                                                     | Animal → Dog, Cat                                    |
 | Multiple     | 1 child inherits from multiple parents | ❌ **Class level not allowed**✔ Allowed using **interfaces**    |class C extends A,B ❌<br>class C implements I1, I2 ✔|
-| Hybrid       | Combination of two or more types of inheritance  | single + multilevel + hierarchical  (generally interfaces ke throurh hota h   | (Mix of above)                |
-
-Note:- In Java, variables (instance & static) are not overridden, they are only hidden; therefore variable access depends on the reference type, not on the object.
-       Because variables use compile-time binding, not runtime polymorphism.
-      - Static method ke case me bhi exact same rule lagta hai jo variables par lagta hai. Static methods are NOT overridden, they are HIDDEN; method call dependson the reference type,
-        not on the object.
-ex - 
-FOR VARIABLES (STATIC & NON-STATIC) :
-class A { int x = 10;}
-class B extends A { int x = 20;}
-    public static void main(String[] args) {
-        A obj = new B(); System.out.println(obj.x);} // output: 10
-
-FOR Method Example :
-class A {
-    void show() {
-        System.out.println("A");}}
-
-class B extends A {
-    void show() {
-        System.out.println("B"); }}
-    public static void main(String[] args) {
-        A obj = new B();
-        obj.show(); }} // Output: B
-
- 
+| Hybrid       | Combination of two or more types of inheritance  | single + multilevel + hierarchical  (generally interfaces ke throurh hota h ❌ Class level not allowed       |
 
 
+5️⃣ Diamond Problem ?
+- jab ek child multiple parents ko inherit krega(technically java me possible nhi h) or dono parent me ek common method hoga to child class ke liye diamond problem create krega 
+  isko avoid krne ke liye interface ka use hota hai.
+- Interfaces me solution: Default method + override rule.
+Note:- 
+6️⃣ Object Class Inheritance (Implicit) :
+                              - ✔ Every class automatically extends Object.
+                              - Java by default single inheritance follow karta hai.
 
-WHAT IS DIAMOND PROBLEM ?
-jab ek child multiple parents ko inherit krega(technically java me possible nhi h) or dono parent me ek common method hoga to child class ke liye diamond problem create krega 
-isko avoid krne ke liye interface ka use hota hai
-Note:- by default jab v ek class bnti hai java me to wo single inheritance hoti hai because by default object class ko inherit krti hai .
-
-
-This keyword :
-it refers instance of current class.
-- properties access kr skte ho
-- method access kr skte ho
-- even static chije v access kr skte ho
-- it can't be use inside static area like method,block.
-- can call current class constructor like, this(), this(age) etc. but during constructor call it should be the first stament except for method call kbhi v use kr skte ho.
-- using this keyword Constructor chaining must be linear, not circular. it can be same class (without inheritance) and with inheritance v hota hai.
-
-Super keyword :
-it refers to immediate parent class.
-- super.method() aur super.variable Child class ke kisi bhi instance method se call ho sakta hai / Child class ke constructor se bhi call ho sakta hai.
-- method ya variable call krte time First statement hona zaroori nahi. agr constructor se kr rhe hai to orna nhi
-- Static context (static method / main) se nahi
-- can call immediate parent class constructor like, super(), super(age) etc. Parent class constructor ko super() sirf aur sirf child class ke constructor se hi call kiya ja sakta hai.
-  and First statement hona mandatory.
-
-Final keyword :
-final makes something unchangeable:
-- value change is not allowed.
-- method override is not allowed.
-- class inheritance is not allowed.
-
-
-🔷 Constructor Rules :
-- jab v hum ek class bnate hai or koi constructor assign nhi krte hai to automatically usko ek constructor mil jata hai jo default constructor hota h.
-- jab class B extend krti hai A ko to jab v A ka obj bnayenge to A as usual constructor call hoga but jab v Child ka obj bnate ho to child ka constructor as well as uske parent ka constructor
-  call hota hai top to down order me mtlb parent ka constructor phle call hoga then child ka constructor call hoga.
+7️⃣ Constructor Behavior in Inheritance / Constructor Rules :
+    - Jab child ka object banta hai:
+                          - Parent constructor pehle
+                          - Child constructor baad me
+                          - Order: Top → Down
 
 ANALYSIS CASE-1:
 A()
@@ -122,25 +87,52 @@ C c = new C(); // A class constructor called,then C class constructor called.
 D d = new D(); // A class constructor called,then C class constructor called,then D class constructor called.
 
 
-
-🔷 Access in Inheritance :
-| Parent Member | Child Accessible?                             | Notes                 |
-| ------------- | --------------------------------------------- | --------------------- |
-| `private`     | ❌ Not directly                               | Only by getter/setter |
-| (default)     | ✔ Same package only                           | Outside package ❌    |
-| `protected`   | ✔ Same package + Child class in other package | Best for inheritance  |
-| `public`      | ✔ Everywhere                                  | Full access           |
-Note :-
-Rule:
+8️⃣ Access Control in Inheritance : 
+| Modifier  | Child Access             |
+| --------- | ------------------------ |
+| private   | ❌                        |
+| default   | ✔ (same package)         |
+| protected | ✔ (best for inheritance) |
+| public    | ✔ everywhere             |
+Access-control checking Rule:
 - is this class accessible?
 - if yes, then check access modifier of methods.
 
 
+9️⃣ HAS-A vs IS-A
+        - IS-A → Inheritance
+        - HAS-A → Composition / Aggregation
+✔ Inheritance sirf strict IS-A me use karna chahiye
 
-🔷 IS-A vs HAS-A Relationship :
-| Type      | Meaning                   | Example              |
-| --------- | ------------------------- | -------------------- |
-| **IS-A**  | Inheritance               | Dog **is-a** Animal  |
-| **HAS-A** | Composition / Aggregation | Car **has-a** Engine |
-🔥 Limitations of Inheritance:
-✔ Use only when strict IS-A relationship exists
+
+
+❌ this / super keyword : 
+              - Ye object & constructor control ke liye hote hain.
+              - Inheritance ka supporting topic hai, core definition nahi.
+This keyword Explanation:
+it refers instance of current class.
+- properties access kr skte ho
+- method access kr skte ho
+- even static chije v access kr skte ho
+- it can't be use inside static area like method,block.
+- can call current class constructor like, this(), this(age) etc. but during constructor call it should be the first stament except for method call kbhi v use kr skte ho.
+- using this keyword Constructor chaining must be linear, not circular. it can be same class (without inheritance) and with inheritance v hota hai.
+
+Super keyword :
+it refers to immediate parent class.
+- super.method() aur super.variable Child class ke kisi bhi instance method se call ho sakta hai / Child class ke constructor se bhi call ho sakta hai.
+- method ya variable call krte time First statement hona zaroori nahi. agr constructor se kr rhe hai to orna nhi
+- Static context (static method / main) se nahi
+- can call immediate parent class constructor like, super(), super(age) etc. Parent class constructor ko super() sirf aur sirf child class ke constructor se hi call kiya ja sakta hai.
+  and First statement hona mandatory.
+
+
+❌ final keyword :
+             - final class / method / variable.
+             - Ye inheritance ko restrict karta hai.
+             - But inheritance ka definition part nahi.
+Final keyword Explanation:
+final makes something unchangeable:
+- value change is not allowed.
+- method override is not allowed.
+- class inheritance is not allowed.
