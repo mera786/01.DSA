@@ -23,6 +23,33 @@ Dog is-a Animal 🐶 → inherits legs, eat(), sleep() from Animal.
 | Multiple     | 1 child inherits from multiple parents | ❌ **Class level not allowed**✔ Allowed using **interfaces**    |class C extends A,B ❌<br>class C implements I1, I2 ✔|
 | Hybrid       | Combination of two or more types of inheritance  | single + multilevel + hierarchical  (generally interfaces ke throurh hota h   | (Mix of above)                |
 
+Note:- In Java, variables (instance & static) are not overridden, they are only hidden; therefore variable access depends on the reference type, not on the object.
+       Because variables use compile-time binding, not runtime polymorphism.
+      - Static method ke case me bhi exact same rule lagta hai jo variables par lagta hai. Static methods are NOT overridden, they are HIDDEN; method call dependson the reference type,
+        not on the object.
+ex - 
+FOR VARIABLES (STATIC & NON-STATIC) :
+class A { int x = 10;}
+class B extends A { int x = 20;}
+    public static void main(String[] args) {
+        A obj = new B(); System.out.println(obj.x);} // output: 10
+
+FOR Method Example :
+class A {
+    void show() {
+        System.out.println("A");}}
+
+class B extends A {
+    void show() {
+        System.out.println("B"); }}
+    public static void main(String[] args) {
+        A obj = new B();
+        obj.show(); }} // Output: B
+
+ 
+
+
+
 WHAT IS DIAMOND PROBLEM ?
 jab ek child multiple parents ko inherit krega(technically java me possible nhi h) or dono parent me ek common method hoga to child class ke liye diamond problem create krega 
 isko avoid krne ke liye interface ka use hota hai
