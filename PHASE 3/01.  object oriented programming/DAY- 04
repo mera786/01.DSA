@@ -75,6 +75,9 @@ In Depth Explanantion: Method overloading technically polymorphism ka core part 
 Note:- Real polymorphism = Runtime polymorphism only.
 
 
+
+
+
 🅰️ Method Overloading (Compile-time Polymorphism) :
 Rule:-
 ------
@@ -86,83 +89,166 @@ Rule:-
 ❌ Only return type change → Not allowed (parameters must differ).
 
 
+compile-time ambiguity cases :
+------------------------------
+🔹 Case-1: int-double vs double-int
+❌ Problem :
+              void m1(int a, double b) {}
+              void m1(double a, int b) {}
+              dog.m1(10, 10); // ambiguous
+✅ Solutions :
+✔ Solution-1: Explicit casting
+            dog.m1(10, 10.0);
+            dog.m1((int)10, (double)10);
+✔ Solution-2: Exact match method add karo
+            void m1(int a, int b) {}
+✔ Solution-3: Method name change (BEST design)
+          void m1IntDouble(int a, double b) {}
+          void m1DoubleInt(double a, int b) {}
+
+🔹 Case-2: null with String vs StringBuilder
+❌ Problem :
+            void m1(String s) {}
+            void m1(StringBuilder sb) {}
+            dog.m1(null); // ambiguous
+✅ Solutions :
+✔ Solution-1: Explicit casting
+           dog.m1((String) null);
+           dog.m1((StringBuilder) null);
+✔ Solution-2: Common parent + override
+           void m1(Object o) {}
+✔ Solution-3: Method rename (clean design)
+           void m1String(String s) {}
+           void m1StringBuilder(StringBuilder sb) {}
+
+🔹 Case-3: Wrapper classes ambiguity
+❌ Problem :
+           void m1(Integer i) {}
+          void m1(Double d) {}
+          dog.m1(null); // ambiguous
+✅ Solutions :
+✔ Solution-1: Explicit casting 
+           dog.m1((Integer) null);
+           dog.m1((Double) null);
+✔ Solution-2: Use Object
+         void m1(Object o) {}
+✔ Solution-3: Avoid overload on wrappers
+         - Industry best practice, Use meaningful method names instead.
+
+🔹 Case-4: Autoboxing + Widening
+❌ Problem :
+           void m1(int a, long b) {}
+           void m1(long a, int b) {}
+           dog.m1(10, 10); // ambiguous
+✅ Solutions :
+✔ Solution-1: Force type
+          dog.m1(10, 10L);
+          dog.m1(10L, 10);
+✔ Solution-2: Add exact signature
+         void m1(int a, int b) {}
+
+🔹 Case-5: Var-args confusion
+❌ Problem :
+           void m1(int... a) {}
+           void m1(int a, int b) {}
+           dog.m1(10, 20); // ambiguous
+✅ Solutions :
+✔ Solution-1: Remove var-args if not needed
+✔ Solution-2: Use array explicitly
+           dog.m1(new int[]{10, 20});
+
+
+
+
 🅱️ Method Overriding (Runtime Polymorphism)
 Child class changes parent’s method behavior
 ✔ Same name
 ✔ Same parameters
-✔ Same return type / covariant return type
+✔ Same return type / covariant(Parent se chhota (child type)) return type
 ✔ Must be in different classes with inheritance
 ✔ IS-A relationship (inheritance)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-ANALYSIS CASE-1:
-      . . . .
-      .  P  .
-      . . . .
-        ⬆     
-     . . . .   
-     .  C  .   
-     . . . .
-P p = new P(); // OK
-C c = new C (); // OK
-P p2 = new C (); // OK becoz Parent class refers to child class
-C c2 = new P(); // Not Ok becoz child class can't refere to parent class
-
-p.displayP(); // OK
-c.displayP(); // OK
-c.displayC(); // OK
-p2.displayP(); // OK
-p.displayC(); // Not ok becoz compile time error dega.
-
-
-
-🔥 Runtime Polymorphism Example (Object Reference Game!) :
-
+🔥 Runtime Polymorphism Example (Object Reference Game!) ?
+-----------------------------------------------------------
 class Animal {
-    void sound(){ System.out.println("Animal sound"); }
+    void sound() {
+        System.out.println("Animal sound");
+    }
 }
 
 class Dog extends Animal {
     @Override
-    void sound(){ System.out.println("Bark"); }
+    void sound() {
+        System.out.println("Bark");
+    }
 }
-----------------------------
+
 Animal a = new Dog();
 a.sound(); // Bark
-Reference type = Animal
-Object type = Dog ⇒ Run-time pe Decide hota hai , jiska object h or usne override kiya same parent ke method ko to whi chlega , agr nhi kiya h to parent wala chlega.
+
+📌 Decision runtime pe hota hai :
+                          - Reference → Animal
+                          - Object → Dog
+                          - Dog ne override kiya → Dog ka method call
+❓ Agar override nahi kiya?
+                          - Parent ka method call hoga
 
 
-📌 Overriding Rules :
- Access Modifier | Overriden method ki visibility more restricted nahi rakh sakta,hmesa child ki visibility parent se jyda hogi.
 
- Exception       | Checked exception → same or narrower 
+🔹 Overriding Special Rules (Polymorphism ke andar) ?
+-------------------------------------------------------
+✔ Access Modifier
+             - Child method more restrictive nahi ho sakta
+✔ Exception Rule
+             - Checked exception → same or narrower
+✔ Return Type
+             - Covariant return type allowed
+✔ Can overridden method call parent method?
+             - YES 👉 using super.method()
 
- Static methods  | ❌ Override nahi hote → agr dono static h to method hiding hoga,agr non-static hai to overriding hoga agr dono me se ek koi static and dusra non-static then error dega, compile time error                               
 
-Private methods | ❌ Override nahi hote becoz private ki accessibility class tk limit hot h,and private and static things compile-time pe bind hote hain 
+
+
+📌 Concepts Related to Inheritance ?
+            ❌ Variables (Instance & Static) :
+                                      - Override nahi hote
+                                      - Sirf hidden
+                                      - Compile-time binding
+                                      - Reference type decides
+                                      - ex: A obj = new B();
+                                            System.out.println(obj.x); // Parent variable
+            ❌ Static Methods :
+                          - Override nahi hote
+                          - Method hiding hoti hai
+                          - Compile-time binding
+                          - Reference decides
+                          - ex :  A obj = new B();
+                                  obj.staticMethod(); // Parent version
+            ❌ Constructors :
+                         - Override nahi hote
+                         - reason : Because a constructor’s name must be exactly the same as its class name, and when a class is inherited, the class name changes—so the constructor cannot belong to the child class.
+                         - eg :  class A {
+                                      A() { System.out.println("A"); }
+                                  }
+                                 class B extends A {
+                                       B() { 
+                                        super(); // calls parent constructor, does NOT inherit
+                                      System.out.println("B"); 
+                                  }}
+                                 
+            ❌ Private Methods :
+                           - Override nahi hote
+                           - Compile-time binding
+            ❌ Final Methods :
+                           - Override nahi hote
+
  Note:- Binding = method call ko actual method se jodna
   a. Compile-time binding (Early binding/static binding) → Kaunsa method call hoga, compiler pehle hi decide kar leta hai     
   b. Runtime binding (Late binding/dynamic binding) → Execution time pe decide hota hai (polymorphism).
- 
-Final methods   | ❌ Override nahi hote, due to static binding compiler fix kr deta hai,but they can overloaded. 
 
-Constructors    | ❌ Override nahi hote , constructor same class name pe hota hai to ek file me 2 same class nhi ho skte.
 
-Can a overriden function call it's non-overriden function ?
-yes , using super keyword.
 
-Can we change return type while overriding a method in Java?
-Yes, but only sub type(covariant) of parent return type , or child return type should be same.
+
+
