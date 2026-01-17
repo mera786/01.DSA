@@ -120,7 +120,7 @@ Input:
     );
 Output: 10 
 
-(3) Flattening a List of Student Subjects? 
+(3) Flattening a List of Student's Subjects? 
 Input:
     List<List<Student>> list = Arrays.asList(
             Arrays.asList(new Student("John",Arrays.asList("Math", "Science"))),
@@ -129,7 +129,7 @@ Input:
 Output: [Math, Science, English] 
  
 
-(4) Flattening a List of JSON Objects having id and tags? 
+(4) Flattening a List of JSON Objects's tags having id and tags? 
 Input: 
     List<List<Student>> list = Arrays.asList(
             Arrays.asList(new Student(1, Arrays.asList("java", "spring"))),
