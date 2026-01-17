@@ -64,7 +64,7 @@ Input:
 List<String> list = Arrays.asList("a", "b", "c"); 
 Output: [0, 1, 2]
 
-
+ 
                                                                                                     MEDIUM
 
 Q11.Given a list of integers, create a map that counts the occurrences of each integer.? 
