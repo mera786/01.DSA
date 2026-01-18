@@ -67,7 +67,7 @@ Steps :
    - run loop till b times 
    - declare one ans variable intializing with 1, inside loop do multiplication ans = ans * a;
 
-2. Using Math class method Math.pow(2,3) which is return double.
+2. Using Math class method Math.pow(2,3) which is return double. 
 
 3. Using Fast Exponentiation :
 What is Fast Exponentiation /Binary Exponentiation ?
