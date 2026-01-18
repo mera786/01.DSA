@@ -30,7 +30,7 @@ Input 3:
 Output: 1
 
 
-(2) Append Single Digits ?
+(2) Append Single Digits in last?
 Input 1: 4713 
 int digit = 7
 Output: 47137
