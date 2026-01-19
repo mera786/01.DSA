@@ -147,6 +147,15 @@ int elements = 40 ;
 Note:- first check index is within range/valid or not
 
 
+Q1.1  Insert Multiple Elements at Given Positions ?
+Input:
+    int[] arr = {1, 2, 3, 4, 5};
+    int[] indexes = {1, 3};
+    int[] values = {90, 88};
+Output:
+[1, 90, 2, 88, 3, 4, 5]
+Note:- use arrayList.
+
 Q2. Follow up question delete element at any specific position ?
     you have 7 size array having elements 7 elements now you have to delete a particular elements at given index x ?
    input : 
@@ -167,7 +176,7 @@ int[] arr = {10, 20, 30, 40, 50, 60, 70};
 int[] deleteIndex = {1, 3, 4};
 Output:
 10 30 60 70 0 0 0
-Note:- you need to mark delete index then create boolean array 
+Note:- you need to mark delete index then create boolean array  
 
 
 
