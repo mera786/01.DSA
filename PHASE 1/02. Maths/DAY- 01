@@ -129,7 +129,7 @@ STEPS TO IMPLEMENT :
 | **Octal**       | 8    | 0–7         | `17`    |
 | **Decimal**     | 10   | 0–9         | `19`    |
 | **Hexadecimal** | 16   | 0–9, A–F    | `1A`    |
-Note: HexaDecimal has given some special names in the form of Alphabets to 10, 11, 12, 13, 14 and 15. HexaDecimal -> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+Note: HexaDecimal has given some special names in the form of Alphabets to HexaDecimal -> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F (10 to 15) 
 - Bi - means 2 in binary
 - Dec - means 10 in decimal
 - Octal- means 8 in octal
@@ -172,20 +172,37 @@ Kyuki isme sirf 2 unique digits available hoti hain.
 
 
 Note:- keep in mind formual => any number system to Decimal kro, fir Decimal to any number system. ye easy hota hai.
-(8) Any base To Decimal ?
-let's do for binary to Decimal taking input in string :
+(8) Any base To Decimal through String as input?
+Input:
+String input = "10F";
+int base = 16;
+Output:
+271
 Steps:
- - Initialize result = 0 and position = 0
- - Traverse the string from right to left : use for loop
- - Convert each character into digit using -'0' : because numbers ka ASCII 0 to 9 ke liye 48 to 57 hota hai.
- - Multiply digit with base^position
- - Add it to result
- - Increment position
- - Print final result
+ - Step 1: Initialize variables :
+             int res = 0;
+             int position = 0;
+ - Step 2: Traverse input from right to left :
+             for (int i = input.length() - 1; i >= 0; i--)
+ - Step 3: Extract character : 
+            char ch = input.charAt(i);
+ - Step 4: Convert character to digit :
+            if (ch >= '0' && ch <= '9') {
+                 digit = ch - '0';
+               } else {
+                  digit = ch - 'A' + 10;
+                }
+because numbers ka ASCII 0 to 9 ke liye 48 to 57 hota hai. like, ch - '0';
+ - Step 5: Add contribution to result :
+            res += digit * Math.pow(base, pos);
+ - Step 6: Increase power position :
+           pos++;
+ - Step 7: Print result :
+           System.out.println(res);
 
 another way :
 ------------
- Steps to convert Binary To Decimal Number ?
+ Steps to convert Binary To Decimal Number through integer as input?
 Input:
 1010
 Output:
@@ -205,8 +222,15 @@ STEP-5:
 STEP-6:
 - update power like pow= pow * 2;
 
-(9) decimal to any base ?
-let's do for Decimal to binary :
+
+
+
+(9) decimal to any base input as string?
+Input:
+String input = "10";
+int base = 
+Output: 
+
 Steps:
    - Initialize empty StringBuilder
    - While number is greater than 0:
