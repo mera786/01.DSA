@@ -174,10 +174,22 @@ Kyuki isme sirf 2 unique digits available hoti hain.
 Note:- keep in mind formual => any number system to Decimal kro, fir Decimal to any number system. ye easy hota hai.
 (8) Any base To Decimal through String as input?
 Input:
-String input = "10F";
-int base = 16;
-Output:
-271
+🔹 Binary (Base 2) :
+input = "1010"
+base  = 2
+output = 10
+🔹 Octal (Base 8) :
+input = "17"
+base  = 8
+output = 15
+🔹 Decimal (Base 10) :
+input = "256"
+base  = 10
+output = 256
+🔹 Hexadecimal (Base 16) :
+input = "1A3"
+base  = 16
+output = 419
 Steps:
  - Step 1: Initialize variables :
              int res = 0;
@@ -193,6 +205,10 @@ Steps:
                   digit = ch - 'A' + 10;
                 }
 because numbers ka ASCII 0 to 9 ke liye 48 to 57 hota hai. like, ch - '0';
+- Step 4.1 : check for : Invalid digit for given base.
+        if (digit >= base) {
+            throw new IllegalArgumentException("Invalid digit " + ch + " for base " + base);
+        }
  - Step 5: Add contribution to result :
             res += digit * Math.pow(base, pos);
  - Step 6: Increase power position :
@@ -227,19 +243,48 @@ STEP-6:
 
 (9) decimal to any base input as string?
 Input:
-String input = "10";
-int base = 
-Output: 
+🔹 Decimal → Binary (Base 2) :
+input = 10
+base  = 2
+output = 1010
+🔹 Decimal → Octal (Base 8) :
+input = 15
+base  = 8
+output = 17
+🔹 Decimal → Decimal (Base 10) :
+input = 256
+base  = 10
+output = 256
+🔹 Decimal → Hexadecimal (Base 16) :
+input = 419
+base  = 16
+output = 1A3
 
 Steps:
-   - Initialize empty StringBuilder
-   - While number is greater than 0:
-                - Find remainder by num % 2
-                - Append remainder to StringBuilder
-                - Divide number by 2
-   - Reverse the StringBuilder
+   - take input :
+         int num = 419;
+         int base = 16;
+         Output : 1A3
+   - create method :
+          decimalToAnyBase(int num, int base)
+   - Handle zero :
+            If num == 0 → return "0"
+   - Initialize empty StringBuilder :
+                      StringBuilder sb = new StringBuilder();
+   - Repeat until number becomes 0:
+                           while (num > 0)
+   - Find remainder :
+                   rem = num % base
+   - Convert remainder to character :
+                  if rem < 10 → append rem
+                  else → append (char)('A' + rem - 10)
+   - Reduce number :
+                 num = num / base
+   - Reverse the result :
+                    reverse StringBuilder
+   - Return final answer :
+                 return reversed string
 
-Print the result
 another way :
 ---------------
 Steps to convert Decimal To Binary Number ?
