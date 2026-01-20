@@ -181,7 +181,7 @@ Note:- you need to mark delete index then create boolean array
 
 
 Q3. Update a specific index position value in an array
-Input: 
+Input:  
 arr = {10,20,30,40,50}
 index x = 2 
 newValue = 100
