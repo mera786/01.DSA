@@ -138,7 +138,7 @@ Step 5️⃣
       After the loop ends, all indexes that are still true in the array are prime numbers. for that use loop from i=2; i<=num;
 
 
-Q6. HCF / GCD — Highest Common Factor / Greatest Common Divisor ?
+Q6. HCF / GCD — Highest Common Factor / Greatest Common Divisor ? 
 Defination :
 - HCF or GCD means the largest same divisor of two or more numbers.that means no remainder is left.
 💡 Example:  For numbers 12 and 18:
