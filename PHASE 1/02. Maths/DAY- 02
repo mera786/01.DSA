@@ -231,15 +231,12 @@ if a and b are two numbers, then lcm =n1 * n2 / gcd.
 Q10. print all unique prime factors of a number ?
 Prime factor : Jo prime number ho Aur jo given number ko completely divide kare.
 Example: 
-Number = 60  [60 = 2 × 2 × 3 × 5 ] but Unique prime factors:  2 3 5.
+Number = 36  [36 = 2 × 2 × 3 × 3] jo 36 ko uske prime num completely divide kr rhe hai but Unique prime factors:  2 3 .
 Steps :
-  - Initialize an empty list
-  - Iterate from i = 2 to √num
-  - If num is divisible by i:
-  - Add i to the list
-  - Divide num by i repeatedly until not divisible
-  - After loop, if num > 1, add it to list
-  - Print the list
+  - take input: 36;
+  - Iterate from i = 2 to i*i<=num
+  - If num is divisible by i: if(num%i==0) then print i. and then remove duplicate while(num%i==0) num=num/i;
+  - Print the list one if(num>1) sop(num);
 
 
 
@@ -255,7 +252,7 @@ More examples:
 1! = 1 (by rule)
 0! = 1 (special rule)
 💡 Rule of Factorial:  n!=n×(n−1)!
-🧩 Example using the rule:
+🧩 Example using the rule: 
 Let’s take 5!
 5!=5×(5−1)!   5!=5×4!
 Now, 4!=4×3×2×1=24
