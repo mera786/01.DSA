@@ -270,7 +270,7 @@ Example :
 STEPS:
  1. int res = 0;
  2. int i = 5; while(i<=num){ res= res + num/i; i=i*5;} return res;
- 3. return res;
+ 3. return res; 
 
 
 
