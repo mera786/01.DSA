@@ -19,7 +19,39 @@ Output:
 1 4 9 16 25 100
 
 
-Q11. LeetCode :  Container With Most Water ?
+Q167. : LeetCode:-  Two Sum II - Input Array Is Sorted. ?
+Input: 
+int [] numbers = {2,7,11,15};
+int target = 9;
+Output: 
+[1,2]
+
+
+Q26. : LeetCode :- 26. Remove Duplicates from Sorted Array ?
+Input: 
+int [] nums = {0,0,1,1,1,2,2,3,3,4};
+Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LeetCode :  Container With Most Water ?
 
 
 
