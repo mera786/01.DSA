@@ -49,7 +49,7 @@ Socho tumne database me aise data rakha:
 
 Note:- Java me hash table ek concept hai, koi separate class nahi. HashMap aur Hashtable dono is concept ke alag implementations hain, aur dono Map interface ko implement karte hain.
 
-📦 Hash Table (Concept) :
+📦 hash table (Concept) :
 --------------------------
 🔹 Definition :
 Hash table ek data structure concept hai jo hashing technique ka use karke data ko key–value pairs ke form me store karta hai aur fast insertion, search aur deletion provide karta hai.
@@ -64,39 +64,64 @@ Key se hash → hash se index → index par key–value store.
 ------------------------------------------------------
 
 1️⃣ Division Method :
-🔹 Formula : h(k) = k % m                                                            search keys ->   {11,10,66,58,74} 
+🔹 Formula : h(k) = k % m                                                            search keys ->   {11,10,66,58,74}      
                           k → key                                                                           .............
-                          m → table size                                                                  0 |           |
+                          m → table size                                                                  0 |  11       |
                                                                                                             |           |
                                                                                                             '''''''''''''
                                                                                                           1 |           |
 2️⃣ Mid-Square Method :                                                                                      |           |   
 🔹 Steps :                                                                                                   ''''''''''''
-      - Key ka square karo.                                                                                  
-      - Beech ke digits uthao.
-      - 🔹 Example : (2-digit index chahiye)
-                             Key = 11
-                             Square = 121
-                             Pad with 0 → 0121
-                             Middle 2 digits → 12
-               Zero padding allowed hai ✔️
+      - Key ka square karo.                                                                                2 |           |
+      - Beech ke digits uthao.                                                                               |           |
+      - 🔹 Example : (2-digit index chahiye)                                                                 '''''''''''''
+                             Key = 11                                                                      3 |   58      |
+                             Square = 121                                                                    |           |
+                             Pad with 0 → 0121                                                               '''''''''''''
+                             Middle 2 digits → 12                                                          4 |           |
+               Zero padding allowed hai ✔️                                                                   |           |
+                                                                                                              ''''''''''''
+                                                                                                           5 |           |
+3️⃣ Digit Folding Method :                                                                                    |           |
+🔹 Idea :                                                                                                     ''''''''''''
+      - Key ke digits ko parts me tod ke add karo.                                                         6 |           |
+      - 🔹 Example :                                                                                         |           |
+                    Key = 123456                                                                             '''''''''''''
+                    Fold → 12 + 34 + 56 = 102                                                              7 |           |
+                    Index = 102 % tableSize                                                                  |           |
+🔹 Use :                                                                                                     '''''''''''''
+      - Jab key bahut badi ho (mobile number).                                                             8 |   74      |
+                                                                                                             |           |
+                                                                                                             '''''''''''''
+                                                                                                           9 |           |
+                                                                                                             |           |
+                                                                                                             '''''''''''''
+                                                                                                          10 |  10       |
+                                                                                                             |           |
+                                                                                                             '''''''''''''
+                                                                                                                HASHTABLE  with size m = 11
+
+For finding Hash function interview friendly and most easy way :
+1️⃣ Division Method :
+                  suppose take key as 11 and h-table size= 11
+so based on formula :
+                 key % h-table size
+              => 11 % 11 = 0
+               so on 0 index keep 11 as key.
 
 
-3️⃣ Digit Folding Method :
-🔹 Idea :
-      - Key ke digits ko parts me tod ke add karo.
-      - 🔹 Example :
-                    Key = 123456
-                    Fold → 12 + 34 + 56 = 102
-                    Index = 102 % tableSize
-🔹 Use :
-      - Jab key bahut badi ho (mobile number).
+
+                                                                       Collision Resolution 
 
 
+Collision kya hoti hai?
+Jab do ya zyada different keys ka hash same index (bucket) par aa jaye.
+hash(k1) % n = 5
+hash(k2) % n = 5   ← collision
 
-
-
-
+🛠️ Collision Resolution Techniques :
+1️⃣ Closed Hashing / Open Addressing ?
+Collision hone par same table ke kisi aur empty slot me element rakhte hain.
 
 
 
