@@ -1,2 +1,51 @@
+Q1.  what is Recursion ?
+in programming, when a function called it self, called recursion.
+
+
+Q2. Why it needed ?
+jab apke pass ek badi problem hai or app usko sub problem me tod skte ho, or wo sub problem same tarike se solve ho skti hai. to aisi sitution me hai recursion ka use krte hai.
+
+
+Q3. Syntax for Recurion ?
+
+void function(){
+// base case
+if(condition) return;
+
+// recursive case/call
+function();
+}
+
+
+Q4. Example to understand recursion call stack ?
+static void print(int num){
+        if(num==0) return;
+
+        print(num-1);
+    System.out.print(num+" "); //
+}
+
+
+Explanation :
+                           [ f(n) = f(n-1) ] => overall called: recurence realtion
+                            /          \
+                       step 1          step 2
+Note:- switching one step to another step called transition step.
+
+
+Q5. follow-up question :
+         write recursion function to print 5 to 1 like, 5,4,3,2,1.
+Note:- ek function khud ko hee call krta hai dusra ko call nhi to usko linear recursion.
+       time complexity : O(2n)  and space complexity O(n) because utna space stack me use ho rhi hai.
+
+
+Q509. LeetCode :  Fibonacci Number  ?
+Note:- fibonnaci sequence always 0 and 1 se hota hai or aage wali number apne pichle do number ka sum hoti hai.
+Input: 
+n = 4
+Output: 3
+
+
+
 
 
