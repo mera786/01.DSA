@@ -304,6 +304,31 @@ here you will find 15 but in clock 15 does not exist
 so apply modular arithmatic where limit is 12 hrs.
 
 
+Q. A video game gives points, Each round gives 7 points,You play 5 rounds Scoreboard shows points mod 10 (only last digit).
+   so Actual score = 7 × 5 = 35 but Scoreboard me 35 possible nahi. so Apply modulo. 
+Input:
+int perRound = 7;
+int rounds = 5;
+int m = 10;
+Output:
+5
+
+Q. Current time = 3 , Go back 5 hours ?
+Input:
+int currTime = 3;
+int back = 5;
+int m = 12;
+Output:
+10
+
+Q. Array rotation :
+Array size = 7, Current index = 1, Move left by 3 so Normal index: 1 - 3 = -2 ❌ which is wrong.
+Apply modulo 
+
+
+
+
+
 Q15. follow-up quez : given an array use one for loop and print this array 4 times.
 arr = {8,9,1,3,2};
 Note:- use modular arithmatic on index .
