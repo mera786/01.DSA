@@ -292,7 +292,7 @@ We write it as:
 (a - b) % m   = ((a % m - b % m)+m) % m
 
 a % m = (a % m + m) % m   => handles neg
-Note:- modulo limit will be given like,1000 (10^3)
+Note:- modulo limit will be given like,1000 (10^3) 
 
 
 
