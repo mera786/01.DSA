@@ -39,11 +39,20 @@ Note:- ek function khud ko hee call krta hai dusra ko call nhi to usko linear re
        time complexity : O(2n)  and space complexity O(n) because utna space stack me use ho rhi hai.
 
 
+Q6. Wrtie code to find Factorial of a number ?
+Input:
+int num = 5!;
+Output:
+120
+
+
 Q509. LeetCode :  Fibonacci Number  ?
 Note:- fibonnaci sequence always 0 and 1 se hota hai or aage wali number apne pichle do number ka sum hoti hai.
 Input: 
 n = 4
 Output: 3
+
+
 
 
 
