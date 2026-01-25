@@ -106,8 +106,13 @@ Note in both addition when sum of two numbers/digits become two digits like 9+2 
 4️⃣ 1’s Complement – Concept:
                       - Definition: 1’s complement = binary bits ko invert kar do :  0 → 1
                                                                                      1 → 0
-                      - Example (4 bits):   +5 = 0101
-                                            -5 = 1010   (1’s complement)
+                      - Example (4 bits):   +2 = 0010
+                                            -2 = 1101   (1’s complement)
+                         - Ab add karo: 
+                                          0010
+                                        + 1101
+                                         ------
+                                          1111   → -0 ❌
                       - ❌ Problem with 1’s complement:    +0 = 0000
                                                            -0 = 1111    Math me +0/-0 sense nahi banata.
 
@@ -130,7 +135,7 @@ Note in both addition when sum of two numbers/digits become two digits like 9+2 
 
 
 
-BIT MANUPULATION
+BIT MANUPULATION 
 _________________________________
 
 Q4. Bitwise Operators  ?
@@ -151,9 +156,33 @@ Example :
         0 0 0 1 
  Output (0001) → 1 
 
+
+                                                                       🧠 Bitwise AND (&) – Practice Table :
+
+                                  
+                                          | Q.No | Expression              | Your Guess |
+                                          | ---- | ----------------------- | ---------- |
+                                          | 1    | `5 & 3`                 | ____       |
+                                          | 2    | `6 & 4`                 | ____       |
+                                          | 3    | `7 & 1`                 | ____       |
+                                          | 4    | `8 & 7`                 | ____       |
+                                          | 5    | `10 & 12`               | ____       |
+                                          | 6    | `x & 0`                 | ____       |
+                                          | 7    | `x & x`                 | ____       |
+                                          | 8    | `x & 1`                 | ____       |
+                                          | 9    | `9 & 1`                 | ____       |
+                                          | 10   | `8 & 1`                 | ____       |
+                                          | 11   | `8 & 7`                 | ____       |
+                                          | 12   | `16 & 15`               | ____       |
+                                          | 13   | `12 & 10`               | ____       |
+                                          | 14   | `15 & 1`                | ____       |
+                                          | 15   | `n & (n - 1)` *(n = 8)* | ____       |
+                                          | 16   | `n & (n - 1)` *(n = 6)* | ____       |
+
+
 2️⃣ OR (|)
 Definition:
-Compares each bit of two numbers and returns 1 if any one of the bits is 1, otherwise 0.
+Compares each bit of two numbers and returns 1 if any one of the bits is 1, otherwise 0 | 0 then 0  or  1 | 1 then 1.
 b1       operator     b2               result
 0          |          0                  0
 0          |          1                  1
@@ -166,6 +195,32 @@ Example :
      -------------
         0 1 1 1 
 Output (0111) → 7
+
+
+
+                                                                      🧠 Bitwise OR (|) – Practice Table :
+
+                                                     | Q.No | Expression          | Your Guess |
+                                                     | ---- | ------------------- | ---------- |
+                                                     | 1    | 5 | 3               | ____       |
+                                                     | 2    | 6 | 4               | ____       |
+                                                     | 3    | 7 | 1               | ____       |
+                                                     | 4    | 8 | 7               | ____       |
+                                                     | 5    | 10 | 12             | ____       |
+                                                     | 6    | x | 0               | ____       |
+                                                     | 7    | x | x               | ____       |
+                                                     | 8    | x | 1               | ____       |
+                                                     | 9    | 9 | 1               | ____       |
+                                                     | 10   | 8 | 1               | ____       |
+                                                     | 11   | 8 | 7               | ____       |
+                                                     | 12   | 16 | 15             | ____       |
+                                                     | 13   | 12 | 10             | ____       |
+                                                     | 14   | 15 | 1              | ____       |
+                                                     | 15   | n | (n - 1) (n = 8) | ____       |
+                                                     | 16   | n | (n - 1) (n = 6) | ____       |
+
+
+
 
 3️⃣ XOR (^)
 Definition:
@@ -182,6 +237,30 @@ Example:
      -------------
        0 1 1 0
 Output(0110) → 6
+
+
+
+                                                                                 🧠 Bitwise XOR (^) – Practice Table :
+
+                                                              | Q.No | Expression          | Your Guess |
+                                                              | ---- | ------------------- | ---------- |
+                                                              | 1    | 5 ^ 3               | ____       |
+                                                              | 2    | 6 ^ 4               | ____       |
+                                                              | 3    | 7 ^ 1               | ____       |
+                                                              | 4    | 8 ^ 7               | ____       |
+                                                              | 5    | 10 ^ 12             | ____       |
+                                                              | 6    | x ^ 0               | ____       |
+                                                              | 7    | x ^ x               | ____       |
+                                                              | 8    | x ^ 1               | ____       |
+                                                              | 9    | 9 ^ 1               | ____       |
+                                                              | 10   | 8 ^ 1               | ____       |
+                                                              | 11   | 8 ^ 7               | ____       |
+                                                              | 12   | 16 ^ 15             | ____       |
+                                                              | 13   | 12 ^ 10             | ____       |
+                                                              | 14   | 15 ^ 1              | ____       |
+                                                              | 15   | n ^ (n - 1) (n = 8) | ____       |
+                                                              | 16   | n ^ (n - 1) (n = 6) | ____       |
+
 
 4️⃣ NOT (~)
 Definition: 
@@ -206,6 +285,23 @@ eg-
       = - (-6)
       = 6
 Note:-  Not of (~) applied krne pe bit flip hoga in any how, but sirf value nikalne ke liye 2’s complement use karte hain: uske liye above rule apply hoga.
+
+
+                                                                                       🧠 Bitwise NOT (~) – Practice Table  :
+
+                                                                  | Q.No | Expression | Your Guess |
+                                                                  | ---- | ---------- | ---------- |
+                                                                  | 1    | ~0         | ____       |
+                                                                  | 2    | ~1         | ____       |
+                                                                  | 3    | ~5         | ____       |
+                                                                  | 4    | ~7         | ____       |
+                                                                  | 5    | ~8         | ____       |
+                                                                  | 6    | ~10        | ____       |
+                                                                  | 7    | ~(-1)      | ____       |
+                                                                  | 8    | ~(-5)      | ____       |
+                                                                  | 9    | ~x         | ____       |
+                                                                  | 10   | ~~5        | ____       |
+
 
 
 5️⃣ Right Shift (>>)
@@ -237,11 +333,48 @@ Decimal: 5
            - New MSB filled with 0 (unsigned right shift)
 
 
+
+                                                                                  🧠 Right Shift (>>) – Practice Table  :
+
+                                                                      | Q.No | Expression | Your Guess |
+                                                                      | ---- | ---------- | ---------- |
+                                                                      | 1    | 8 >> 1     | ____       |
+                                                                      | 2    | 8 >> 2     | ____       |
+                                                                      | 3    | 7 >> 1     | ____       |
+                                                                      | 4    | 5 >> 1     | ____       |
+                                                                      | 5    | 10 >> 1    | ____       |
+                                                                      | 6    | -8 >> 1    | ____       |
+                                                                      | 7    | -5 >> 1    | ____       |
+                                                                      | 8    | x >> 1     | ____       |
+                                                                      | 9    | x >> 2     | ____       |
+                                                                      | 10   | 1 >> 1     | ____       |
+
+
+
 6️⃣ Unsigned Right Shift (>>>) (Java specific)
 Definition:
 Shifts bits to the right, filling 0s on the left, ignoring sign ab sign neg tha ya pos after unsigned right shift alway Msb 0 rhega mtlb number ko positive bna dega after shift.
 Example:
 -5 >>> 1 fills left bits with 0 → large positive number
+
+
+
+                                                                                       🧠 Unsigned Right Shift (>>>)– Practice Table  :
+
+                                                                        | Q.No | Expression | Your Guess |
+                                                                        | ---- | ---------- | ---------- |
+                                                                        | 1    | 8 >>> 1    | ____       |
+                                                                        | 2    | 8 >>> 2    | ____       |
+                                                                        | 3    | 7 >>> 1    | ____       |
+                                                                        | 4    | 5 >>> 1    | ____       |
+                                                                        | 5    | 10 >>> 1   | ____       |
+                                                                        | 6    | -8 >>> 1   | ____       |
+                                                                        | 7    | -5 >>> 1   | ____       |
+                                                                        | 8    | x >>> 1    | ____       |
+                                                                        | 9    | x >>> 2    | ____       |
+                                                                        | 10   | 1 >>> 1    | ____       |
+
+
 
 7️⃣ Left Shift (<<)
 Definition:
@@ -269,6 +402,22 @@ Decimal: 22
     - All bits move 1 place left
     - New LSB filled with 0
     - MSB shifted into new position (may cause overflow if bit-size exceeded)
+
+
+                                                                                            🧠 Left Shift (<<) – Practice Table  :
+
+                                                                             | Q.No | Expression | Your Guess |
+                                                                             | ---- | ---------- | ---------- |
+                                                                             | 1    | 5 << 1     | ____       |
+                                                                             | 2    | 5 << 2     | ____       |
+                                                                             | 3    | 3 << 3     | ____       |
+                                                                             | 4    | 8 << 1     | ____       |
+                                                                             | 5    | 1 << 4     | ____       |
+                                                                             | 6    | 10 << 1    | ____       |
+                                                                             | 7    | x << 1     | ____       |
+                                                                             | 8    | x << 2     | ____       |
+                                                                             | 9    | 7 << 1     | ____       |
+                                                                             | 10   | 4 << 3     | ____       |
 
 
 Q1. follow-up : odd - even check ?
