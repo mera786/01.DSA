@@ -1,4 +1,4 @@
-                                                                                BIT MANIPULATION-BASIC 
+2                                                                                BIT MANIPULATION-BASIC 
 
 ******** NUMBER REPRESENTATION ********
  1. Decimal number representation: 
@@ -52,11 +52,11 @@ Example:
 1 0 1 1 0 1 0 0
 ⬆️ MSB      ⬇️ LSB
 
-🧩 2️⃣ Signed vs Unsigned Numbers :
-| Type                | Sign Information                                  | MSB Role                                        | Value Range Formula   | Example (4 bits)       |
-| ------------------- | ------------------------------------------------- | ----------------------------------------------- | --------------------- | ---------------------- |
-| **Unsigned Number** | ❌ No sign (only positive values)                  | MSB is just another value bit                   | [0, ((2ⁿ) − 1)]         | 0 to 15 (0000 to 1111) |
-| **Signed Number**   | ✅ MSB shows the sign (0 = positive, 1 = negative) | MSB denotes sign, remaining bits show magnitude | [−(2ⁿ⁻¹ - 1), (2ⁿ⁻¹ − 1)] | −7 to +7           |
+🧩 2️⃣ Signed vs Unsigned Numbers apply on MSB :
+| Type                | Sign Information                                  | MSB Role                                         |largest Range for integer |
+| ------------------- | ------------------------------------------------- | -------------------------------------------------| -------------------------| 
+| **Unsigned Number** | ❌ No sign (only positive values)                  | MSB is just another value bit                   | 2^31-1                   |
+| **Signed Number**   | ✅ MSB shows the sign (0 = positive, 1 = negative) | MSB denotes sign, remaining bits show magnitude | [−2^31, 2^31-1           |
 
 
 🧩 Set bit & Unset bit :
@@ -80,65 +80,53 @@ same way binary addition :
 Note in both addition when sum of two numbers/digits become two digits like 9+2 = 11 then carry 1 to next one in left direction.
 
 
-Q3. Bit Subtraction  ?
-👇
-Binary confusion without 2’s complement :
-                    - Suppose we try to store Decimal negative num −1 and Decimal positive num +5 in binary without a proper system. where
-                            1 : 0 0 1  
-                           -1 : 1 0 1 (binary)
-                           +5 : 1 0 1
-    so look -1 binary and +5 binary looking same so how will you know which one is this . that's why 2's complement introduce to solve this problem.
-Note:- for calculating 1's complement we ignore signed(-) and calculate binary num.
-🧠 1️⃣ What is 1’s Complement and 2’s Complement?
-These are methods to represent negative numbers in binary.
-🔹 1’s Complement
-         - Take the binary of the positive number.
-         - Invert all bits (0 → 1, 1 → 0).
-         - The result is the negative number.
-         - Example (4 bits):
-                       - decimal num +5 → 0101 (binary)
-                       - decimal num  −5 (1’s complement) → invert all bits → 1010 (binary)
-         - Problem with 1’s complement:
-                            - There are two representations for 0: 0000 (+0) and 1111 (−0) → confusing which does not make any sense because +0 and -0 bat same hai eventually hai to 0 hee
-🔹 2’s Complement
-         - Take the 1's complement number.
-         - then add 1 to the result.
-         - This is now the negative number.
-         - Example (4 bits):
-                 -     +5 → 0 1 0 1 (bache hue position pe 0)
-                 -     Step 1: invert all bits → 1 0 1 0
-                 -     Step 2: add 1 → 
-                                     1 0 1 0 
-                                         + 1 
-                                   ------------
-                                     1 0 1 1
-                 -     So −5 = 1 0 1 1
 
+📘 Number System & Signed Binary Representation ?
+----------------------------------------------------
 
-2’s Complement STEPS TO IMPLEMENTS:
+1️⃣ Positive numbers ko binary me kaise store karte hain?
+             - Positive decimal number ko simply binary me convert karke store kar dete hain.
+             - Example (4 bits):  +5 = 0101
+                                  +1 = 0001       Koi issue nahi,Sab smooth ✅
 
-Step 1: Write both numbers in binary
-        - Make sure both numbers have the same number of bits (add leading zeros if needed).
-        - Example: Subtract 5 − 3 using 4-bit binary :
-                                            num1 = 5 → 0101
-                                            num2 = 3 → 0011
-Step 2: Find 2’s complement of num2 :
-        - Invert all bits (0 → 1, 1 → 0) → this is 1’s complement
-        - Add 1 to the result → this is 2’s complement
-        - Example :
-                  num2 = 3 → 0011
-                  Step 1: Invert bits → 1100
-                  Step 2: Add 1 → 1100 + 1 = 1101
-Step 3: Add num1 and 2’s complement of num2 :
-               Example :
-                      0101  (num1 = 5)
-                    + 1101  (2’s complement of num2 = 3)
-                      -------
-                      10010
-Step 4: Handle carry (if fixed number of bits) :
-          - We are using 4-bit binary, so discard the 5th bit (overflow).
-Step 5: Convert binary result to decimal :
-          0010 → 2 ✅ correct
+2️⃣ Problem negative numbers ke saath aati hai?
+            - Agar hum negative numbers ko bhi direct binary me likhne lag gaye:   +5  → 101
+                                                                                   -1  → 101
+                                                        - Problem:
+                                                               - Same binary 101.
+                                                               - CPU kaise decide kare: ye +5 hai ya -1?
+                                                               - Binary me sign ka clear rule nahi hai,Isliye system chahiye jo: positive & negative ko clearly alag kare ya arithmetic operation like,(addition/subtraction) easy banaye
+                                                               - Yahin se complement system aaya.
+                                                             
+3️⃣ Signed Number ka basic idea :
+                           - MSB (Most Significant Bit) ko sign bit mana jata hai:  0 → positive
+                                                                                    1 → negative
+                           - But sirf sign bit enough nahi.Isliye complement methods use hote hain.
+
+4️⃣ 1’s Complement – Concept:
+                      - Definition: 1’s complement = binary bits ko invert kar do :  0 → 1
+                                                                                     1 → 0
+                      - Example (4 bits):   +5 = 0101
+                                            -5 = 1010   (1’s complement)
+                      - ❌ Problem with 1’s complement:    +0 = 0000
+                                                           -0 = 1111    Math me +0/-0 sense nahi banata.
+
+5️⃣ 2’s Complement – WHY introduced?
+          - Single representation of 0.
+          - for Easy subtraction using addition.
+          - HOW it works? :
+                      - 2’s complement = 1’s complement + 1
+          - Example:  −5 (4 bits) :
+               - Step 1: Binary of +5 ( we ignore singed during conversion decimal to binary).
+                        +5 = 0101
+               - Step 2: 1’s complement (flip/invert) :
+                         0101 → 1010
+               - Step 3: Add 1   :
+                            1010
+                          +    1
+                          ------
+                           1011
+
 
 
 
