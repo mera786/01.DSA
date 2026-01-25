@@ -323,9 +323,18 @@ Output:
 
 Q. Array rotation :
 Array size = 7, Current index = 1, Move left by 3 so Normal index: 1 - 3 = -2 ❌ which is wrong.
-Apply modulo 
-
-
+Apply modulo :
+Input: 
+Array = [10, 20, 30, 40, 50, 60, 70]
+N = 7
+Current index (I) = 1
+Move left by (K) = 3
+Output:  
+index 5 
+Note:-    Left rotation index:
+              (i - k + n) % n
+          Right rotation index:
+              (i + k) % n
 
 
 
@@ -334,13 +343,6 @@ arr = {8,9,1,3,2};
 Note:- use modular arithmatic on index .
 
 
-                                                       
-Q16. Write code for Fibonacci series using normal logic and recursion?
-Fibonacci series is a sequence where each number is the sum of the two numbers before it, starting from 0 and 1.
-Input: 
-int num = 15;
-output: 0 1 1 2 3 5 8 13.
-Note:- Fibonacci series is a sequence where each number is the sum of the previous two numbers.
 
 Q17. write code for first multiple of 5 and 7 ?
 Input :
