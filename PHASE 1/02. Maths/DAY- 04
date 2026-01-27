@@ -2,13 +2,14 @@
 
 Q1. check if k-th bit is set or not ?
 if num = 13 ;  binary = 1 1 0 1  and k = 2; so from LSB side se k-th bit count hoga or usko check krna hai set hai ya unset.
+
 Steps to Implement :
 Step 1️⃣ : Input lo
 int num = 13;   // number
 int k = 2;     // bit position (0-based)
 Step 2️⃣ : Left shift se mask banao
 int mask = (1 << k);
-where 1 ka matlab ek single bit, k times left shift karne se kth position par bit set ho jaati hai
+where 1 ka matlab ek single bit/digit, k times left shift karne se kth position par bit set ho jaati hai
 Explantion:
 Binary of 1 :   1 = 00000001
 Left shift by k = 2 positions :   1 << 2
@@ -26,12 +27,14 @@ if(res > 0){
 }
 
 
+
 Q2. Set a bit ?
 Input:
 int num 16 = 1 0 0 0 0 
 int k = 2;
 Output:
 1 0 1 0 0 = 20
+
 Steps to Implement :
 Step 1️⃣ : Input lo
 Step 2️⃣ : Mask banao using left shift
@@ -42,12 +45,15 @@ Step 4️⃣ : Final Output
 print(ans)
 
 
+
+
 Q3. Unset(clear) a bit ?
 Input:
 int num 13 = 1 1 0 1
 int k = 2;
 Output:
 1 0 0 1 = 9
+
 Steps to Implement :
 Step 1️⃣ : Input lo
 Step 2️⃣ : Mask banao using left shift
@@ -61,12 +67,15 @@ Step 5️⃣ : Final Output
 print(ans)
 
 
-Q4. Toggle a bit (flip (0 -> 1, 1 -> 0) not the all bit ?
+
+
+Q4. Toggle k-th bit (flip (0 -> 1, 1 -> 0) not the all bit ?
 Input :
 int num 13 = 1 1 0 1
 int k = 2
 Output :
 1 0 0 1 = 9
+
 Steps to implement :
 Step 1️⃣ : Input lo
 Step 2️⃣ : Mask banao using left shift
@@ -75,6 +84,8 @@ Step 3️⃣ : Bitwise XOR (^) lagao
 int result = num ^ mask;
 Step 4️⃣ : Final Output
 print(anas)
+
+
 
 
 Q5. Count Set bit (Brian Kernighan’s Algorithm)  ब्रायन कर्नी-गन ?
@@ -104,7 +115,7 @@ Step 1️⃣ : Input lo
 int num = 13;
 if neg num :
 if (num < 0) {
-    num = ~num + 1;   // 2’s complement
+    num = ~(-num + 1);   // 2’s complement
 }
 Step 2️⃣ : Counter initialize karo
 int count = 0;
@@ -118,13 +129,16 @@ Step 5️⃣ : Count increment karo
 Step 6️⃣ : Final output
 print(ans).
 
-Note:- java me Integer class ke pass bitCount() method hai wo v bit ko count krta hai Integer.bitCount(num).
+Note:- java me Integer class ke pass bitCount() method hai wo v sirf set bit ko count krta hai Integer.bitCount(num). like 13 => 1 1 0 1  so ans is 3. 
+
+
 
 
 Q6. What is the Rightmost 'bit = LSB (Least Significant Bit)' set bit ?
 Binary representation me right side se pehla 1 bit.
 Input:
 int num 12 = 1 1 0 0    Rightmost set bit = right side se pehla 1, yha Rightmost set bit = 1 (bit index = 2)
+
 Steps to Implement :
 Step 1️⃣ : Input lo
 int num = 12;
@@ -138,11 +152,14 @@ Step 4️⃣ : Output
 print(ans)
 
 
+
+
 Q7. check if a number is power of 2 ?
 Input :
 int num 16 = 1 0 0 0 0  so it is true because of 2⁴
 int num 15 = 0 1 1 1 1  it is false because 2 ki koi v power se 15 nhi bnega directly.
 Note:- koi v number 2 ki power me tbhi hogi jab uska 1 hee bit set ho. so we can use n & (n-1)==0
+
 Steps to Implement :
 Step 1️⃣ : Input lo
 int num = 16;
@@ -150,6 +167,8 @@ Step 2️⃣ : Check number is positive
 if (num <= 0) { System.out.println("False");}
 Step 3️⃣ : Apply formula  'Power of Two Check'
 (num & (num - 1)) == 0 
+
+
 
 
 Q8. Char conversion ?
@@ -163,6 +182,7 @@ capital letters like A to lower letter a converion :
 -----------------------------------------------------
 A (65)  => 1 0 0 0 0 0 1     and a (97)  => 0 1 1 0 0 0 1 
 so the difference is '32' and in 65 binary 32 we will get on 5th bit so on 5th bit ko set krna hai so it will becomes 97.
+
 Steps to implements :
 Step 1️⃣ : Input lo
 char ch = 'A';
@@ -186,6 +206,7 @@ Lowercase letters me 5th bit SET hoti hai,
 Capital letters me 5th bit UNSET hoti hai,
 isliye lower → capital ke liye
 5th bit ko UNSET karna hota hai.
+
 Steps to implements :
 Step 1️⃣ : Input lo
 char ch = 'a';
