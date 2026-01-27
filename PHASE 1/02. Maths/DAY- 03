@@ -404,7 +404,7 @@ Bit power:       2⁴    2³    2²    2¹    2⁰
 Decimal: 22
 ✅ Explanation for clarity:
     - All bits move 1 place left
-    - New LSB filled with 0
+    - New LSB filled with 0 which is nothing but a magnitude value.
     - MSB shifted into new position (may cause overflow if bit-size exceeded)
 
 
@@ -426,14 +426,15 @@ Decimal: 22
 
 Q1. follow-up : odd - even check ?
 Note:-
-for this,we need to know kisi v num ki LSB kya hai? if LSB=0 then it is even. if LSB=1 then it is odd.
+for this,we need to know kisi v num ki LSB kya hai? if LSB=0 then it is even. if LSB=1 then it is odd. why because sare bit 2 ka kch n kuch power contribute kr rhe hai except last bit.
 so one of the bit operators which is & will help with 1 .
 Input:
-int num = 5;  // -5 will also work on same logic.
+int num = 5;  // on Neg(-5) also work on same logic.
 Output: odd.
 
 
-Q2. swap two numbers (without using third variables) ?
+
+Q2. swap two numbers (without using third variables and without using arithmetic operator) ?
 int a = 13;
 int b = 11;
 here, we can use one of the operators of xor(^)
@@ -445,7 +446,7 @@ b= a^b;
 
 a = a ^ b;
   = a ^ b ^ a
-  = b;
+  = b; 
 
 Explantion on Bit level :
 a = 13;     1 1 0 1
