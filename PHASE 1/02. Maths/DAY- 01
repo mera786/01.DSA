@@ -277,7 +277,7 @@ Steps:
                    rem = num % base
    - Convert remainder to character :
                   if rem < 10 → append rem
-                  else → append (char)('A' + rem - 10)
+                  else → append char ch = (char) ('A' + rem - 10);
    - Reduce number :
                  num = num / base
    - Reverse the result :
