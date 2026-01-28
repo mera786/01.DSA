@@ -56,5 +56,183 @@ Ans : FINALLY, finally executes even after return.
 
 
 Q4. 
+public class Test {
+    static int test() {
+        try {
+            return 10;
+        } finally {
+            return 20;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println(test());
+    }
+}
+Ans: 20, Return in finally overrides try.
+
+
+Q5. 
+public class Test {
+    public static void main(String[] args) {
+        try {
+            throw new NullPointerException();
+        } catch (RuntimeException e) {
+            System.out.println("Runtime");
+        } catch (NullPointerException e) {
+            System.out.println("NPE");
+        }
+    }
+}
+Ans:  ❌ Compilation Error, Child catch must come before parent.
+
+Q6. 
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(m1());
+    }
+
+    static int m1() {
+        try {
+            throw new RuntimeException();
+        } catch (Exception e) {
+            return 1;
+        } finally {
+            return 2;
+        }
+    }
+}
+Ans: 2, 
+
+
+Q7. Can we catch multiple exceptions in one catch block?
+catch (IOException | SQLException e)
+Ans: Yes (Java 7+), But exceptions must not be in parent-child relationship.
+INVALID (parent–child relationship) :
+catch (Exception | IOException e) {}
+
+Q8. Why Throwable has both Exception and Error?
+👉 Exception → recoverable
+👉 Error → JVM-level, non-recoverable (OOM, StackOverflow)
+
+Q9. Difference between throw and throws?
+
+Q10. Why finally may NOT execute?
+when System.exit(0) is called JVM crashes, Power failure.
+
+Q11. What is exception chaining?
+wrapping one exception inside another exception : throw new CustomException("msg", originalException);
+other word: Real cause ko naye exception ke andar pack kar dena so that original reason is not lost. very important for debugging & Spring logs.
+
+Q12. In Spring Boot, what happens if exception is not handled?
+Default behavior: 500 INTERNAL SERVER ERROR, JSON error response so Best practice → @ControllerAdvice.
+
+
+Q13. 
+public class Test {
+    public static void main(String[] args) {
+        try {
+            System.out.println(10 / 0);
+        } finally {
+            System.out.println("DONE");
+        }
+        System.out.println("END");
+    }
+}
+Ans: DONE, Code after try-finally won’t execute.
+
+Q14. Valid or Invalid?
+class A {
+    void m() throws IOException {}
+}
+
+class B extends A {
+    void m() {}
+}
+Ans : Valid, Overriding method can throw narrower or no exception.
+
+
+Q15. Which interface must a resource implement to be used in try-with-resources?
+A. Serializable
+B. Closeable
+C. AutoCloseable
+D. Flushable
+Ans : C, Closeable extends AutoCloseable, but JVM checks AutoCloseable.
+
+Q16. Can we write try-with-resources without catch or finally?
+try (FileInputStream fis = new FileInputStream("a.txt")) {
+}
+A. ❌ Compile error
+B. ✔ Valid
+C. Runtime error
+Ans: B, Resources auto-closed → catch/finally optional.
+
+Q17. Which exception is thrown by close() method?
+A. Only checked
+B. Only unchecked
+C. Checked or unchecked
+D. None
+Ans: C, AutoCloseable.close() → throws Exception.
+
+Q18. 
+class MyRes implements AutoCloseable {
+    public void close() {
+        System.out.println("CLOSE");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        try (MyRes r = new MyRes()) {
+            System.out.println("TRY");
+        }
+    }
+}
+Output: TRY, then CLOSE. because Close happens after try block.
+
+Q19. Order of closing multiple resources ?
+try (
+    Resource1 r1 = new Resource1();
+    Resource2 r2 = new Resource2();
+) {
+}
+Ans : r2 then r1, LIFO order (Stack behavior).
+
+Q20. Where are suppressed exceptions stored?
+A. JVM stack
+B. Heap
+C. Inside Throwable
+D. ThreadLocal
+Ans: C, Throwable.getSuppressed().
+
+Q21. 
+try (Scanner sc = new Scanner(System.in)) {
+}
+System.out.println(sc);
+Ans: Compilation Error, Resource variable scope = try block only.
+
+Q22. Can try-with-resources replace finally completely?
+No
+finally still needed for: Logging, Transaction rollback
+
+Q23. Where do you see try-with-resources in Spring?
+👉 JDBC Template internally
+👉 File handling
+👉 Streams / IO
+Spring hides it but you should know it.
+
+Q24. Difference: AutoCloseable vs Closeable ?
+| AutoCloseable    | Closeable          |
+| ---------------- | ------------------ |
+| Java 7           | Java 5             |
+| throws Exception | throws IOException |
+| Generic          | IO specific        |
+
+
+
+
+
+
+
+
 
 
