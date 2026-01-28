@@ -137,12 +137,12 @@ Note:- java me Integer class ke pass bitCount() method hai wo v sirf set bit ko 
 Q6. What is the Rightmost 'bit = LSB (Least Significant Bit)' set bit ?
 Binary representation me right side se pehla 1 bit.
 Input:
-int num 12 = 1 1 0 0    Rightmost set bit = right side se pehla 1, yha Rightmost set bit = 1 (bit index = 2)
-
+int num 12 = 1 1 0 0    Rightmost set bit = right side se pehla 1, yha Rightmost set bit = 1 (bit index = 2) so output: 0 1 0 0 means baki sab 0 ho jaye. and the output is nothing
+                                                                                                                 but 12 ka 2's complement hai. bit flips then +1 hee hai. now in decimal final ans= 4.
 Steps to Implement :
 Step 1️⃣ : Input lo
 int num = 12;
-Step 2️⃣ : 2’s complement nikaalo ya -num kr ke & operator lga do.
+Step 2️⃣ : 2’s complement nikaalo ya -num kr ke & operator lga do.  to find right most set bit.
 int neg = -num;    so num & -num    or   num & (~num+1)
 Why ? 
 Because in two’s complement, -num keeps only the rightmost set bit common with num, and all higher bits differ, so num & -num isolates the rightmost set bit.
@@ -158,7 +158,8 @@ Q7. check if a number is power of 2 ?
 Input :
 int num 16 = 1 0 0 0 0  so it is true because of 2⁴
 int num 15 = 0 1 1 1 1  it is false because 2 ki koi v power se 15 nhi bnega directly.
-Note:- koi v number 2 ki power me tbhi hogi jab uska 1 hee bit set ho. so we can use n & (n-1)==0
+Note:- koi v number 2 ki power me tbhi hogi jab uska 1 hee bit set ho. so we can use n & (n-1)==0 which is nothing but Brian Algorithm because ye Rightmost set bit ko unset kr deta hai so
+                                                                                                                        if there is only one bit set so using n & (n-1) will become 0.
 
 Steps to Implement :
 Step 1️⃣ : Input lo
@@ -167,6 +168,8 @@ Step 2️⃣ : Check number is positive
 if (num <= 0) { System.out.println("False");}
 Step 3️⃣ : Apply formula  'Power of Two Check'
 (num & (num - 1)) == 0 
+Note:- if interviewer asks 1 ko v false me treat krna because idealy 2^0 = 1 that's fine but interview asks then add a check like,
+       if(num & 1 !=0) return false;
 
 
 
@@ -177,8 +180,15 @@ Capital-letter      ASCII            small-letter         ASCII            both 
 A                    65                a                    97                  97-65 = 32
 B                    66                b                    98                  98-66 = 32
 C                    67                c                    99                  99-67 = 32
+Note: 
+Capital letters (A–Z) ASCII range:
+                                A = 65
+                                Z = 90
+Small letters (a–z) ASCII range:
+                               a = 97
+                               z = 122
 
-capital letters like A to lower letter a converion :
+capital letters like A to lower letter a converion :     OR (|) → force lowercase only ⚠️
 -----------------------------------------------------
 A (65)  => 1 0 0 0 0 0 1     and a (97)  => 0 1 1 0 0 0 1 
 so the difference is '32' and in 65 binary 32 we will get on 5th bit so on 5th bit ko set krna hai so it will becomes 97.
@@ -197,7 +207,8 @@ Step 4️⃣ : Output print karo
 }
 Note:- 1<<5 = 32 hoti hai or space(' ') ki ASCII 32 hoti hai to hum instead of 1<<5 ki jgh space(' ') likh skte hai. with | operator
 
-lower letters like a to capital letter A conversion :
+
+lower letters like a to capital letter A conversion :    AND (&) → force uppercase only ⚠️
 -----------------------------------------------------
 a (97)  => 0 1 1 0 0 0 1
 A (65)  => 0 1 0 0 0 0 1
@@ -221,7 +232,8 @@ Step 4️⃣ : Output print karo
 }
 Note:-  ~(1<<5) ki jgh underscore('_') likh skte hai. 
 
-lower letters -> capital letter , capital letters -> lower letter conversion (toggle):
+
+lower letters -> capital letter , capital letters -> lower letter conversion (toggle):     SO USING XOR 
 --------------------------------------------------------------------------------------
 Steps to implements :
 Step 1️⃣ : Input lo
