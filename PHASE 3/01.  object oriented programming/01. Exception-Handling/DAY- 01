@@ -1,0 +1,60 @@
+Q1. What happens if a finally block throws an exception?
+
+public static void main(String[] args) {
+    try {
+        throw new RuntimeException("try exception");
+    } catch (Exception e) {
+        System.out.println("caught: " + e.getMessage());
+        throw e;
+    } finally {
+        throw new RuntimeException("finally exception");
+    }
+}
+
+A. Original exception is preserved
+B. Both exceptions are thrown
+C. Finally exception suppresses original
+D. Compilation error
+
+Ans: C 
+JVM ke brain ke andar kya hota hai :  
+                           - Step 1️⃣ try : 
+                                         - throw new RuntimeException("try exception");
+                                         - JVM: “Ok, exception aayi, dhyan me rakh leta hoon”.
+                           - Step 2️⃣ catch : 
+                                         - System.out.println("caught: try exception");
+                                            throw e;
+                                         - JVM : acha print ho gaya. lekin ye to dubara exception throw kar raha hai, to exception abhi zinda hai.
+                           - Step 3️⃣ finally (ALWAYS RUNS) :
+                                         - throw new RuntimeException("finally exception");
+                                         - JVM yahan bolega: Abe ruk… already ek exception chal rahi thi,lekin finally ne bhi exception throw kar di, Java rule ke hisab se finally wali zyada important hai.
+
+Q2. Which statement is TRUE?
+
+A. Checked exceptions are checked at runtime
+B. Unchecked exceptions must be declared using throws
+C. Error can be caught
+D. JVM forces handling of Error
+Ans :  C.  You can catch Error, but shouldn’t
+
+
+Q3. Guess the output ?
+
+public class Test {
+    public static void main(String[] args) {
+        try {
+            int x = 10 / 0;
+        } catch (ArithmeticException e) {
+            return;
+        } finally {
+            System.out.println("FINALLY");
+        }
+    }
+}
+
+Ans : FINALLY, finally executes even after return.
+
+
+Q4. 
+
+
