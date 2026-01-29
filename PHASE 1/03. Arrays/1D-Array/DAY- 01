@@ -102,19 +102,60 @@ Now, memory addresses:
 | 4         | 50      | 3000 + 4 * 4               | 3016    |
 
 
+
+
 Ways to Declare an Array  ?
 ------------------------------
 👉 Way 1: Declare and Then Initialize :
 int[] arr;         // Declaration
 arr = new int[5];  // Initialization with size 5
 
+
+Quiz-1 :
+You are given a number N.Create an integer array of size N.Take N numbers as input from the user. Print the array elements in reverse order.?
+
+Quiz-2 :
+You are given a number N. Create an integer array of size N. Take N numbers as input from the user. Print the largest number in the array. ?
+
+Quiz-3 :
+You are given a number N. Create an integer array of size N. Take N numbers as input from the user.Count how many numbers are even and how many numbers are odd. 
+Print the count of even and odd numbers.?
+
+
+
 👉 Way 2: Declare and Initialize Together
 int[] arr = new int[5];  // Declaration + Initialization
 // Or directly with values
 int[] arr2 = {10, 20, 30, 40, 50};  // Size is automatically 5
 
-Note:- above line is actually a shortcut for:    int[] arr2 = new int[]{10, 20, 30, 40, 50};
+Quiz-1 : 
+You are given a number N. Create an integer array of size N using declaration and initialization together.Take N numbers as input from the user.
+Print the array elements in reverse order.?
+
+Quiz-2 : 
+You are given a number N.Create an integer array of size N using declaration and initialization together.Take N numbers as input from the user.
+Print the largest number in the array.?
+
+Quiz-3 :
+You are given a number N.Create an integer array of size N using declaration and initialization together.Take N numbers as input from the user.
+Count how many numbers are even and how many numbers are odd.Print the count of even and odd numbers.?
+
+
+
+👉 Way 3: Anonymous Array :
+ways 2 'directly with values' is actually a shortcut for:  int[] arr2 = new int[]{10, 20, 30, 40, 50};
 compiler does it for you automatically when you use {} initialization.
+
+Quiz-1 : 
+You are given an integer array using anonymous array.Print all elements of the array. main(printArray(new int[]{10, 20, 30, 40, 50});){} ?
+
+Quiz-2 : 
+You are given an integer array using anonymous array. Print the sum of all elements. main(System.out.println(sum(new int[]{1, 2, 3, 4, 5}));){}; ?
+
+Quiz-3 :
+You are given an integer array using anonymous array.Print the largest number in the array.  System.out.println(max(new int[]{10, 5, 30, 2}));?
+
+
 
 
 Ways to Traverse on Array ?
@@ -154,7 +195,7 @@ Input:
     int[] values = {90, 88};
 Output:
 [1, 90, 2, 88, 3, 4, 5]
-Note:- use arrayList.
+Note:- use arrayList. to create modifialbe list usign array : Collectors.toCollection(ArrayList::new).                        START FROM HERE..............
 
 Q2. Follow up question delete element at any specific position ?
     you have 7 size array having elements 7 elements now you have to delete a particular elements at given index x ?
