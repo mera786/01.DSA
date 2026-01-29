@@ -37,3 +37,175 @@ Abstract:-
 | **Focus**                 | Focuses on **data protection**                                                                                | Focuses on **hiding implementation/internal working**                                                 |
 | **Access Control**        | Achieved by **access modifiers** (`private`, `protected`, `public`) and **getters/setters**                   | Achieved by **abstract classes** or **interfaces**                                                    |
 
+
+
+
+
+                                                                         MCQ OOPS
+                                                                        -----------
+
+Q1.
+
+class A {
+    static void show() {
+        System.out.println("A");
+    }
+}
+
+class B extends A {
+    static void show() {
+        System.out.println("B");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        A a = new B();
+        a.show();
+    }
+}
+
+
+Output: A
+
+
+
+Q2. Which statements are TRUE?
+- A final method can be overloaded
+- A final class can implement an interface
+- A private method can be overridden
+- A constructor can be static
+Output: A) 1 & 2
+
+
+Q3. 
+class Parent {
+    void test(Object o) {
+        System.out.println("Object");
+    }
+
+}
+
+class Child extends Parent {
+    void test(String s) {
+        System.out.println("String");
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.test("Hello");
+    }
+}
+Output: Object because Yahan overriding ho hi nahi rahi ❌. Signature same nahi hai, isliye overriding nahi, balki overloading hai.
+        or jab p.test("Hello") kr rhe hai to child class ka test method compile time pe visible hee nhi hai compiler ko. jab ki normal method overloading me overloading 
+        methods visible hote hain.
+
+
+
+Q4. will it give compile time error or not ?
+class Parent {
+     Parent() {
+     print();
+    }
+
+    void print(){
+
+    }    
+}
+Output: No, perfectly valid, Non-static → Non-static ko call kr skte hai.
+
+
+
+Q5.
+class Base {
+    Base() {
+        print();
+    }
+
+    void print() {
+        System.out.println("Base");
+    }
+}
+
+class Derived extends Base {
+    int x = 10;
+
+    Derived() {
+        print();
+    }
+
+    void print() {
+        System.out.println(x);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        new Derived();
+    }
+}
+
+
+Output:
+0
+10
+
+
+Q6. 
+
+interface A {
+    default void show() {
+        System.out.println("A");
+    }
+}
+
+interface B {
+    default void show() {
+        System.out.println("B");
+    }
+}
+
+class C implements A, B {
+    public void show() {
+        A.super.show();
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        new C().show();
+    }
+}
+
+Output: A 
+if show not overriden in C then it give us ambiguity problem.
+
+
+
+
+Q7. Can we override a method and reduce visibility?
+protected void process() {}
+Overridden as:
+void process() {}
+why ?
+Ans : protected → visible to subclasses + same package 
+Overriding rule: Overridden method must have same or wider visibility.
+
+
+Q8. What will break if equals() is overridden but hashCode() is not?
+Ans : HashMap trusts hashCode() first and equals() later — if hashCode lies, equals never gets a chance.
+
+
+Q9. Which Solid principle is violated?
+class PaymentService {
+    void pay(String type) {
+        if(type.equals("CARD")) { ... }
+        else if(type.equals("UPI")) { ... }
+        else if(type.equals("NETBANKING")) { ... }
+    }
+}
+
+Output: Open–Closed Principle : instead of doing this Create abstraction
+
