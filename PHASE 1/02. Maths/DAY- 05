@@ -4,34 +4,26 @@ Q136. LeetCode : Single Number ?
 Q137. LeetCode: Single Number || ?
 🔹 Step-by-Step Implementation : 
 Step 1: Take Input
-int arr [] = {2,2,3,2}
+             int arr [] = {2,2,3,2}
 Step 2: Initialize Result Variable 
-int res = 0;
-         - res will store the final unique number
-         - Initially all bits are 0
+                               - int res = 0;
 Step 3: Traverse Bit Positions (0 → 31)
-for (int i = 0; i < 32; i++)
-         - Java int = 32 bits
-         - We check each bit position independently
+                         for (int i = 0; i < 32; i++) // becoz ek integer me 32 bit hote hai to 0 th index se 31st index tak sab bit check krna hai.                          
 Step 4: Count Set Bits at Position i
-int bitCount = 0;
-
-for (int num : arr) {
-    if ((num & (1 << i)) != 0) {
-        bitCount++;
-    }
-}
-         - 1 << i → mask for i-th bit
-         - num & mask != 0 → i-th bit is set
-         - Count how many numbers have that bit set
-Step 5: Remove Triplet Effect
-if (bitCount % 3 != 0) {
-    res = res | (1 << i);
-}
-         - Numbers repeating 3 times cancel out
-         - Remaining bit belongs to the single number
+                            int bitCount = 0;
+Step 5: now use another foreach loop to pick array element and check the ith bit is set or not, if bit set then increase bit count.
+                            for (int num : arr) {
+                               if ((num & (1 << i)) != 0) {
+                                        bitCount++;
+                              }
+                           }
+Step 5: Remove Triplet Effect, becasue agr bit count ka 3 modulo krne pe remainder aa rha hai iska mtlb ye whi num hai jo apna extra bit countribute kiya hoga. to usko result me set kr dena hai.
+                         if (bitCount % 3 != 0) {
+                             res = res | (1 << i);
+                           }
 Step 6: Print Result
 System.out.println(res);
+
 
 
 
@@ -41,7 +33,7 @@ Approach :
 - first of all sabhi elements ka xor krenge , jisse jo same element hoga 0 ho jayega and 3 ^ 5 reh jayega. where
  3 : 0 1 1
 ^
- 5 : 1 0 0
+ 5 : 1 0 0 
 -----------
      1 1 0 = 6
 - ab 6 ka binary se ek koi v bit chahiye group krne k liye numbers ko, so we'll pick first right most bit becoz we have study.
