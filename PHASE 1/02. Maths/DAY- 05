@@ -37,7 +37,7 @@ Approach :
 -----------
      1 1 0 = 6
 - ab 6 ka binary se ek koi v bit chahiye group krne k liye numbers ko, so we'll pick first right most bit becoz we have study.
-  so  xor & -xor = 0 1 0
+  so for finding rsb is:  xor & -xor = 0 1 0
  now with the help of first right most bit we need to do & of all number to know kis number me bit set hai or kisme nhi. agr set nhi hai to ek grp me orna dusre grp me.
 1 -> 0 0 1
 2 -> 0 1 0
@@ -117,6 +117,39 @@ while (xor > 0) {
   - Har loop = ek bit flip
 Step 5: Final count print karo
 System.out.println(count);
+
+
+
+
+Q78. LeetCode : Subsets ?
+Defination :
+Subset का मतलब होता है किसी बड़े सेट (Set) का छोटा हिस्सा, जिसके सारे elements उस बड़े सेट में मौजूद हों।
+ex- Set A = {1, 2, 3}
+Possible subsets:
+total = 2³ = 8 hote hain. because hr element ke liye 2 choice hai either u can or not.
+{} → Empty Set
+{1}
+{2}
+{3}
+{1, 2}
+{1, 3}
+{2, 3}
+{1, 2, 3}
+Ye sab A ke subset hain kyunki inke saare elements A me already exist karte hain.
+💡 Important Points :
+- Empty set {} har set ka subset hota hai
+- Full set bhi apna khud ka subset hota hai
+- Order matter nahi karta: {1,2} = {2,1}
+- Duplicate allowed nahi hota (set rule)
+                                               ✅ Subset vs Subsequence vs Substring (Comparison Table) :
+                                  
+                                     | Feature             | Subset      | Subsequence    | Substring                  |
+                                     | ------------------- | ----------- | -------------- | -------------------------- |
+                                     | Works on            | Set / Array | Array / String | String only                |
+                                     | Order matters?      | ❌ No       | ✅ Yes        | ✅ Yes                     |
+                                     | Continuous?         | ❌ No       | ❌ No         | ✅ Yes (must be continuous)|
+                                     | Empty allowed?      | ✅ Yes      | ✅ Yes        | ❌ Usually no              |
+                                     | Total count formula | 2^n         | 2^n            | n(n+1)/2                   |
 
 
 
