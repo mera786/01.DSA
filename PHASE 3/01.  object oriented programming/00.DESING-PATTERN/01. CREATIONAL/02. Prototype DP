@@ -1,0 +1,54 @@
+Q11. What is Prototype pattern?
+Prototype Pattern means: existing object ko clone karke new object banana instead of creating from scratch.
+
+Q12. Why do we use Prototype pattern?
+ - To avoid expensive object creation. by duplicating objects with existing state.
+ - Supports runtime object creation without knowing the exact class.
+
+Q13. How do you implement Prototype in Java?
+- By implementing Cloneable interface and overriding clone() method.
+
+
+PROTOTYPE CODE :
+----------------
+
+1️⃣ Prototype Interface (Cloneable) :
+public interface Prototype extends Cloneable {
+    Prototype clone();
+}
+
+
+2️⃣ Concrete Class :
+public class Student implements Prototype {
+
+    private String name;
+    private int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public Student clone() {
+        return new Student(this.name, this.age);
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + age;
+    }
+}
+
+
+3️⃣ Client Code :
+public class Test {
+    public static void main(String[] args) {
+        Student s1 = new Student("Meraz", 25);
+
+        Student s2 = s1.clone(); // prototype copy    // shallow copy ho rha hai.
+
+        System.out.println(s1);
+        System.out.println(s2);
+    }
+}
