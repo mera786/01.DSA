@@ -230,6 +230,168 @@ Q24. Difference: AutoCloseable vs Closeable ?
 
 
 
+Q2: Difference between Error and Exception ?
+| Feature           | Error                                    | Exception                         |
+| ----------------- | ---------------------------------------- | --------------------------------- |
+| Definition        | Serious problems, not meant to be caught | Conditions that can be handled    |
+| Checked/Unchecked | Unchecked                                | Can be checked or unchecked       |
+| Example           | OutOfMemoryError, StackOverflowError     | IOException, NullPointerException |
+
+Q3. What are the Types of Exceptions?
+Checked (compile-time) vs Unchecked (runtime)
+
+Q4. Difference between Checked and Unchecked Exceptions ?
+Checked Exceptions :
+- Definition: Exceptions that the compiler checks at compile-time.
+- You must handle them either using try-catch or throws in method signature.
+- Examples: IOException, SQLException, FileNotFoundException.
+- When it occurs: Usually happens due to external conditions, like reading a file or network operations.
+Unchecked Exceptions:
+- Definition: Exceptions that the compiler does not check at compile-time.
+- Usually happen due to programming errors.
+- Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException.
+- When it occurs: At runtime, when the erroneous code execute
+
+Q5. How do you handle exceptions in Java?
+  a. try-catch : Handle multiple exception types in a single catch using |  eg- catch (ArithmeticException | ArrayIndexOutOfBoundsException e)
+  b. try-catch-finally
+  c. throws keyword : You can declare that a method throws an exception.
+  d. try-with-resources  : Automatically closes resources like files, sockets, DB connections,No need for finally for closing resources.
+    eg- 
+         try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+          System.out.println(br.readLine());
+          } catch (IOException e) {
+          System.out.println("IOException occurred: " + e.getMessage());
+          }
+  e. Rethrowing exceptions/Propagating exceptions : You can rethrow exceptions from catch.
+     eg-
+            try {
+            int result = 10 / 0;
+            } catch (ArithmeticException e) {
+            System.out.println("Handling partially");
+               throw e; // propagate further
+              }
+  f. Custom exceptions : Create your own exception class and handle it using try-catch.
+  eg- 
+    class MyException extends Exception {
+    MyException(String message) { super(message); }
+   }
+  public void test() throws MyException {
+    throw new MyException("Custom Exception");
+   }
+
+Q6. What is try catch ?
+In Java, try-catch is used to handle exceptions, which are unexpected errors that occur during program execution. The try block contains code that might throw an exception, 
+and the catch block contains code to handle that exception so the program can continue running without crashing. This helps in making programs more robust and error-tolerant
+
+Q7. Can we have multiple catch blocks in Java?
+Yes, Java allows multiple catch blocks to handle different exceptions separately. There are two main approaches:
+  a. Traditional approach (before Java 7): You can write multiple catch blocks, each handling a specific exception type: 
+try {
+    // code that may throw exceptions
+} catch (IOException e) {
+    System.out.println("IOException occurred");
+} catch (SQLException e) {
+    System.out.println("SQLException occurred");
+}
+  b. Multi-catch approach (Java 7+): You can combine multiple exception types in a single catch block using the | operator:
+try {
+    // code that may throw exceptions
+} catch (IOException | SQLException e) {
+    System.out.println("IOException or SQLException occurred");
+}
+
+Q8. What is finally block?
+A: Block executed always, whether exception occurs or not. Often used for resource cleanup.
+
+Q9. Can we write finally block without catch block ?
+Yes 👍, we can write a finally block without a catch block,A try block must be followed by either a catch block or a finally block (or both).
+
+Q10. Can we write try block without catch or finally block ?
+No, we cannot write a try block alone without a catch or finally.A try block must be followed by at least one catch block or a finally block.
+
+Q11. Difference between throw and throws ?
+| Keyword  | Purpose                                                      |
+| -------- | ------------------------------------------------------------ |
+| `throw`  | Used to explicitly throw an exception from a method or block |
+| `throws` | Declares exception(s) that a method can throw                |
+
+Q12. Explain Try-with-Resources in Java ?
+- Try-with-resources is a feature introduced in Java 7 that allows us to automatically close resources (like files, sockets, database connections) after the program is finished using them.
+- It ensures that resources are closed properly, even if an exception occurs, without the need of writing finally blocks manually.
+- If a class implements AutoCloseable, it means its object can be closed automatically (like a file, network connection, or database connection).
+- eg :
+try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
+    String line = br.readLine();
+    System.out.println(line);
+} catch (Exception e) {
+    e.printStackTrace();
+}
+Note:- a. 👉 Yahan BufferedReader already AutoCloseable implement karta hai.
+       b. 👉 Tum apna khud ka class bhi bana sakte ho jo AutoCloseable implement kare:
+class MyResource implements AutoCloseable {
+    public void use() {
+        System.out.println("Using my resource...");
+    }
+
+    @Override
+    public void close() {
+        System.out.println("Closing my resource...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try (MyResource res = new MyResource()) {
+            res.use();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+Q13. Can we write other statements in between try ,catch or finally block? 
+- No, we cannot write any normal statement between try and catch or between catch and finally.
+  Because Java syntax rule kehta hai: catch must immediately follow try, and finally must immediately follow the last catch.
+- eg :
+try {
+    int a = 10/0;
+}
+System.out.println("Hello");  // ❌ Not allowed here
+catch (ArithmeticException e) {
+    System.out.println("Exception handled");
+}
+
+Q14. What happens in try block if an exception occurs?
+- If no exception occurs → saare statements in try block execute ho jaate hain line by line.
+- If an exception occurs → uss point se aage ke statements skip ho jaate hain, aur control catch block me transfer ho jaata hai.
+
+Q15. What happens when main() throws an exception?
+- If exception is not handled inside main.
+- JVM will handle it, and prints : Exception type, Description (message), Stack trace (line number where it happened).
+
+Q16. What do you understand by unreachable catch block error ?
+An unreachable catch block is a catch block that can never be executed, usually because a parent exception is already caught before it.
+eg- 
+try {
+    int a = 10 / 0;
+} catch (Exception e) { // Parent exception
+    System.out.println("Exception caught");
+} catch (ArithmeticException e) { // ❌ Unreachable
+    System.out.println("ArithmeticException caught");
+}
+
+Q17. Explain Exception class ?
+- It is a subclass of Throwable.
+- Exception class is a general class that can handle all types of exceptions (checked and unchecked) because all exceptions are its subclasses.
+- A specific exception (like NullPointerException or ArithmeticException) can only handle that particular type of exception.
+
+Q18. What is Exception Propagation ?
+- Exception Propagation is the process by which an exception is passed (propagated) from the point where it occurs to the higher method in the call stack until it is caught and handled.
+- In simple words, if a method does not handle an exception, it automatically propagates the exception to the method that called it. This continues up the call stack until either the exception is caught or the program terminates.
+
+ 
 
 
 
