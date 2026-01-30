@@ -1,0 +1,114 @@
+Q19. What is Abstract Factory pattern?
+Abstract Factory ek Factory of Factories hoti hai. Ye related objects ka family create karti hai without specifying concrete classes.
+Simple line:
+Factory = ek product banata hai
+Abstract Factory = related products ka group banata hai
+
+Q20. Why use Abstract Factory?
+ - To create sets of related objects consistently.
+ - To decouple client code from concrete implementations.
+ - Useful when you want different themes or platforms with a consistent interface.
+
+❓ Problem Scenario ?
+Suppose tu Car + Engine banana chahta hai.
+For BMW:
+      BMWCar
+      BMWEngine
+For Audi:
+      AudiCar
+      AudiEngine
+Client ko BMW ya Audi family choose karni hai.
+
+❌ Without Abstract Factory ?
+new BMWCar();
+new BMWEngine();
+
+new AudiCar();
+new AudiEngine();
+❌ Tight coupling
+❌ Client ko sab classes pata honi chahiye
+
+
+
+ABSTRACT FACTORY CODE :
+
+1️⃣ Abstract Product Interfaces :
+interface Car {
+    void drive();
+}
+
+interface Engine {
+    void start();
+}
+
+
+2️⃣ Concrete Products (BMW Family) :
+class BMWCar implements Car {
+    public void drive() {
+        System.out.println("Driving BMW Car");
+    }
+}
+
+class BMWEngine implements Engine {
+    public void start() {
+        System.out.println("Starting BMW Engine");
+    }
+}
+
+
+3️⃣ Concrete Products (Audi Family) :
+class AudiCar implements Car {
+    public void drive() {
+        System.out.println("Driving Audi Car");
+    }
+}
+
+class AudiEngine implements Engine {
+    public void start() {
+        System.out.println("Starting Audi Engine");
+    }
+}
+
+
+4️⃣ Abstract Factory :
+interface VehicleFactory {
+    Car createCar();
+    Engine createEngine();
+}
+
+
+5️⃣ Concrete Factories :
+class BMWFactory implements VehicleFactory {
+    public Car createCar() {
+        return new BMWCar();
+    }
+    public Engine createEngine() {
+        return new BMWEngine();
+    }
+}
+
+class AudiFactory implements VehicleFactory {
+    public Car createCar() {
+        return new AudiCar();
+    }
+    public Engine createEngine() {
+        return new AudiEngine();
+    }
+}
+
+
+6️⃣ Client Code :
+public class Test {
+    public static void main(String[] args) {
+
+        VehicleFactory factory = new BMWFactory(); // choose family
+
+        Car car = factory.createCar();
+        Engine engine = factory.createEngine();
+
+        car.drive();
+        engine.start();
+    }
+}
+
+
