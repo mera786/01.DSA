@@ -1,0 +1,92 @@
+Q14. What is Factory Design Pattern?
+Factory Pattern ek Creational Design Pattern hai jo object creation logic ko hide karta hai aur client ko sirf interface deta hai.
+In simple line: Object banana factory ka kaam, use karna client ka kaam.
+
+
+❓ Problem Without Factory ?
+Car car = new BMW();
+Car car2 = new Audi();
+Car car3 = new Tesla();
+           ❌ Client ko har class ka naam pata hona chahiye
+           ❌ Code tight coupled ho jata hai
+           ❌ New car add karne pe client code change karna padega
+
+Q15. Why use Factory pattern?
+ - To decouple object creation from usage.
+ - To increase flexibility and maintainability.
+ - Helps follow Open/Closed Principle: new types can be added without modifying existing code.
+
+Q16. What are types of factory pattern ?
+ - Simple Factory (Not a formal GoF pattern) : Provides a method to create objects based on input.
+- Factory Method : Defines an interface for creating objects, but subclasses decide the concrete class.
+- Abstract Factory : Creates families of related objects without specifying their concrete classes.
+
+Q17. How to implement Factory Method?
+  - Define Product Interface – Shape with draw() method.
+  - Create Concrete Products – Circle and Square implement Shape.
+  - Create Factory Class – ShapeFactory has getShape(String type) to return objects based on input.
+  - Use the Factory – In TestFactory.main(), create ShapeFactory, call getShape("CIRCLE"), and invoke draw().
+✅ Key idea: Client code uses the factory to get objects without knowing the exact class.
+
+Q18. Difference between Factory Method and Abstract Factory ?
+| Factory Method                                 | Abstract Factory                                 |
+| ---------------------------------------------- | ------------------------------------------------ |
+| Creates **one product** at a time              | Creates **family of related products**           |
+| Subclasses decide which product to instantiate | Provides an interface for multiple factories     |
+| Example: ShapeFactory                          | Example: GUIFactory (WindowsFactory, MacFactory) |
+
+
+
+FACTORY CODE :
+---------------
+
+1️⃣ Product Interface :
+interface Car {
+    void drive();
+}
+
+
+2️⃣ Concrete Classes :
+class BMW implements Car {
+    public void drive() {
+        System.out.println("Driving BMW");
+    }
+}
+
+class Audi implements Car {
+    public void drive() {
+        System.out.println("Driving Audi");
+    }
+}
+
+
+3️⃣ Factory Class :
+class CarFactory {
+
+    public static Car getCar(String type) {
+
+        if (type.equalsIgnoreCase("BMW")) {
+            return new BMW();
+        } 
+        else if (type.equalsIgnoreCase("AUDI")) {
+            return new Audi();
+        }
+
+        return null;
+    }
+}
+
+
+4️⃣ Client Code :
+public class Test {
+    public static void main(String[] args) {
+
+        Car car1 = CarFactory.getCar("BMW");
+        car1.drive();
+
+        Car car2 = CarFactory.getCar("AUDI");
+        car2.drive();
+    }
+}
+
+
