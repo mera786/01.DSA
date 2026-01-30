@@ -1,0 +1,96 @@
+Q1.  What is Degisn Pattern ?
+   - A design pattern is a well-proven,reusable solution for common software problems not a finished code but a template to solve problems. 
+   - To make code more flexible, maintainable, and scalable,reduce code duplication
+
+Q2. How Many Types Of Design Pattern ?
+    There are 3 types :
+     a. Creational Patterns (Singleton, Prototype, Factory, Builder)
+     b. Structural Patterns (Adapter, Decorator, Proxy, Facade)
+     c. Behavioral Patterns (Observer, Strategy, Command, Chain of Responsibility)
+
+Q3. What is creational Design Pattern?
+Creational design patterns deal with object creation mechanisms, making it flexible and reusable without tightly coupling your code to specific classes.
+
+Q4. How many types of creational design pattern ?
+There are 5 main types of Creational Design Patterns:
+                          - Singleton
+                          - Prototype
+                          - Factory Method
+                          - Abstract Factory
+                          - Builder
+
+Q5. What is Singleton pattern?
+Answer: Ensures a class has only one instance and provides a global access point.
+
+Q6. Why do we use Singleton?
+Answer: To control object creation, save memory, and provide a single shared resource like DB connections, logging, etc.
+
+Q7. How do you implement Singleton in Java?
+There are Multiple ways:
+          a. Eager Initialization
+          b. Lazy Initialization
+          c. Thread-safe (synchronized)
+          d. Double-checked Locking (efficient)
+
+Q8. How to make Singleton thread-safe?
+Use synchronized, double-checked locking, or static inner class
+
+Q9. When should you not use Singleton?
+When you need multiple instances, e.g., in multithreaded contexts where independent instances are required.
+
+Q10. What can break Singleton? 
+Serialization & Reflection are two common ways ?
+ - Serialization : 
+      suppose if you serialize a class's instance to a file and then deserialize it, Java creates a new instance! That violates the Singleton principle (only one instance).
+ - Solution: Use readResolve() method:
+ protected Object readResolve() {
+    return getInstance(); // ensures deserialized object is same instance
+}
+- Reflection :
+Reflection allows you to access private constructors.
+- example :
+  Constructor<Singleton> constructor = Singleton.class.getDeclaredConstructor();
+  constructor.setAccessible(true);
+  Singleton s2 = constructor.newInstance(); // creates a new instance
+- Solution: Prevent it in constructor:
+ private Singleton() {
+    if (INSTANCE != null) {
+        throw new RuntimeException("Use getInstance() method");
+      }}
+
+
+SINGLETON CODE :
+----------------
+
+Double-Checked Locking (DCL) :
+
+
+public class Person {
+
+    // shared instance (volatile important for DCL)
+    private static volatile Person p = null;
+
+    private Person() {
+        // private constructor (prevent new Person())
+    }
+
+    public static Person getP() {
+
+        // 🔹 1st CHECK (WITHOUT LOCK)  ← DCL Part-1
+        if (p == null) {
+
+            // synchronized block (lock on class)
+            synchronized (Person.class) {
+
+                // 🔹 2nd CHECK (WITH LOCK) ← DCL Part-2
+                if (p == null) {
+                    p = new Person(); // create instance only once
+                }
+            }
+        }
+
+        return p;
+    }
+}
+
+
