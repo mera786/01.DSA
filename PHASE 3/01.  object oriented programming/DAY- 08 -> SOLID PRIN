@@ -1,0 +1,18 @@
+Q38. Explain SOLID Principles ?
+👉 SOLID is a set of 5 design principles in object-oriented programming.
+a. S – Single Responsibility Principle (SRP) : 
+                      - A class should do only one job. If one class is doing multiple jobs, changes in one part may break another.
+                      - eg - Controller is only responsible for API endpoints, not business logic. etc
+b. O – Open/Closed Principle (OCP) :
+                      - Code should be open for extension, closed for modification. Means: add new features without changing old code.
+                      - eg- In Spring Boot, we achieve this using interfaces + polymorphism + dependency injection.
+c. L – Liskov Substitution Principle (LSP) :
+                      - Subclasses should be usable anywhere parent is used, without breaking behavior.
+                      - In simple words → Child classes should be able to replace parent classes and behave correctly.
+                      - eg - In Spring Boot, we achieve it by designing interfaces with proper contracts and making sure all implementations behave consistently.
+d. I – Interface Segregation Principle (ISP) :
+                      - Don’t force classes to implement methods they don’t use. Better to have small specific interfaces than one big interface.
+                      - eg- In Spring Boot, we achieve it by designing modular service interfaces.
+D – Dependency Inversion Principle (DIP):
+                      - Classes should depend on interfaces, not concrete classes. This makes code flexible and testable.
+                      - eg - In Spring Boot, we achieve DIP naturally using interfaces + dependency injection.
