@@ -126,7 +126,7 @@ Defination :
 Subset का मतलब होता है किसी बड़े सेट (Set) का छोटा हिस्सा, जिसके सारे elements उस बड़े सेट में मौजूद हों।
 ex- Set A = {1, 2, 3}
 Possible subsets:
-total = 2³ = 8 hote hain. because hr element ke liye 2 choice hai either u can or not.
+total = 2³ = 8 hote hain. because hr element ke liye 2 choice hai either u can take or not.
 {} → Empty Set
 {1}
 {2}
@@ -150,6 +150,28 @@ Ye sab A ke subset hain kyunki inke saare elements A me already exist karte hain
                                      | Continuous?         | ❌ No       | ❌ No         | ✅ Yes (must be continuous)|
                                      | Empty allowed?      | ✅ Yes      | ✅ Yes        | ❌ Usually no              |
                                      | Total count formula | 2^n         | 2^n            | n(n+1)/2                   |
+
+
+STEPS TO IMPLEMENT :
+
+1. takes input :
+            int [] arr = {1,2,3};
+2. use formula to find subsets like, 2^nums.length;
+            int ss = 1<<nums.length;
+3. Outer Loop → Iterate Over All Bitmasks :
+            for(int i = 0; i < ss; i++) {
+4. Create New List for Each Subset :
+            List<Integer> list = new ArrayList<>();
+5. Inner Loop → Check Each Bit :
+            for(int j = 0; j < arr.length; j++) {
+6. Bit Checking Condition :
+           if ((i & (1 << j)) != 0) {
+               list.add(arr[j]);
+            }
+7. Store Subset :
+             subset.add(list);
+8. return all subsets :
+        return subsets;
 
 
 
