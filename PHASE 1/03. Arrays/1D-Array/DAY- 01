@@ -111,7 +111,7 @@ int[] arr;         // Declaration
 arr = new int[5];  // Initialization with size 5
 
 
-Quiz-1 :
+Quiz-1 : 
 You are given a number N.Create an integer array of size N.Take N numbers as input from the user. Print the array elements in reverse order.?
 
 Quiz-2 :
@@ -126,7 +126,7 @@ Print the count of even and odd numbers.?
 👉 Way 2: Declare and Initialize Together
 int[] arr = new int[5];  // Declaration + Initialization
 // Or directly with values
-int[] arr2 = {10, 20, 30, 40, 50};  // Size is automatically 5
+int[] arr2 = {10, 20, 30, 40, 50};  // Size is automatically 5 
 
 Quiz-1 : 
 You are given a number N. Create an integer array of size N using declaration and initialization together.Take N numbers as input from the user.
