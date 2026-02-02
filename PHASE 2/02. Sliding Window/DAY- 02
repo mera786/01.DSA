@@ -8,11 +8,12 @@ Hint:
  1. intialize pre compute sum of k element using loops till k 
  2. update max sum with precompute sum 
  3. now use sliding window and also compare max sum .
-
-end..
+Note:- Subarray me elements continuous hone chahiye.Matlab index ke beech gap nahi hona chahiye.  
 
 
 📌 LeetCode Problem Number: 643   Maximum Average Subarray
 Input: nums = [1,12,-5,-6,50,3], k = 4
 Output: 12.75000
-Explanation: Maximum average is (12 - 5 - 6 + 50) / 4 = 51 / 4 = 12.75
+Explanation: Maximum average is (12 - 5 - 6 + 50) / 4 = 51 / 4 = 12.75 
+
+
