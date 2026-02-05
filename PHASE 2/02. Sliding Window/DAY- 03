@@ -4,7 +4,8 @@ Input:
         int[] nums = {12, -1, -7, 8, -15, 30, 16, 28};
         int k = 3;
 Output:
-[-1, -1, -7, -15, -15, 0]
+[-1, -1, -7, -15, -15, 0] 
+Note:- use Queue Datastructure.
 
 
   
