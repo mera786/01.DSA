@@ -35,10 +35,10 @@ Q1. What is a functional interface?
 An interface with exactly one abstract method. Can have default or static methods.
 
 Q2. What are the built-in Java 8 functional interfaces?
-    - Predicate<T> → returns boolean
-    - Function<T,R> → maps T to R
-    - Consumer<T> → accepts input, no return
-    - Supplier<T> → returns value
+    - Predicate<T> → returns boolean                              boolean test(T t); 
+    - Function<T,R> → maps T to R                                 R apply(T t);
+    - Consumer<T> → accepts input, no return                      void accept(T t);
+    - Supplier<T> → returns value                                 T get();
     - BiFunction<T,U,R> → two inputs, one output
 
 Q3. Can functional interface have multiple default methods?
