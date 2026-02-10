@@ -76,6 +76,43 @@ Note:- Real polymorphism = Runtime polymorphism only.
 
 
 
+Example: 
+
+✅ Compile-time Polymorphism (Method Overloading) :
+
+class Test {
+
+    void m1(Object obj) {
+        System.out.println("Object version called");
+    }
+
+    void m1(String name) {
+        System.out.println("String version called");
+    }
+
+    public static void main(String[] args) {
+
+        Test t = new Test();
+
+        t.m1("sahil");  // Output = String version called
+    }
+}
+
+
+❌ Ambiguous case (compile-time error)  :
+
+class Test {
+
+    void m1(String s) {}
+    void m1(StringBuilder sb) {}
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.m1(null); // ❌ compile-time error
+    }
+}
+
+
 
 
 🅰️ Method Overloading (Compile-time Polymorphism) :
