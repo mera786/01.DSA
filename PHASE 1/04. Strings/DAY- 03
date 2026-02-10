@@ -32,3 +32,11 @@ System.out.println(formatted);
 | `%c`      | Character       | `String.format("%c", 'A')`        | A                |
 | `%b`      | Boolean         | `String.format("%b", true)`       | true             |
 | `%n`      | New line        | `String.format("Line1%nLine2")`   | Line1 <br> Line2 |
+
+
+Q. given strings , the task is to swap both string without third variable so that str1 should point "Alam" and str2 should point "Meraz" ?
+
+   String str1 = "Meraz";
+   String str2 = "Alam";
+
+
