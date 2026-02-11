@@ -133,7 +133,7 @@ Stream API:
 ------------
 
 Q1. What is a Stream?
-A sequence of elements supporting aggregate operations (map, filter, reduce) without storing data. it is used to perform bulk of operation on collection objects?
+A sequence of elements supporting aggregate operations (map, filter, reduce) without storing data. it is used to perform bulk of operation on collection objects.
 
 Q2. Difference Between Collection and Stream in Java 8 ?
 | Aspect                  | **Collection**                                                             | **Stream**                                                                           |
