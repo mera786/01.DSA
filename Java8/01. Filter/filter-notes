@@ -126,7 +126,7 @@ Output: 868
                                                           🔶 MEDIUM (1-12)
                                                         ------------------------- 
 
-(1) Print the multiplication of alternate number in an array ?
+(1) Print the multiplication (product) of alternate elements of an array starting from the first element.(pehla element)?
 Input: 
 int arr []= {1,43,2,25,1,53,6};
 Output: 12
@@ -138,7 +138,7 @@ Output: 36,5
 
 (3) Students who scored more than 70 ?
 Input:
-List<E_02> list = Arrays.asList(  
+List<Students> list = Arrays.asList(  
     new Students("Alice", 85),  
     new Students("Bob", 65)  
 );  
@@ -146,7 +146,7 @@ Output: Alice
 
 (4) Employees with salary > 50,000 ?
 Input: 
-List<E_02> list = Arrays.asList(  
+List<Employees> list = Arrays.asList(  
     new Employees("Alice", 40000),  
     new Employees("Bob", 55000)  
 );  
@@ -240,11 +240,13 @@ Input: List<Employees> list = Arrays.asList(
 Output: [Employees{name='Bob', attendance=85}]
 
 (4) Projects that lasted more than 1 year ?
-Input : List<Projects> list = Arrays.asList(
-    new Projects("Project1", "2020-01-01", "2020-12-31"),
-    new Projects("Project2", "2020-01-01", "2021-06-30")
-);
-Output: [Projects{name='Project2', start='2020-01-01', end='2021-06-30'}]
+Input : 
+        List<Projects> list = Arrays.asList(
+                new Projects("Project1", LocalDate.of(2020, 1, 1), LocalDate.of(2020, 12, 31)),
+                new Projects("Project2", LocalDate.of(2020, 1, 1), LocalDate.of(2021, 6, 30))
+        );
+Output:  [Projects{name='Project2', start=2020-01-01, end=2021-06-30}]
+Note:- .filter(p -> ChronoUnit.DAYS.between(p.getStart(), p.getEnd()) > 365).
 
 (5) Students whose average score >= 70 ?
 Input: List<Students> students = Arrays.asList(
