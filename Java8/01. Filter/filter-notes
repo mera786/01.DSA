@@ -11,7 +11,7 @@ List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 
 (2) Given a list of strings, filter out strings with length less than or equals to 3 ?
 • Input: 
-List<String> list = Arrays.asList("apple", "bat", "car", "dog");
+List<String> list = Arrays.asList("apple", "bat", "car", "dog"); 
 • Output: ["bat", "car", "dog"]
 
 (3) Given a list of names, filter out names that start with 'A' ?
