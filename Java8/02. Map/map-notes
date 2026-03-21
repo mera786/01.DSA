@@ -92,7 +92,7 @@ Output: [example.com, domain.com]
 Input: 
 List<Integer> list = Arrays.asList(0, 100, 37); 
 Output: [32.0, 212.0, 98.6] 
-Note:- use formula : f  = (c * 9.0/5 ) + 32
+Note:- use formula : f  = (c * 9.0/5 ) + 32 
 
 (8) Creating a List of Even/Odd Status from integer list? 
 Input: 
