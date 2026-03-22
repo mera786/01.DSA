@@ -60,6 +60,8 @@ Note:-
   [^ ] = NOT (negation)
         eg - [^abc] => a, b, c ko छोड़कर kuch bhi.
 
+Example in code intellij IDEA .
+
 
 📌 Quantifiers 
 - Quantifiers operator hai jo character/class ke saath use hota hai.
@@ -68,14 +70,16 @@ Note:-
 📊 Quantifiers Table
 | Pattern  | Meaning (Simple)                            | Example Match          |
 | -------- | ------------------------------------------- | ---------------------- |
-| `a*`     | 0 ya usse zyada baar (zero or more)         | "", a, aaa             |
-| `a+`     | kam se kam 1 baar (one or more)             | a, aaa                 |
-| `a?`     | 0 ya 1 baar (optional)                      | "", a                  |
+| `a?`     | 'a' occues 1 baar ya not at all             | "", a                  |
+| `a+`     | kam se kam 1 baar  or more times            | a, aaa                 |
+| `a*`     | 'a' occurs 0 or more times                  | "", a, aaa             |
 | `a{n}`   | exactly n times                             | a{3} → aaa             |
-| `a{n,}`  | kam se kam n baar                           | a{2,} → aa, aaa        |
+| `a{n,}`  | kam se kam n baar or more times             | a{2,} → aa, aaa        |
 | `a{n,m}` | n se m ke beech                             | a{2,5} → aa, aaa, aaaa |
 | `.*`     | kisi bhi character ka 0 ya zyada repetition | abc, 123               |
 | `.+`     | kisi bhi character ka at least 1 repetition | a, xyz                 |
+
+Example in code intellij IDEA .
 
 
 📌 Escape Characters :
