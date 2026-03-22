@@ -122,23 +122,13 @@ new Book("Brave New World", "Huxley")
 ); 
 Output: [1984, Brave New World] 
 
-(3) Converting to JSON Format? 
-Input:  
-List<A> list = Arrays.asList( 
-new A("Alice"), 
-new A("Bob") 
-); 
-Output: ["{\"name\":\"Alice\"}", "{\"name\":\"Bob\"}"]
-Note:   // ✅ Convert to JSON using Jackson
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(filteredList);
 
-(4) Mapping Student Grades to Letter Grades? 
+(3) Mapping Student Grades to Letter Grades? 
 Input:
 List<Integer> list = Arrays.asList(95, 85, 76, 62); 
 Output: [A, B, C, D]
 
-(5) Extracting Specific Fields from Complex Objects? 
+(4) Extracting Specific Fields from Complex Objects? 
 Input:  
 List<A> list = Arrays.asList( 
 new A("John", "Doe", 50000), 
