@@ -223,4 +223,4 @@ Input:
                     new Item(3, "C")
             ));
 Output: [A{id=1, name='A'}, A{id=2, name='B'}, A{id=3, name='C'}] 
-
+ 
