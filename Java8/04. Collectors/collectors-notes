@@ -174,3 +174,4 @@ Q26. Find the first repeating character in a string.?
 Input: 
 String input = "swissiw"; 
 Output: s
+Note:- use hashSet.
