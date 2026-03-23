@@ -131,13 +131,22 @@ Q20. draw this pattern ?
  *   *
   * *
    * 
+
+alternate input with space:
+---*---
+--*-*--
+-*---*-
+*-----*
+-*---*-
+--*-*--
+---*---
 making odd number formula : (2 * i) - 1 and from this formula also made this one for lower half = 2 * (n - i - 1) - 1
 
 
 Q21. draw this pattern ?
 *      *
 **    **
-***  ***
+***  *** 
 ********
 ********
 ***  ***
