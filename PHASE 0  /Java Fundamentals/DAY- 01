@@ -3,7 +3,7 @@
   - Similarly, to communicate with computers, programmers need a Programming Language.
   - Definition: A programming language is a set of instructions written in a specific syntax that a computer can understand and execute.
 
-2. Types of Programming Languages (Based on Abstraction)
+2. Types of Programming Languages (Based on Abstraction{mtlb Language kitna machine se door (abstract) hai})
     - A. Machine Language :
               - Lowest level programming language.
               - Consists of binary code (0s and 1s).
