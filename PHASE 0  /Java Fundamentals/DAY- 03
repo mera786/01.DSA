@@ -4,7 +4,7 @@
    - It represents constant data that doesn’t change.
    - Example: 
 int x = 10;      // 10 is a literal
-char ch = 'A';   // 'A' is a literal
+char ch = 'A';   // 'A' is a literal 
 
 (2) Types of Literals in Java ?
 Java supports different types of literals based on data types:
