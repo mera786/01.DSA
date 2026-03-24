@@ -3,7 +3,7 @@
 👉 Iska main goal:
                 - Time complexity ko optimize karna (O(n²) → O(n))
                 - Extra space avoid karna
-
+ 
 🧠 Different Types of Two Pointer Approaches 
 1. ✅ Opposite Direction (Start + End) :
 int left = 0;
@@ -12,11 +12,12 @@ int right = arr.length - 1;
     array should be Sorted(ya pehle sort karo).
     problem likes, 
 
-1. Two Sum (Sorted)
-Input:
-[1,2,3,4,6], target = 6
-Output:
-true
+LeetCode.167:-  Two Sum II - (Array Sorted) ?
+Input: 
+int [] numbers = {2,7,11,15};
+int target = 9;
+Output: 
+[1,2]
 
 2. Pair with Given Difference
 Input:
