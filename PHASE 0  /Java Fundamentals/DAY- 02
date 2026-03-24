@@ -35,7 +35,7 @@ Note:- Most of the time we use pseudocode to solve question rather than follow c
 A process is the instance of a computer program that is being executed.
 
 4. What is a Algorithm? 
-An algorithm is a procedure or set of rules that defines how a program is to be executed. In the algorithm, plain text is used. The algorithm does not follow any rules
+An algorithm is a step by step procedure or set of rules that defines how a program is to be executed. In the algorithm, plain text is used. The algorithm does not follow any rules
 
 5. What is a Pseudocode? 
 It is the mimic of a code. Represents code-like structure of a algorithm.
