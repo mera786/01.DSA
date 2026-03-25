@@ -8,7 +8,7 @@ int c = a + b; // '+' is an arithmetic operator
 Java provides several types of operators:
 | No. | Operator Type       | Example               |
 | --- | ------------------- | --------------------- |
-| 1️⃣ | Unary Operator      | ++, --, !(condition)  |
+| 1️⃣ | Unary Operator      | ++, --, !(condition)  | ye ! logical NOT operator hai (category ke hisaab se) but usage ke hisaab se unary operator me bhi use hota hai.
 | 2️⃣ | Arithmetic Operator | +, -, *, /, %         |
 | 3️⃣ | Shift Operator      | <<, >>, >>>           |
 | 4️⃣ | Relational Operator | >, <, >=, <=, ==, !=  |
@@ -28,6 +28,22 @@ EX-
 int x = 5;
 System.out.println(++x); // 6
 System.out.println(--x); // 5
+🔹 Types of Increment / Decrement :
+                    ✅ Pre-Increment (++a) : Value pehle increase hoti hai, fir use hoti hai.
+                           Ex- int x = 5;
+                           System.out.println(++x); // 6
+                     ✅ Post-Increment (a++) : Value pehle use hoti hai, fir increase hoti hai.
+                           Ex- int x = 5;
+                           System.out.println(x++); // 5
+                           System.out.println(x);   // 6
+                    ✅ Pre-Decrement (--a) : Value pehle decrease hoti hai, fir use hoti hai.
+                           Ex- int x = 5;
+                           System.out.println(--x); // 4
+                    ✅ Post-Decrement (a--) : Value pehle use hoti hai, fir decrease hoti hai.
+                           Ex- int x = 5;
+                           System.out.println(x--); // 5
+                           System.out.println(x);   // 4
+
 
 2️⃣ Arithmetic Operators
  - Used for basic mathematical operations.
