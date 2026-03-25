@@ -42,7 +42,7 @@ There are 4 ways to represent character literals:
          - Strings are objects in Java.
          - Example : String s = "Hello Java!";
 - e. Boolean Literals :
-         - Can only have two values: true or false.
+         - Can only have two values: true or false. 
          - Example:
 boolean isJavaFun = true;
 boolean isCold = false;
