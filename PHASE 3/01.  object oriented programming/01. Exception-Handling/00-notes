@@ -66,8 +66,10 @@ there are many ways to handle exceptions :
 2️⃣ throws  and throws keyword :
 
 
+                                                                           COMPILE-TIME EXCEPTION
+                                                                           -----------------------
 
-SQL INJECTION / SQL EXCEPTION :
+1. SQL INJECTION / SQL EXCEPTION :
 public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/db2"; // DB url
         String user = "root";  // DB username
@@ -111,6 +113,103 @@ public static void main(String[] args) {
     }
 Note: Driver class needed. download kro ya spring boot me sql ka dependncy lgao or alg se main method bna ke run kr lo.
 
+
+2. IOException :
+ public static void main(String[] args) {
+        try {
+            FileReader fr = new FileReader("nonexistentfile.txt"); // file nahi hai
+            BufferedReader br = new BufferedReader(fr);
+
+            String line = br.readLine();
+            System.out.println(line);
+
+            br.close();
+        } catch (IOException e) {
+            System.out.println("IO Exception occurred: " + e.getMessage());
+        }
+    }
+Note:- Agar file "nonexistentfile.txt" exist nahi karti → FileNotFoundException,FileNotFoundException IO Exception ka subclass hai.
+
+
+3. FileNotFoundException :
+    static void sqlException()  {
+        try {
+            FileReader fr = new FileReader("nonexistentfile.txt"); // file nahi hai
+            BufferedReader br = new BufferedReader(fr);
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("IO Exception occurred: " + e.getMessage());
+        } 
+    }
+
+
+4. ClassNotFoundException :
+ public static void main(String[] args) {
+        try {
+            Class.forName("com.example.NonExistentClass"); // class exist nahi karti
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found: " + e.getMessage());
+        }
+    }
+
+
+
+                                                                        RUN-TIME EXCEPTION
+                                                                        ------------------
+
+1. ArrayIndexOutOfBoundsException :
+ public static void arrayIndexExample() {
+        try {
+            int[] arr = {1, 2, 3};
+            System.out.println(arr[5]); // index 5 does not exist
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
+        }
+    }
+
+
+2. NumberFormatException :
+    public static void numberFormatExample() {
+        try {
+            String str = "abc123";
+            int num = Integer.parseInt(str); // cannot convert letters to number
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormatException caught: " + e.getMessage());
+        }
+    }
+
+
+3. NullPointerException :
+ public static void nullPointerExample() {
+        try {
+            String str = null;
+            System.out.println(str.length()); // calling method on null object
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException caught: " + e.getMessage());
+        }
+    }
+
+
+4. ArithmeticException :
+    public static void arithmeticExample() {
+        try {
+            int a = 10;
+            int b = 0;
+            int c = a / b; // division by zero
+        } catch (ArithmeticException e) {
+            System.out.println("ArithmeticException caught: " + e.getMessage());
+        }
+    }
+
+5. ClassCastException :
+  public static void classCastExample() {
+        try {
+            Object obj = "Hello World";
+            Integer num = (Integer) obj; // cannot cast String to Integer
+        } catch (ClassCastException e) {
+            System.out.println("ClassCastException caught: " + e.getMessage());
+        }
+    }
 
 
 
