@@ -2,7 +2,7 @@
 An operator is a special symbol in Java used to perform operations on variables and values.
 👉 Example:
 int a = 10, b = 5;
-int c = a + b; // '+' is an arithmetic operator
+int c = a + b; // '+' is an arithmetic operator 
 
 🧩 Types of Operators in Java ?
 Java provides several types of operators:
