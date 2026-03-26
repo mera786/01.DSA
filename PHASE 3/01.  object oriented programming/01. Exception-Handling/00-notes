@@ -67,7 +67,49 @@ there are many ways to handle exceptions :
 
 
 
+SQL INJECTION / SQL EXCEPTION :
+public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/db2"; // DB url
+        String user = "root";  // DB username
+        String password = "test"; // DB password
 
+        String usernameInput = "admin";
+        String passwordInput = "123";
+
+        try {
+            // Load driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Create connection
+            Connection connection = DriverManager.getConnection(url, user, password);
+
+            // ❌ Vulnerable Query (SQL Injection)
+            // Hacker input example:
+            // passwordInput = "' OR '1'='1"
+            // Query becomes:
+            // SELECT * FROM users WHERE username='admin' AND password='' OR '1'='1'
+            // This condition हमेशा true हो जाता है → login bypass
+            // String query = "SELECT * FROM users WHERE username = '" + usernameInput + "' AND password = '" + passwordInput + "'";
+
+            // ✅ Secure तरीका (SQL Injection safe)
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, usernameInput);
+            ps.setString(2, passwordInput);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                System.out.println("User found: " + rs.getString("username"));
+                System.out.println("password found: " + rs.getString("password"));
+            }
+
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+Note: Driver class needed. download kro ya spring boot me sql ka dependncy lgao or alg se main method bna ke run kr lo.
 
 
 
