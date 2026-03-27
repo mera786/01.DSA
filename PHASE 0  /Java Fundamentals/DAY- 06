@@ -1,5 +1,5 @@
 What is Control flow ?
-It is one of the fundamental features of programming that can be used to control the flow of the code.
+ Control Flow = Program ka flow control karna. 
 it provides three types of control flow statements:
    - 1. Decision Making statements :
           - decision-making statements decide which statement to execute and when. It evaluates the Boolean expression.
