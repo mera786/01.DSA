@@ -1,33 +1,132 @@
-🔹 What is Operator Precedence?
-     - Precedence defines which operator is evaluated first in an expression.
-     - Associativity defines the order of evaluation if two operators have the same precedence.
+🔹 What is Operator Precedence & Associativity?
+     - Precedence = priority (kaun operator pehle chalega)
+     - Associativity = agar same precedence wale operators ho to kis direction me evaluate(calculate karna) hoga
      - 📘 Example:
 int x = 5 + 3 * 2; // * has higher precedence than + → evaluated first
 // Result: 5 + (3*2) = 11
 
 ⚡ Java Operator Precedence & Associativity Table :
 Note: Higher in the table → higher precedence → evaluated first
-| Precedence | Operator(s)                                                                 | Description                                   | Associativity        |              |
-| ---------- | --------------------------------------------------------------------------- | --------------------------------------------- | -------------------- | ------------ |
-| 1          | `()`                                                                        | Parentheses (Grouping)                        | Left → Right         |              |
-| 2          | `[]`                                                                        | Array subscript                               | Left → Right         |              |
-| 2          | `.`                                                                         | Member access (dot)                           | Left → Right         |              |
-| 2          | `()`                                                                        | Method call                                   | Left → Right         |              |
-| 3          | `++` (postfix), `--` (postfix)                                              | Post-increment, post-decrement                | Left → Right         |              |
-| 4          | `++` (prefix), `--` (prefix), `+` (unary plus), `-` (unary minus), `!`, `~` | Unary operators                               | Right → Left         |              |
-| 5          | `*`, `/`, `%`                                                               | Multiplication, division, modulus             | Left → Right         |              |
-| 6          | `+`, `-`                                                                    | Addition, subtraction                         | Left → Right         |              |
-| 7          | `<<`, `>>`, `>>>`                                                           | Shift operators                               | Left → Right         |              |
-| 8          | `<`, `<=`, `>`, `>=`, `instanceof`                                          | Relational operators                          | Left → Right         |              |
-| 9          | `==`, `!=`                                                                  | Equality operators                            | Left → Right         |              |
-| 10         | `&`                                                                         | Bitwise AND                                   | Left → Right         |              |
-| 11         | `^`                                                                         | Bitwise XOR                                   | Left → Right         |              |
-| 12         | `\|`                                                                        | Bitwise OR                                    | Left → Right         |              |
-| 13         | `&&`                                                                        | Logical AND                                   | Left → Right         |              |
-| 14         | `\|\|`                                                                      | Logical OR                                    | Left → Right         |              |
-| 15         | `?:`                                                                        | Ternary conditional                           | Right → Left         |              |
-| 16         | `=`, `+=`, `-=`, `*=`, `/=`, `%=` , `&=`, `^=`, `                           | =`, `<<=`, `>>=`, `>>>=`                      | Assignment operators | Right → Left |
-| 17         | `,`                                                                         | Comma operator (used to separate expressions) | Left → Right         |              |
+| Precedence | Operator(s)                                                                 | Description  / Usage                          | Associativity        |              
+| ---------- | --------------------------------------------------------------------------- | --------------------------------------------- | -------------------- | 
+| 1          | `()`                                                                        | Parentheses (Grouping)                        | Left → Right         |              
+| 2          | `[]`                                                                        | Array subscript                               | Left → Right         |              
+| 2          | `.`                                                                         | Member access (dot)                           | Left → Right         |              
+| 2          | `()`                                                                        | Method call                                   | Left → Right         |              
+| 3          | `++` (postfix), `--` (postfix)                                              | Post-increment, post-decrement                | Left → Right         |              
+| 4          | `++` (prefix), `--` (prefix), `+` (unary plus), `-` (unary minus), `!`, `~` | Unary operators                               | Right → Left         |              
+| 5          | `*`, `/`, `%`                                                               | Multiplication, division, modulus             | Left → Right         |              
+| 6          | `+`, `-`                                                                    | Addition, subtraction                         | Left → Right         |              
+| 7          | `<<`, `>>`, `>>>`                                                           | Shift operators                               | Left → Right         |              
+| 8          | `<`, `<=`, `>`, `>=`, `instanceof`                                          | Relational operators                          | Left → Right         |              
+| 9          | `==`, `!=`                                                                  | Equality operators                            | Left → Right         |              
+| 10         | `&`                                                                         | Bitwise AND                                   | Left → Right         |              
+| 11         | `^`                                                                         | Bitwise XOR                                   | Left → Right         |              
+| 12         | `|`                                                                         | Bitwise OR                                    | Left → Right         |              
+| 13         | `&&`                                                                        | Logical AND                                   | Left → Right         |              
+| 14         | `||`                                                                        | Logical OR                                    | Left → Right         |              
+| 15         | `?:`                                                                        | Ternary conditional                           | Right → Left         |              
+| 16         | `=`, `+=`, `-=`, `*=`, `/=`, `%=` , `&=`, `^=`, ` , =`, `<<=`, `>>=`, `>>>=`| Assignment operators                          | Right → Left         |
+| 17         | `,`                                                                         | Comma operator (used to separate expressions) | Left → Right         |             
+
+
+🔹 1. Parentheses () :
+👉 Sabse highest priority
+Ex- int result = (2 + 3) * 4;  // 5 * 4 = 20
+
+
+🔹 2. Array [], Dot ., Method Call () :
+👉 In teeno ka same precedence level hota hai, isliye associativity = Left → Right hoti hai.
+Ex- arr[1].toString().length();
+                      1. arr[1] → pehle chalega (leftmost)
+                      2. .toString() → uske baad
+                      3. .length() → last
+
+
+🔹 3. Post Increment a++ and Post Decrement a--  :
+👉 Dono ka Same precedence, Associativity = Left → Right
+Ex-
+int a = 5;
+int b = a++ + a-- + a++; // 16
+
+
+🔹 4. Unary Operators (++a, --a, +, -, !, ~) :
+👉 Same precedence level, Associativity = Right → Left.
+Ex- 
+int a = 5;
+int b = ~ - + - ++ -- a;
+                    🔹 Step 1: --a
+                               a = 5 → 4
+                               use = 4
+                    🔹 Step 2: ++
+                               ++4 → 5
+                               a = 5
+                    🔹 Step 3: -
+                               -5
+                    🔹 Step 4: +
+                               same → -5
+                    🔹 Step 5: -
+                               +5
+                    🔹 Step 6: ~
+                               ~5 = -(5 + 1) = -6  // output = -6
+
+
+🔹 5. * / %     :
+👉 in teeno ka precedence SAME hota hai,associativity Right → Left.
+Ex- 
+int result = 20 / 5 * 2; // output = 8
+
+
+🔹 6. + -         :
+👉 dono ki precedence SAME hoti hai, associativity Left → Right
+Ex- 
+int result = 10 - 2 + 3; // output = 11
+
+
+🔹 7. Shift << >> >>>     :
+👉 In teeno ka same precedence level hota hai, isliye associativity = Left → Right hoti hai.
+Ex- 
+int a = 32;
+int b = a >> 2 << 1 >>> 1;
+                       🔹 Step 1: a >> 2  
+                                  32 >> 2 = 32 / (2²) = 32 / 4 = 8
+                       🔹 Step 2: << 1
+                                  8 << 1 = 8 × (2¹) = 8 × 2 = 16
+                       🔹 Step 3: >>> 1
+                                  16 >>> 1 = 16 / (2¹) = 16 / 2 = 8  // output = 8 
+
+
+🔹 8. Relational < <= > >= instanceof :
+👉 In sabka precedence SAME hota hai, Associativity = Left → Right
+Ex- 
+Object obj = "Java";
+int a = 10;
+boolean result = a > 5 && a >= 10 && a < 20 && a <= 10 && obj instanceof String; // true
+                       🔹 Step 1:
+                                  a > 5 → 10 > 5 → true
+                       🔹 Step 2:
+                                  a >= 10 → 10 >= 10 → true
+                       🔹 Step 3:
+                                  a < 20 → 10 < 20 → true
+                       🔹 Step 4:
+                                  a <= 10 → 10 <= 10 → true
+                       🔹 Step 5:
+                                  obj instanceof String → true
+
+🔥 Final : true && true && true && true && true → true
+
+
+
+🔹 9. Equality == !=      :
+👉 In dono ka precedence SAME hota hai, Associativity = Left → Right.
+Ex- 
+int a = 10;
+int b = 20;
+int c = 10;
+boolean result = a == c != b == c; // true.
+
+
+
 
 
 
