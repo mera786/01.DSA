@@ -47,12 +47,12 @@ Character Class ka matlab hai: ek set of characters define karna jisme se koi ek
 | `[a-zA-Z]`    | saare alphabets (small + capital)     | a, Z          |
 | `[a-zA-Z0-9]` | alphanumeric (letters + numbers)      | A, 7          |
 | `.`           | koi bhi ek character (except newline) | a, 1, @       |
-| `\d`          | digit (same as `[0-9]`)               | 3             |
-| `\D`          | non-digit                             | a, @          |
-| `\w`          | word character (a-z, A-Z, 0-9, _)     | a, 1, _       |
-| `\W`          | non-word character                    | @, #          |
-| `\s`          | whitespace (space, tab, newline)      | " "           |
-| `\S`          | non-whitespace                        | a, 1          |
+| `\\d`         | digit (same as `[0-9]`)               | 3             |
+| `\\D`         | non-digit                             | a, @          |
+| `\\w`         | word character (a-z, A-Z, 0-9, _)     | a, 1, _       |
+| `\\W`         | non-word character                    | @, #          |
+| `\\s`         | whitespace (space, tab, newline)      | " "           |
+| `\\S`         | non-whitespace                        | a, 1          |
 
 Note:- 
   [ ]   : Ye OR operator jaisa behave karta hai.
