@@ -30,6 +30,62 @@ Note: Higher in the table → higher precedence → evaluated first
 | 17         | `,`                                                                         | Comma operator (used to separate expressions) | Left → Right         |             
 
 
+🔹 1  TO 17th  Precedence 🔹
+int a = 5, b = 3, c = 2;
+int arr[] = {10, 20, 30};
+
+int result = (arr[0] + a++ * --b) << 1 > 10 
+             && (a & b) == (c ^ b) 
+             || false 
+             ? a += b 
+             : c *= b;
+
+🔥 left side evaluate होगा 🔥
+🔹 Step 1: () → andar solve hoga  
+    Expression:  (arr[0] + a++ * --b)
+                      🔸 Step 1.1: []
+                                     arr[0] = 10
+                      🔸 Step 1.2: a++ (postfix)
+                                     use = 5
+                                     a = 6
+                      🔸 Step 1.3: --b (prefix)
+                                     b = 3 → 2
+                      🔸 Step 1.4: *
+                                     5 * 2 = 10
+                      🔸 Step 1.5: +
+                                     10 + 10 = 20
+🔹 Step 2: << (shift)
+                  20 << 1 = 40
+🔹 Step 3: > (relational)
+                  40 > 10 → true
+🔥 right side evaluate होगा 🔥
+🔹 Step 4: (a & b)
+                  a = 6, b = 2
+                  6 & 2 = 2
+🔹 Step 5: (c ^ b)
+                  c = 2, b = 2
+                  2 ^ 2 = 0
+🔹 Step 6: == (equality)
+                  2 == 0 → false
+🔹 Step 7: && (logical AND)
+                  true && false = false
+🔹 Step 8: || (logical OR)
+                  false || false = false
+🔥 Decision Part 🔥 
+🔹 Step 9: ?: (ternary)
+                  Condition = false
+                  ? a += b : c *= b
+🔹 Step 10: *= (assignment)
+                  c = 2 * 2 = 4
+✅ Final Output :
+result = 4
+a = 6
+b = 2
+c = 4
+
+
+
+
 🔹 1. Parentheses () :
 👉 Sabse highest priority
 Ex- int result = (2 + 3) * 4;  // 5 * 4 = 20
