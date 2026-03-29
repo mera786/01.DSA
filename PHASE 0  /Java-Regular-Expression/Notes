@@ -37,22 +37,19 @@ Use cases:
 Character Class ka matlab hai: ek set of characters define karna jisme se koi ek match ho.
 
 📊 Character Classes Table
-| Pattern       | Meaning (Simple)                      | Example Match |
-| ------------- | ------------------------------------- | ------------- |
-| `[abc]`       | a, b, ya c me se koi ek               | a, b          |
-| `[^abc]`      | a, b, c ke alawa kuch bhi             | d, x          |
-| `[a-z]`       | chhote letters (a se z)               | m, z          |
-| `[A-Z]`       | capital letters (A se Z)              | G, T          |
-| `[0-9]`       | digits (0 se 9)                       | 5, 9          |
-| `[a-zA-Z]`    | saare alphabets (small + capital)     | a, Z          |
-| `[a-zA-Z0-9]` | alphanumeric (letters + numbers)      | A, 7          |
-| `.`           | koi bhi ek character (except newline) | a, 1, @       |
-| `\\d`         | digit (same as `[0-9]`)               | 3             |
-| `\\D`         | non-digit                             | a, @          |
-| `\\w`         | word character (a-z, A-Z, 0-9, _)     | a, 1, _       |
-| `\\W`         | non-word character                    | @, #          |
-| `\\s`         | whitespace (space, tab, newline)      | " "           |
-| `\\S`         | non-whitespace                        | a, 1          |
+| Pattern         | Meaning (Simple)                      | Example Match          |
+| --------------- | ------------------------------------- | ---------------------- |
+| `[abc]`         | a, b, ya c me se koi ek               | a, b                   |
+| `[^abc]`        | a, b, c ke alawa kuch bhi             | d, x                   |
+| `[a-z]`         | chhote letters (a se z)               | m, z                   |
+| `[A-Z]`         | capital letters (A se Z)              | G, T                   |
+| `[0-9]`         | digits (0 se 9)                       | 5, 9                   |
+| `[a-zA-Z]`      | saare alphabets (small + capital)     | a, Z                   |
+| `[a-zA-Z0-9]`   | alphanumeric (letters + numbers)      | A, 7                   |
+| `[a-d[m-p]]`    | a-d ya m-p (union)                    | b, n -> man ✔         |
+| `[a-z&&[def]]`  | a-z me se sirf d, e, f (intersection) | d, e                   |
+| `[a-z&&[^bc]]`  | a-z me se b aur c hata do             | a, d                   |
+| `[a-z&&[^m-p]]` | a-z me se m se p tak hata do          | a, z (but not m,n,o,p) |
 
 Note:- 
   [ ]   : Ye OR operator jaisa behave karta hai.
@@ -61,6 +58,7 @@ Note:-
         eg - [^abc] => a, b, c ko छोड़कर kuch bhi.
 
 Example in code intellij IDEA .
+
 
 
 📌 Quantifiers 
@@ -80,6 +78,24 @@ Example in code intellij IDEA .
 | `.+`     | kisi bhi character ka at least 1 repetition | a, xyz                 |
 
 Example in code intellij IDEA .
+
+
+
+📌 Metacharacters table :
+
+| Pattern         | Meaning (Simple)                      | Example Match          |
+| --------------- | ------------------------------------- | ---------------------- |
+| `.`             | koi bhi ek character (except newline) | a, 1, @                |
+| `\\d`           | digit (same as `[0-9]`)               | 3                      |
+| `\\D`           | non-digit                             | a, @                   |
+| `\\w`           | word character (a-z, A-Z, 0-9, _)     | a, 1, _                |
+| `\\W`           | non-word character                    | @, #                   |
+| `\\s`           | whitespace (space, tab, newline)      | " "                    |
+| `\\S`           | non-whitespace                        | a, 1                   |
+
+
+Example in code intellij IDEA . along with characters class in r3 folder.
+
 
 
 📌 Escape Characters :
@@ -104,7 +120,7 @@ Escape (\) ka use special characters ko normal (literal) banane ke liye hota hai
 | `\\`    | backslash ( \ )          | escape character khud hi special hai |
 
 
-📌 Flow (Important)
+📌 Flow (Important) 
    - Regex likho
    - Pattern compile karo
    - Matcher se input pe apply karo
