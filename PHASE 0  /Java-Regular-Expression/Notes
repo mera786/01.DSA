@@ -19,11 +19,37 @@ Use cases:
                                       - Direct object create nahi kar sakte
                                       - Use: Pattern p = Pattern.compile("regex");
 
+🔷 Pattern Flags Table :
+👉 Flag Pattern class ke constants hote hain,inka use Sirf Pattern ke sath use hote hain
+| Flag | Constant                          | Use (Simple Language)             | Example                |
+| ---- | --------------------------------- | --------------------------------- | ---------------------- |
+| i    | `Pattern.CASE_INSENSITIVE`        | Upper/lower case ignore karega    | "abc" = "ABC"          |
+| m    | `Pattern.MULTILINE`               | ^ aur $ line-wise kaam karega     | multi-line text        |
+| s    | `Pattern.DOTALL`                  | `.` newline bhi match karega      | `.` → `\n` bhi         |
+| x    | `Pattern.COMMENTS`                | regex me spaces/comments allow    | readable regex         |
+| u    | `Pattern.UNICODE_CASE`            | Unicode case matching             | non-English letters    |
+| d    | `Pattern.UNIX_LINES`              | sirf `\n` ko newline maanega      | OS independent         |
+| U    | `Pattern.UNICODE_CHARACTER_CLASS` | Unicode character classes         | \w etc Unicode support |
+| L    | `Pattern.LITERAL`                 | regex ko normal string treat kare | no special meaning     |
+| c    | `Pattern.CANON_EQ`                | Unicode equivalence match         | rare use               |
+
+
+
                            2️⃣ Matcher Class :  Used to search for pattern
                                       - Ye actual matching ka kaam karta hai
                                       - Pattern se create hota hai
                                       - Use: Matcher m = p.matcher("input string");
                                   NOTE:- Matcher class implements the MatchResult Interface. It is a regex engine which is used to perform match operations on a character sequence.
+🔷 4. Important Matcher Methods
+👉 Ye Matcher class ke methods hain, aur inka use Pattern ke sath hota hai
+| Method    | Use                  |
+| --------- | -------------------- |
+| find()    | next match find kare |
+| matches() | full string match    |
+| group()   | matched value        |
+| start()   | start index          |
+| end()     | end index            |
+
 
                            3️⃣ PatternSyntaxException :  Indicates syntax error in a regualr expression pattern.
                                       - Jab regex me syntax error hoti hai tab throw hota hai
