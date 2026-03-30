@@ -3,6 +3,7 @@ Hashing ek process hai jisme plain text data ko ek fixed-length ke unreadable va
 Important point: 
             - Hashing one-way process hota hai. 
             - Hash se original data wapas nahi nikala ja sakta.
+            - already DB me jo Hash Value store hota wo or input dete time hash generate hoga wo match hoga to login otherwise not.
 
 🔹 Hashing ki need kyun hoti hai?
 Socho tumne database me aise data rakha:
@@ -60,7 +61,7 @@ Key se hash → hash se index → index par key–value store.
 
 
 
-🔹 Hash Function Design Techniques (for Hash Tables) :
+🔹 hash Function Design Techniques (for hash Tables) :
 ------------------------------------------------------
 
 1️⃣ Division Method :
@@ -93,7 +94,7 @@ Key se hash → hash se index → index par key–value store.
       - Jab key bahut badi ho (mobile number).                                                             8 |   74      |
                                                                                                              |           |
                                                                                                              '''''''''''''
-                                                                                                           9 |           |
+ Note:- except these there are more methods also for designing hash function. like, Multiplication         9 |           |
                                                                                                              |           |
                                                                                                              '''''''''''''
                                                                                                           10 |  10       |
@@ -122,6 +123,7 @@ hash(k2) % n = 5   ← collision
 🛠️ Collision Resolution Techniques :
 1️⃣ Closed Hashing / Open Addressing ?
 Collision hone par same table ke kisi aur empty slot me element rakhte hain.
+
 
 
 
