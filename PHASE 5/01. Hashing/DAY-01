@@ -54,6 +54,10 @@ Note:- Java me hash table ek concept hai, koi separate class nahi. HashMap aur H
 --------------------------
 🔹 Definition :
 Hash table ek data structure concept hai jo hashing technique ka use karke data ko key–value pairs ke form me store karta hai aur fast insertion, search aur deletion provide karta hai.
+- Key ko ek hash function se pass karte hain, Wo ek index generate karta hai.
+- Aur data us index pe store hota hai (array ke andar).
+👉 Ye jo array + indexing structure hota hai usko hi hash table bolte hain.
+
 
 🔹 Key Idea :
 Key se hash → hash se index → index par key–value store.
@@ -121,8 +125,83 @@ hash(k1) % n = 5
 hash(k2) % n = 5   ← collision
 
 🛠️ Collision Resolution Techniques :
-1️⃣ Closed Hashing / Open Addressing ?
+1️⃣ Open Addressing (Closed Hashing) ?
 Collision hone par same table ke kisi aur empty slot me element rakhte hain.
+     🔹 Iske types hote hain: 
+                  (a) Linear Probing :- 
+                         - Simple next slot check karo.
+                         - Index = (hash value + i) % tableSize  => i = kitni baar tum next slot try kar rahe ho (i = 0,i = 1,i = 2)
+                         - Probe Number :- collision ane ke bad jitna steps hmne include kiya hai  khali slot ke liye wo hmara probe number bn jata hai isko 1 se count krte na ki 0 se.
+                         - ❌ Problem: Clustering (continuous block ban jata hai). there are two types of clustring : Primary and secondry clustring.
+                  (b) Quadratic Probing :-
+                         - Gap increase hota hai (i²)
+                         - Index = (hash + i²) % n
+                         - ✔ Clustering kam hota hai.
+                  (c) Double Hashing :-
+                         - Second hash function use karte hain.
+                         - Index = (h1(key) + i * h2(key)) % n.
+                         - ✔ Best distribution
+                         - ✔ Clustering almost nahi hota
+       ❓ Agar probing ke baad bhi jagah na mile to?
+           👉 Tab sirf probing continue nahi karte…Hum rehashing (resize) karte hain, jo load factor pe depend karta hai.
+            🔹 Load Factor kya hota hai?
+                - Load factor batata hai ki hash table kitna fill ho chuka hai.
+                                              Number of elements​
+                - Formula:  Load Factor (α) = --------------------
+                                                Table Size
+                - 🔴 Problem kab hoti hai?
+                           - Jab load factor se zyada ho jata hai (table almost full).
+                           - Linear probing me:
+                                           - ❌ Bahut zyada probing lagega
+                                           - ❌ Clustering badhega
+                                           - ❌ Performance O(n) ho sakta hai.
+                - 🚀 Solution → Rehashing :
+                    👉 Jab load factor threshold cross kare (like 0.7 / 0.75)
+                                          - Naya bada array banao (generally 2x size)
+                                          - Saare old elements ko dubara insert karo
+                                          - New hash calculate hoga (kyunki size change hua)
+     🔥 Open Addressing me Deletion kaise krte hai ?
+        - 👉 (Linear / Quadratic / Double hashing me),Direct delete kyu nahi kar sakte.
+        - Steps :
+               - Key find karo (probing se).
+               - Direct remove mat karo.
+               - Usko mark karo → DELETED.
+        - Explanation :
+               - Maan lo:
+                         Index:   5   6   7
+                         Data:   [A] [B] [C]
+                         Aur B delete kar diya (index 6 empty kar diya).
+                         [A] [ _ ] [C]
+                         👉 Ab problem 👇
+                                      C ka search karoge
+                                      hash = 5 → 5 pe A mila
+                                      next 6 → empty mila ❌
+                                                     Search stop ho jayega ❌
+                                                     C mil hi nahi payega
+               - ✅ Solution: "Lazy Deletion" (Tombstone concept) 
+                         Direct empty nahi karte, Ek special mark laga dete hain: DELETED
+                         [A] [DEL] [C]
+
+2️⃣ Closed Addressing (Separate Chaining) ?
+Same index pe multiple elements store karte hain.
+✔ Har bucket me:
+LinkedList / Tree
+Example: Index 5 → [k1 → k2 → k3]
+✔ Simple
+✔ No clustering issue
+⚔️ Open vs Closed Hashing
+| Feature   | Open Addressing | Separate Chaining |
+| --------- | --------------- | ----------------- |
+| Storage   | Same array      | LinkedList/Tree   |
+| Space     | Less            | More              |
+| Collision | New slot        | Same bucket       |
+| Example   | Linear probing  | HashMap           |
+
+Note:-
+🔥 Java me kya use hota hai?
+👉 HashMap: Separate Chaining use karta hai
+✔ Java 8 ke baad: LinkedList → Tree (agar entries zyada ho jaye)
+
 
 
 
