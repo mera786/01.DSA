@@ -9,6 +9,8 @@ map.put(2, "B");
 - Internally HashMap hash table use karta hai,Hash table actually array of buckets hoti hai
 - Har bucket me:
           LinkedList / Tree (Java 8 ke baad)
+- initial table size = 16
+- load factor / threshold = 0.75
 👉 Flow: 
        key → hashCode() → index → bucket → value
 
