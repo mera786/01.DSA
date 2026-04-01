@@ -1,0 +1,49 @@
+🔹 Generics kya hota hai?
+- Tum ek hi code ko different data types ke sath use kar sakte ho.
+- Code ko type-safe aur reusable banana.
+- Compile time pe type checking ho jaati hai (runtime error kam hote hain).
+Without Generics (Problem 😓) :
+             List list = new ArrayList();
+             list.add("Hello");
+             list.add(10); // allowed ❌ (mixed type)
+             String s = (String) list.get(1); // Runtime error 💥
+With Generics (Solution 😍) :
+             List<String> list = new ArrayList<>();
+             list.add("Hello");
+             // list.add(10); ❌ compile time error
+             String s = list.get(0); // no casting needed ✅
+Generics ka Syntax :
+class Box<T> {
+    T value;
+
+    void set(T value) {
+        this.value = value;
+    }
+
+    T get() {
+        return value;
+    }
+}
+
+💥 USE :
+Box<Integer> b1 = new Box<>();
+b1.set(10);
+
+Box<String> b2 = new Box<>();
+b2.set("Hello");
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                   DESIGNING HASHMAP FROM SCRATCH 
+                                                                   -------------------------------
+
