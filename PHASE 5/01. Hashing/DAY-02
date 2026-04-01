@@ -1,1 +1,93 @@
+🔹 1. What is HashMap?
+- HashMap ek data structure hai jo key-value pair me data store karta hai
+- Har key unique hoti hai, value duplicate ho sakti hai
+👉 Example:
+map.put(1, "A");
+map.put(2, "B");
+
+🔹 2. Internal Working ?
+- Internally HashMap hash table use karta hai,Hash table actually array of buckets hoti hai
+- Har bucket me:
+          LinkedList / Tree (Java 8 ke baad)
+👉 Flow: 
+       key → hashCode() → index → bucket → value
+
+🔹 3. Ordering Behavior ?
+❌ Insertion order maintain nahi karta
+❌ Sorting follow nahi karta
+✔ Random order me data store hota hai
+
+🔹 4. Time Complexity ?
+| Operation                 | Complexity   |
+| ------------------------- | ------------ |
+| put() (new)               | O(1) avg     |
+| get()                     | O(1) avg     |
+| remove()                  | O(1) avg     |
+| **update (existing key)** | **O(1) avg** |
+👉 Worst case: O(n) (jab collision zyada ho).
+
+🔹 5. Important Methods ?
+✔ put() : 
+       👉 Same key pe new value old value ko replace kar deti hai.
+        ex -  map.put(2, "meraz");
+              map.put(2, "sahil"); // overwrite karega
+
+✔ get() :
+       👉 Agar key exist nahi karti → null return karega.
+        ex - map.get(5);
+
+✔ containsKey() :
+        👉 true / false return karega.
+        ex - map.containsKey(5);
+
+✔ getOrDefault() :
+         👉 Agar key nahi mile → default value return hogi.
+         ex - map.getOrDefault(5, "value not present");
+
+✔ replace() :
+         👉 Sirf tab update karega jab key exist karti ho.
+          ex - map.replace(2, "alam");
+
+✔ remove() :
+          👉 map.remove(2);
+
+
+
+🔹 6. Iteration Techniques ?
+
+✔ 1. Direct Print :
+            👉 internally toString() call hota hai.
+             ex - 
+                 System.out.println(map);
+
+✔ 2. entrySet() (Best Way ⭐) :
+             ex - 
+                   for (Map.Entry<Integer, String> entry : map.entrySet()) {
+                       System.out.println(entry.getKey());
+                       System.out.println(entry.getValue());
+                   }
+
+✔ 3. keySet() :
+            ex - 
+                   for (Integer key : map.keySet()) {
+                           System.out.println(key);
+                           System.out.println(map.get(key));
+                   }
+
+
+🔹 7. Collision Handling ?
+- Jab 2 keys ka hash same index pe aaye → collision
+- Handle hota hai:
+                 - LinkedList
+                 - Tree (Java 8 ke baad, jab size > 8)
+
+
+🔹 8. Important Note (Very Important for Interviews ⭐) ?
+👉 Agar tum custom object ko key bana rahe ho:
+✔ Must override:
+               hashCode() : bucket decide karta hai.
+               equals()  : exact key match check karta hai.
+
+
+
 
