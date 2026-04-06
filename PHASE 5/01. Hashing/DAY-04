@@ -1,1 +1,7 @@
+Q.gfg  Given an integer array arr[], find the element that appears most frequently. If multiple elements have the same highest frequency, return the largest among them.?
+Input: arr[] = [1, 2, 2, 4, 1]
+Output: 2
+Explanation: 1 and 2 both appear two times, so return 2 as it's value is bigger.
+Note:- use marks array for brute force to unncessary traverse. [ try with brute force, then hashmap for optimal ].
+
 
