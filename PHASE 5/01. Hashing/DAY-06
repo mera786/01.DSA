@@ -5,3 +5,6 @@ Explanation: arr[3] + arr[4] = -3 + 1 = -2
 Input: arr[] = [1, -2, 1, 0, 5], target = 0
 Output: false
 Explanation: None of the pair makes a sum of 0
+
+
+Note:- in DAY-07 there is nothing except theory so directly jump to DAY-08
