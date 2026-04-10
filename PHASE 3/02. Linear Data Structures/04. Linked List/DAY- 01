@@ -89,7 +89,7 @@ public void addFirst(int data){
         Node<Integer> newNode = new Node<>(data);
         if (head==null){
             head=newNode;
-            return;
+            return; 
         }
         newNode.next= head;
         head=newNode;
