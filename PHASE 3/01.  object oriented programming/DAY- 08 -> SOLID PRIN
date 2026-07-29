@@ -3,16 +3,116 @@ Q38. Explain SOLID Principles ?
 a. S – Single Responsibility Principle (SRP) : 
                       - A class should do only one job. If one class is doing multiple jobs, changes in one part may break another.
                       - eg - Controller is only responsible for API endpoints, not business logic. etc
+ eg :
+@RestController
+public class UserController {
+    @PostMapping("/users")
+    public String saveUser() {
+        return userService.saveUser();
+    }
+}
+
+
+
 b. O – Open/Closed Principle (OCP) :
                       - Code should be open for extension, closed for modification. Means: add new features without changing old code.
                       - eg- In Spring Boot, we achieve this using interfaces + polymorphism + dependency injection.
+eg :
+public interface PaymentService {
+    void pay();
+}
+
+@Service
+public class CreditCardPayment implements PaymentService {
+    public void pay() {
+        System.out.println("Credit Card Payment");
+    }
+}
+
+@Service
+public class UpiPayment implements PaymentService {
+    public void pay() {
+        System.out.println("UPI Payment");
+    }
+}
+
+
 c. L – Liskov Substitution Principle (LSP) :
-                      - Subclasses should be usable anywhere parent is used, without breaking behavior.
-                      - In simple words → Child classes should be able to replace parent classes and behave correctly.
+                      - Child class should be able to replace the parent class without changing program behavior.
                       - eg - In Spring Boot, we achieve it by designing interfaces with proper contracts and making sure all implementations behave consistently.
+eg :
+public interface NotificationService {
+    void send();
+}
+
+@Service
+public class EmailNotificationService implements NotificationService {
+    @Override
+    public void send() {
+        System.out.println("Email Sent");
+    }
+}
+
+@Service
+public class SmsNotificationService implements NotificationService {
+    @Override
+    public void send() {
+        System.out.println("SMS Sent");
+    }
+}
+
+@RestController
+public class NotificationController {
+    @Autowired
+    private NotificationService notificationService; // Parent reference is calling child implementation
+    @GetMapping("/send")
+    public String sendNotification() {
+        notificationService.send();
+     return "Notification Sent";
+    }
+}
+Note:- so here any child replacing the parent interface safely.
+
+
+
 d. I – Interface Segregation Principle (ISP) :
                       - Don’t force classes to implement methods they don’t use. Better to have small specific interfaces than one big interface.
                       - eg- In Spring Boot, we achieve it by designing modular service interfaces.
+eg :
+public interface Workable {
+    void work();
+}
+
+public interface Eatable {
+    void eat();
+}
+
+public interface Sleepable {
+    void sleep();
+}
+
+public class Developer implements Workable, Eatable, Sleepable {
+    public void work() {
+        System.out.println("Writing Code");
+    }
+    public void eat() {
+        System.out.println("Eating");
+    }
+    public void sleep() {
+        System.out.println("Sleeping");
+    }
+}
+
+public class Robot implements Workable {
+    public void work() {
+        System.out.println("Working");
+    }
+}
+
+
 D – Dependency Inversion Principle (DIP):
                       - Classes should depend on interfaces, not concrete classes. This makes code flexible and testable.
                       - eg - In Spring Boot, we achieve DIP naturally using interfaces + dependency injection.
+eg :
+@Autowired
+private NotificationService notificationService;
