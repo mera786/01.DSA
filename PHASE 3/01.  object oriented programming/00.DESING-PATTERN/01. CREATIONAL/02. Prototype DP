@@ -30,7 +30,7 @@ public class Student implements Prototype {
     }
 
     @Override
-    public Student clone() {
+    public Student clone() {  // covariant-return type ho rha hai
         return new Student(this.name, this.age);
     }
 
