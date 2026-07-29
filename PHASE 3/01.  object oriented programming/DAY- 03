@@ -30,8 +30,8 @@ note:- jab child bol rhe ho to parent bolo  and jab derived class bol rhe ho to 
 | ------------ | -------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
 | Single       | 1 parent → 1 child                     | ✔ Supported                                                     | Animal → Dog                                         |
 | Multilevel   | Parent → Child → Grandchild            | ✔ Supported                                                     | Animal → Dog → Puppy                                 |
-| Hierarchical | One parent, many children              | ✔ Supported                                                     | Animal → Dog, Cat                                    |
-| Multiple     | 1 child inherits from multiple parents | ❌ **Class level not allowed**✔ Allowed using **interfaces**    |class C extends A,B ❌<br>class C implements I1, I2 ✔|
+| Hierarchical | One parent, many children              | ✔ Supported                                                     | Animal → Dog  , Animal → Cat                         |
+| Multiple     | 1 child inherits from multiple parents | ❌ **Class level not allowed**✔ Allowed using **interfaces**    |class C extends A,B ❌ class C implements I1, I2 ✔   |
 | Hybrid       | Combination of two or more types of inheritance  | single + multilevel + hierarchical  (generally interfaces ke throurh hota h ❌ Class level not allowed       |
 
 
@@ -61,7 +61,7 @@ ANALYSIS CASE-2:
       . . . .
       .  A  .
       . . . .
-      ⬆     ⬆
+      ⬆     ⬆ 
 . . . .   . . . .
 .  C  .   .  B  .
 . . . .   . . . .
