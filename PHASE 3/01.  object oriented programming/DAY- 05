@@ -190,7 +190,7 @@ protected void process() {}
 Overridden as:
 void process() {}
 why ?
-Ans : protected → visible to subclasses + same package 
+Ans : No, visibility kam (reduced) ho gayi. protected → visible to subclasses + same package 
 Overriding rule: Overridden method must have same or wider visibility.
 
 
