@@ -54,7 +54,7 @@ Reflection allows you to access private constructors.
   Singleton s2 = constructor.newInstance(); // creates a new instance
 - Solution: Prevent it in constructor:
  private Singleton() {
-    if (INSTANCE != null) {
+    if (p != null) {
         throw new RuntimeException("Use getInstance() method");
       }}
 
